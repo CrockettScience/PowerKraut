@@ -9,9 +9,7 @@
 GLFWwindow* window;
 GLFWmonitor* monitor;
 
-EXPORT int Init(int width, int height, char *title, int fullScreen){
-    printf("***Initializing KrautVK***\nVersion 0.0.2\n");
-
+int InitGLFW(int width, int height, char *title, int fullScreen){
     if (!glfwInit())
         return -1;
 
@@ -30,10 +28,31 @@ EXPORT int Init(int width, int height, char *title, int fullScreen){
         return -2;
     }
 
+    return 0;
+}
+
+int InitVulkan(){
+
     if (!glfwVulkanSupported())
-    {
         return -3;
-    }
+
+    return 0;
+}
+
+EXPORT int Init(int width, int height, char *title, int fullScreen){
+    printf("***Initializing KrautVK***\nVersion 0.0.3\n");
+
+    int status = InitGLFW(width, height, title, fullScreen);
+
+    if(status != 0)
+        return status;
+
+    status = InitVulkan();
+
+    if(status != 0)
+        return status;
+
+
     return 0;
 }
 
