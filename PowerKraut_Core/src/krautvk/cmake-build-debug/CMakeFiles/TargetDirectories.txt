@@ -1,0 +1,3 @@
+C:/PowerKraut/PowerKraut/PowerKraut_Core/src/krautvk/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/PowerKraut/PowerKraut/PowerKraut_Core/src/krautvk/cmake-build-debug/CMakeFiles/krautvk.dir
+C:/PowerKraut/PowerKraut/PowerKraut_Core/src/krautvk/cmake-build-debug/CMakeFiles/edit_cache.dir
