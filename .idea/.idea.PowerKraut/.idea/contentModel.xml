@@ -67,6 +67,16 @@
             <e p="core" t="Include">
               <e p="PowerKraut.cs" t="Include" />
             </e>
+            <e p="netwrapper" t="Include">
+              <e p="KrautVK.cs" t="Include" />
+            </e>
+            <e p="util" t="Include">
+              <e p="exceptions" t="Include">
+                <e p="KrautVKInitFailedException.cs" t="Include" />
+                <e p="KrautVKVulkanNotSupportedException.cs" t="Include" />
+                <e p="KrautVKWindowCreationFailedException.cs" t="Include" />
+              </e>
+            </e>
           </e>
           <e p="KrautVK" t="Include">
             <e p="cmake-build-debug" t="Include">
@@ -122,9 +132,6 @@
             </e>
             <e p="library.c" t="Include" />
             <e p="library.h" t="Include" />
-          </e>
-          <e p="vulkan" t="Include">
-            <e p="KrautVK.cs" t="Include" />
           </e>
         </e>
       </e>

@@ -17,13 +17,10 @@
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
-    
   <ItemGroup>
     <PackageReference Include="CSCore" Version="1.2.1.2" />
-      
     <Content Include="lib\*.dll">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-      
   </ItemGroup>
 </Project>

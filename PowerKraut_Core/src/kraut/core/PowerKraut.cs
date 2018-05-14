@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using static PowerKraut_Core.vulkan.KrautVK;
 
 namespace PowerKraut_Core.kraut.core{
@@ -17,8 +18,8 @@ namespace PowerKraut_Core.kraut.core{
         /// <summary>
         /// Initializes Vulkan, opens a window and loads the first scene
         /// </summary>
-        public void Start(){
-            Init();
+        public void Start(int width, int height, string gameTitle, bool fullscreen){
+            Init(width, height, gameTitle, fullscreen);
 
             try{
                 Loop();
@@ -26,6 +27,9 @@ namespace PowerKraut_Core.kraut.core{
             catch (Exception e){
                 Console.WriteLine(e);
                 throw;
+            }
+            finally{
+                Terminate();
             }
         }
 
@@ -36,7 +40,7 @@ namespace PowerKraut_Core.kraut.core{
         }
 
         private static void Main(string[] args){
-            PkInstance.Start();
+            PkInstance.Start(800, 600, "KrautDemo", false);
         }
     }
 }

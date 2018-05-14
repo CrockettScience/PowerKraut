@@ -8,4 +8,4 @@ add_library(krautvk SHARED library.c library.h)
 
 target_link_libraries(krautvk ${PROJECT_SOURCE_DIR}/lib/glfw3.dll)
 
-include_directories(./include)
+include_directories(./include C:/VulkanSDK/1.1.73.0/Include)
