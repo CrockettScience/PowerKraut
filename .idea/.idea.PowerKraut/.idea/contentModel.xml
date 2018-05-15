@@ -12,12 +12,18 @@
           <e p="CMakeFiles" t="Include">
             <e p="3.10.3" t="Include">
               <e p="CMakeCCompiler.cmake" t="Include" />
+              <e p="CMakeCXXCompiler.cmake" t="Include" />
               <e p="CMakeDetermineCompilerABI_C.bin" t="Include" />
+              <e p="CMakeDetermineCompilerABI_CXX.bin" t="Include" />
               <e p="CMakeRCCompiler.cmake" t="Include" />
               <e p="CMakeSystem.cmake" t="Include" />
               <e p="CompilerIdC" t="Include">
                 <e p="a.exe" t="Include" />
                 <e p="CMakeCCompilerId.c" t="Include" />
+              </e>
+              <e p="CompilerIdCXX" t="Include">
+                <e p="a.exe" t="Include" />
+                <e p="CMakeCXXCompilerId.cpp" t="Include" />
               </e>
             </e>
             <e p="clion-environment.txt" t="Include" />
@@ -27,6 +33,7 @@
             <e p="CMakeOutput.log" t="Include" />
             <e p="feature_tests.bin" t="Include" />
             <e p="feature_tests.c" t="Include" />
+            <e p="feature_tests.cxx" t="Include" />
             <e p="krautvk.dir" t="Include">
               <e p="build.make" t="Include" />
               <e p="C.includecache" t="Include" />
@@ -36,6 +43,7 @@
               <e p="DependInfo.cmake" t="Include" />
               <e p="flags.make" t="Include" />
               <e p="includes_C.rsp" t="Include" />
+              <e p="includes_CXX.rsp" t="Include" />
               <e p="library.c.obj" t="Include" />
               <e p="link.txt" t="Include" />
               <e p="linklibs.rsp" t="Include" />
@@ -127,11 +135,11 @@
                 <e p="glfw3native.h" t="Include" />
               </e>
             </e>
+            <e p="KrautVK.cpp" t="Include" />
+            <e p="KrautVK.hpp" t="Include" />
             <e p="lib" t="Include">
               <e p="glfw3.dll" t="Include" />
             </e>
-            <e p="library.c" t="Include" />
-            <e p="library.h" t="Include" />
           </e>
         </e>
       </e>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Reflection;
 using static PowerKraut_Core.vulkan.KrautVK;
 
 namespace PowerKraut_Core.kraut.core{
@@ -20,6 +21,9 @@ namespace PowerKraut_Core.kraut.core{
         /// Initializes Vulkan, opens a window and loads the first scene
         /// </summary>
         public void Start(int width, int height, string gameTitle, bool fullscreen){
+            #if DEBUG
+                Console.WriteLine("PowerKraut Debug\nPID: " + Process.GetCurrentProcess().Id + "\n");
+            #endif
             
             InitKrautVK(width, height, gameTitle, fullscreen);
 
