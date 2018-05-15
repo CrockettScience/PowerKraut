@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
-project(krautvk C)
+project(krautvk C CXX)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_SHARED_LIBRARY_PREFIX  "")
 
-add_library(krautvk SHARED library.c library.h)
+add_library(krautvk SHARED KrautVK.cpp KrautVK.hpp)
 
 target_link_libraries(krautvk ${PROJECT_SOURCE_DIR}/lib/glfw3.dll)
 
