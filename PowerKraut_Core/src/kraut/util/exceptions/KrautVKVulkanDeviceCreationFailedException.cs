@@ -19,9 +19,9 @@ using System;
 namespace PowerKraut_Core.kraut.util.exceptions{
     /// <inheritdoc />
     /// <summary>
-    /// Thrown by KrautVK when Vulkan is not supported by the running system
+    /// Thrown by KrautVK if logical device creation fails
     /// </summary>
-    public class KrautVKVulkanNotSupportedException: Exception{
+    public class KrautVKVulkanDeviceCreationFailedException: Exception{
         
     }
 }
