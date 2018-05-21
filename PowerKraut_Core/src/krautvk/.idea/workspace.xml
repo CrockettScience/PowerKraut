@@ -5,17 +5,17 @@
       <config projectName="krautvk" targetName="krautvk" />
     </generated>
   </component>
-  <component name="CMakeSettings" AUTO_RELOAD="true">
+  <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Release" CONFIG_NAME="Release" GENERATION_DIR="$PROJECT_DIR$/../../lib" />
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" GENERATION_DIR="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.0/lib" />
+      <configuration PROFILE_NAME="Release" CONFIG_NAME="Release" GENERATION_DIR="$PROJECT_DIR$/../../lib" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1bb9e414-f86f-4712-869f-5b4ac1df1c9b" name="Default" comment="" />
+    <list default="true" id="a89cb1c0-d097-423e-9fcb-4e5a4f7038ab" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
-    <ignored path="$PROJECT_DIR$/../../lib/" />
     <ignored path="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.0/lib/" />
+    <ignored path="$PROJECT_DIR$/../../lib/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,70 +25,42 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KrautVK.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KrautVK.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="29" selection-end-column="36" />
-              <folding>
-                <element signature="e#64#87#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file leaf-file-name="KrautVK.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/KrautVK.cpp">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="315">
-              <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+            <state relative-caret-position="-695">
+              <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
               <folding>
-                <element signature="e#175#608#0" />
-                <element signature="e#610#696#0" />
-                <element signature="e#704#1021#0" />
-                <element signature="e#1029#1099#0" />
-                <element signature="e#1107#1150#0" />
-                <element signature="e#3367#3428#0" />
-                <element signature="e#3703#3762#0" />
-                <element signature="e#3882#3922#0" />
-                <element signature="e#3993#4044#0" />
-=======
-            <state relative-caret-position="90">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-              <folding>
-                <element signature="e#175#608#0" />
-                <element signature="e#610#696#0" />
-                <element signature="e#1107#1150#0" />
-                <element signature="e#3367#3428#0" />
->>>>>>> 3540a3bcad3423ce3970c0fcb32ca106c5ad136a
-                <element signature="e#4031#4080#0" />
+                <element signature="e#813#1397#0" />
+                <element signature="e#1403#3109#0" />
+                <element signature="e#9801#11108#0" />
+                <element signature="e#11114#11201#0" />
+                <element signature="e#11207#11267#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KrautVK.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/KrautVK.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="58" column="46" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/library.h" />
-        <option value="$PROJECT_DIR$/library.c" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/library.hpp" />
-        <option value="$PROJECT_DIR$/library.cpp" />
-        <option value="$PROJECT_DIR$/KrautVK.hpp" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/KrautVK.h" />
         <option value="$PROJECT_DIR$/KrautVK.cpp" />
       </list>
     </option>
@@ -103,17 +75,15 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="495" />
-    <option name="y" value="-36" />
-    <option name="width" value="3150" />
-    <option name="height" value="1872" />
+    <option name="x" value="2036" />
+    <option name="width" value="2073" />
+    <option name="height" value="2082" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -125,14 +95,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.0/lib" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lib" />
+    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -147,8 +116,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.krautvk">
-    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Release" EXPLICIT_BUILD_TARGET_NAME="all" />
-    <configuration name="krautvk" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="krautvk" CONFIG_NAME="Release" />
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all" />
+    <configuration name="krautvk" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="krautvk" CONFIG_NAME="Debug" />
     <list>
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.krautvk" />
@@ -159,47 +128,34 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1bb9e414-f86f-4712-869f-5b4ac1df1c9b" name="Default" comment="" />
-      <created>1526256196437</created>
+      <changelist id="a89cb1c0-d097-423e-9fcb-4e5a4f7038ab" name="Default" comment="" />
+      <created>1526871981598</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1526256196437</updated>
-      <workItem from="1526256263492" duration="14268000" />
-      <workItem from="1526278466849" duration="1876000" />
-<<<<<<< HEAD
-      <workItem from="1526347409908" duration="15898000" />
-=======
-      <workItem from="1526347409908" duration="15622000" />
->>>>>>> 3540a3bcad3423ce3970c0fcb32ca106c5ad136a
+      <updated>1526871981598</updated>
+      <workItem from="1526871989925" duration="449000" />
+      <workItem from="1526872448916" duration="7090000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="32042000" />
-=======
-    <option name="totallyTimeSpent" value="31766000" />
->>>>>>> 3540a3bcad3423ce3970c0fcb32ca106c5ad136a
+    <option name="totallyTimeSpent" value="7539000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1833" height="932" extended-state="6" />
+    <frame x="-6" y="-6" width="1833" height="932" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2495831" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" visible="true" weight="0.32957393" />
-      <window_info anchor="bottom" id="CMake" order="7" weight="0.32957393" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="CMake" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32957393" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
-<<<<<<< HEAD
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.35964912" />
-=======
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.35964912" />
->>>>>>> 3540a3bcad3423ce3970c0fcb32ca106c5ad136a
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -217,135 +173,34 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-<<<<<<< HEAD
-      <option name="time" value="22" />
-=======
-      <option name="time" value="21" />
->>>>>>> 3540a3bcad3423ce3970c0fcb32ca106c5ad136a
+      <option name="time" value="1" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="60" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
+        <state relative-caret-position="465">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KrautVK.hpp">
+    <entry file="file://$PROJECT_DIR$/KrautVK.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding>
-            <element signature="e#64#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KrautVK.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="e#175#608#0" />
-            <element signature="e#610#696#0" />
-<<<<<<< HEAD
-            <element signature="e#704#1021#0" />
-            <element signature="e#1029#1099#0" />
-            <element signature="e#1107#1150#0" />
-            <element signature="e#3367#3428#0" />
-            <element signature="e#3703#3762#0" />
-            <element signature="e#3882#3922#0" />
-            <element signature="e#3993#4044#0" />
-=======
-            <element signature="e#1107#1150#0" />
-            <element signature="e#3367#3428#0" />
->>>>>>> 3540a3bcad3423ce3970c0fcb32ca106c5ad136a
-            <element signature="e#4031#4080#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="60" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KrautVK.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="148">
+          <caret line="58" column="46" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KrautVK.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        <state relative-caret-position="-695">
+          <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
           <folding>
-            <element signature="e#175#608#0" />
-            <element signature="e#610#696#0" />
-<<<<<<< HEAD
-            <element signature="e#704#1021#0" />
-            <element signature="e#1029#1099#0" />
-            <element signature="e#1107#1150#0" />
-            <element signature="e#3367#3428#0" />
-            <element signature="e#3703#3762#0" />
-            <element signature="e#3882#3922#0" />
-            <element signature="e#3993#4044#0" />
-=======
-            <element signature="e#1107#1150#0" />
-            <element signature="e#3367#3428#0" />
->>>>>>> 3540a3bcad3423ce3970c0fcb32ca106c5ad136a
-            <element signature="e#4031#4080#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KrautVK.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="29" selection-end-column="36" />
-          <folding>
-            <element signature="e#64#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KrautVK.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="315">
-          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
-          <folding>
-            <element signature="e#175#608#0" />
-            <element signature="e#610#696#0" />
-            <element signature="e#704#1021#0" />
-            <element signature="e#1029#1099#0" />
-            <element signature="e#1107#1150#0" />
-            <element signature="e#3367#3428#0" />
-            <element signature="e#3703#3762#0" />
-            <element signature="e#3882#3922#0" />
-            <element signature="e#3993#4044#0" />
-=======
-        <state relative-caret-position="90">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding>
-            <element signature="e#175#608#0" />
-            <element signature="e#610#696#0" />
-            <element signature="e#1107#1150#0" />
-            <element signature="e#3367#3428#0" />
->>>>>>> 3540a3bcad3423ce3970c0fcb32ca106c5ad136a
-            <element signature="e#4031#4080#0" />
+            <element signature="e#813#1397#0" />
+            <element signature="e#1403#3109#0" />
+            <element signature="e#9801#11108#0" />
+            <element signature="e#11114#11201#0" />
+            <element signature="e#11207#11267#0" />
           </folding>
         </state>
       </provider>

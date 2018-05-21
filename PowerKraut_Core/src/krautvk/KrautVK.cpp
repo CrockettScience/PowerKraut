@@ -23,7 +23,8 @@ namespace KrautVK {
     VkInstance KrautVK::instance;
     VkDevice KrautVK::device;
     uint32_t KrautVK::queueFamilyIndex;
-    VkQueue KrautVK::queue;
+    VkQueue KrautVK::commandBuffer;
+    VkSurfaceKHR KrautVK::applicationSurface;
 
     int KrautVK::initGLFW(int width, int height, char *title, int fullScreen) {
 
@@ -49,7 +50,7 @@ namespace KrautVK {
     }
 
     //This is where we set up our command buffers and queue families and select our device.
-    //When expanding backend functionality, start here
+    //When expanding backend functionality, start here.
     int KrautVK::checkDeviceProperties(VkPhysicalDevice physicalDevice, uint32_t &selectedFamilyIndex) {
         VkPhysicalDeviceProperties deviceProperties;
         VkPhysicalDeviceFeatures deviceFeatures;
@@ -87,6 +88,7 @@ namespace KrautVK {
 
     int KrautVK::initVulkan(const char *title) {
 
+        //CREATE VULKAN INSTANCE
         if (!glfwVulkanSupported())
             return VULKAN_NOT_SUPPORTED;
 
@@ -105,6 +107,12 @@ namespace KrautVK {
                 VK_API_VERSION_1_1                              // uint32_t                   apiVersion
         };
 
+        //Ask GLFW what extensions are needed for Vulkan to operate, then load that list into the creation info
+        //For now, i'm just going to assume glfw is gving me valid extensions without double checking
+        //If anything wierd happens during instance creation, check this first.
+        uint32_t  count;
+        const char** reqdExtensions = glfwGetRequiredInstanceExtensions(&count);
+
         VkInstanceCreateInfo instanceCreateInfo = {
                 VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,         // VkStructureType            sType
                 nullptr,                                        // const void*                pNext
@@ -112,8 +120,8 @@ namespace KrautVK {
                 &applicationInfo,                               // const VkApplicationInfo   *pApplicationInfo
                 0,                                              // uint32_t                   enabledLayerCount
                 nullptr,                                        // const char * const        *ppEnabledLayerNames
-                0,                                              // uint32_t                   enabledExtensionCount
-                nullptr                                         // const char * const        *ppEnabledExtensionNames
+                count,                                          // uint32_t                   enabledExtensionCount
+                reqdExtensions                                  // const char * const        *ppEnabledExtensionNames
         };
 
         if (createInstance(&instanceCreateInfo, nullptr, &instance) != SUCCESS)
@@ -126,9 +134,12 @@ namespace KrautVK {
         getPhysicalDeviceFeatures = (PFN_vkGetPhysicalDeviceFeatures) glfwGetInstanceProcAddress(instance, "vkGetPhysicalDeviceFeatures");
         getPhysicalDeviceQueueFamilyProperties = (PFN_vkGetPhysicalDeviceQueueFamilyProperties) glfwGetInstanceProcAddress(instance, "vkGetPhysicalDeviceQueueFamilyProperties");
         destroyInstance = (PFN_vkDestroyInstance) glfwGetInstanceProcAddress(instance, "vkDestroyInstance");
+        destroySurfaceKHR = (PFN_vkDestroySurfaceKHR) glfwGetInstanceProcAddress(instance, "vkDestroySurfaceKHR");
 
+
+
+        //INITIALIZE PHYSICAL DEVICES
         printf("Enumerating physical devices\n");
-
         uint32_t deviceCount;
         if (enumeratePhysicalDevices(instance, &deviceCount, nullptr) != SUCCESS || deviceCount == 0)
             return VULKAN_NOT_SUPPORTED;
@@ -182,9 +193,16 @@ namespace KrautVK {
         deviceWaitIdle = (PFN_vkDeviceWaitIdle) getDeviceProcAddr(device, "vkDeviceWaitIdle");
         destroyDevice = (PFN_vkDestroyDevice) getDeviceProcAddr(device, "vkDestroyDevice");
 
-        printf("Initializing device command queues\n");
+
+
+        //INITIALIZE COMMAND BUFFER
+        printf("Initializing command buffer\n");
         queueFamilyIndex = selectedFamilyIndex;
-        getDeviceQueue(device, queueFamilyIndex, 0, &queue);
+        getDeviceQueue(device, queueFamilyIndex, 0, &commandBuffer);
+
+        if(glfwCreateWindowSurface(instance, window, nullptr, &applicationSurface))
+            return VULKAN_SURFACE_CREATION_FAILED;
+
 
         return SUCCESS;
     }
@@ -230,6 +248,10 @@ namespace KrautVK {
         if(device != nullptr) {
             deviceWaitIdle(device);
             destroyDevice(device, nullptr);
+        }
+
+        if(applicationSurface != nullptr) {
+            destroySurfaceKHR(instance, applicationSurface, nullptr);
         }
 
         if(instance != nullptr) {

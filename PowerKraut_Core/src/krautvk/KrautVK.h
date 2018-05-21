@@ -31,6 +31,7 @@ limitations under the License.
 #define VULKAN_NOT_SUPPORTED (-3)
 #define VULKAN_INSTANCE_CREATION_FAILED (-4)
 #define VULKAN_DEVICE_CREATION_FAILED (-5)
+#define VULKAN_SURFACE_CREATION_FAILED (-6)
 
 //FUNCTION HEADERS
 namespace KrautVK {
@@ -55,6 +56,7 @@ namespace KrautVK {
     PFN_vkGetDeviceQueue getDeviceQueue;
     PFN_vkDeviceWaitIdle deviceWaitIdle;
     PFN_vkDestroyDevice destroyDevice;
+    PFN_vkDestroySurfaceKHR destroySurfaceKHR;
 
     class KrautVK {
 
@@ -65,7 +67,8 @@ namespace KrautVK {
         static VkInstance instance;
         static VkDevice device;
         static uint32_t queueFamilyIndex;
-        static VkQueue queue;
+        static VkQueue commandBuffer;
+        static VkSurfaceKHR applicationSurface;
 
         static int initGLFW(int width, int height, char *title, int fullScreen);
 
