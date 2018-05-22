@@ -67,7 +67,7 @@
           <e p="Makefile" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netcoreapp2.0" t="Include">
               <e p="PowerKraut_Core.AssemblyInfo.cs" t="Include" />
             </e>
@@ -89,10 +89,11 @@
                 <e p="KrautVKVulkanInstanceCreationFailedException.cs" t="Include" />
                 <e p="KrautVKVulkanNotSupportedException.cs" t="Include" />
                 <e p="KrautVKWindowCreationFailedException.cs" t="Include" />
+                <e p="VulkanSurfaceCreationFailedException.cs" t="Include" />
               </e>
             </e>
           </e>
-          <e p="KrautVK" t="Include">
+          <e p="krautvk" t="Include">
             <e p="cmake-build-debug" t="Include">
               <e p="cmake_install.cmake" t="Include" />
               <e p="CMakeCache.txt" t="Include" />
@@ -157,6 +158,6 @@
         </e>
       </e>
     </e>
-    <e p="C:\Users\John Crockett\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_PowerKraut.-852894099.00" t="ExcludeRecursive" />
+    <e p="C:\Users\John Crockett\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_PowerKraut.-852894099.00" t="ExcludeRecursive" />
   </component>
 </project>

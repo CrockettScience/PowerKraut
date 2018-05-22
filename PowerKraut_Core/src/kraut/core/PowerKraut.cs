@@ -41,6 +41,7 @@ namespace PowerKraut_Core.kraut.core{
                 Console.WriteLine("PowerKraut Debug\nPID: " + Process.GetCurrentProcess().Id);
             #endif
             
+            
             InitKrautVK(width, height, gameTitle, fullscreen);
 
             try{
@@ -65,7 +66,7 @@ namespace PowerKraut_Core.kraut.core{
 
         private static void Main(string[] args){
             
-            PkInstance.Start(800, 600, "KrautDemo", false);
+            PkInstance.Start(2160, 1024, "KrautDemo", false);
         }
     }
 }

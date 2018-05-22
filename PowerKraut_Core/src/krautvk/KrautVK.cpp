@@ -22,11 +22,13 @@ namespace KrautVK {
     GLFWmonitor *KrautVK::monitor;
     VkInstance KrautVK::instance;
     VkDevice KrautVK::device;
-    uint32_t KrautVK::queueFamilyIndex;
-    VkQueue KrautVK::commandBuffer;
+    uint32_t KrautVK::graphicsQueueFamilyIndex;
+    uint32_t KrautVK::presentationQueueFamilyIndex;
+    VkQueue KrautVK::GraphicsCommandBuffer;
+    VkQueue KrautVK::PresentationCommandBuffer;
     VkSurfaceKHR KrautVK::applicationSurface;
 
-    int KrautVK::initGLFW(int width, int height, char *title, int fullScreen) {
+    int KrautVK::kvkInitGLFW(int width, int height, char *title, int fullScreen) {
 
         if (!glfwInit())
             return INIT_FAILED;
@@ -49,9 +51,43 @@ namespace KrautVK {
         return SUCCESS;
     }
 
+    int KrautVK::kvkCheckExtensionAvailability(const char *extensionName, const std::vector<VkExtensionProperties> &availableExtensions) {
+        for( size_t i = 0; i < availableExtensions.size(); ++i ) {
+            if( strcmp( availableExtensions[i].extensionName, extensionName ) == 0 ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void KrautVK::kvkGetRequiredDeviceExtensions(std::vector<const char *> &deviceExtensions) {
+        deviceExtensions = {
+            VK_KHR_SWAPCHAIN_EXTENSION_NAME
+        };
+    }
+
     //This is where we set up our command buffers and queue families and select our device.
-    //When expanding backend functionality, start here.
-    int KrautVK::checkDeviceProperties(VkPhysicalDevice physicalDevice, uint32_t &selectedFamilyIndex) {
+    //When updating system requirments, start here.
+    int KrautVK::kvkCheckDeviceProperties(VkPhysicalDevice physicalDevice, uint32_t &selectedGraphicsCommandBuffer, uint32_t &selectedPresentationCommandBuffer) {
+        uint32_t extensionsCount = 0;
+        if( (enumerateDeviceExtensionProperties( physicalDevice, nullptr, &extensionsCount, nullptr ) != VK_SUCCESS) || (extensionsCount == 0) ) {
+            return false;
+        }
+
+        std::vector<VkExtensionProperties> availableExtensions( extensionsCount );
+        if( enumerateDeviceExtensionProperties( physicalDevice, nullptr, &extensionsCount, &availableExtensions[0] ) != VK_SUCCESS ) {
+            return false;
+        }
+
+        std::vector<const char*> deviceExtensions;
+        kvkGetRequiredDeviceExtensions(deviceExtensions);
+
+        for( size_t i = 0; i < deviceExtensions.size(); ++i ) {
+            if( !kvkCheckExtensionAvailability( deviceExtensions[i], availableExtensions ) ) {
+                return false;
+            }
+        }
+
         VkPhysicalDeviceProperties deviceProperties;
         VkPhysicalDeviceFeatures deviceFeatures;
 
@@ -74,10 +110,24 @@ namespace KrautVK {
 
         std::vector <VkQueueFamilyProperties> qFamilyProperties(qFamilyCount);
         getPhysicalDeviceQueueFamilyProperties(physicalDevice, &qFamilyCount, qFamilyProperties.data());
-        for (uint32_t i = 0; i < qFamilyCount; ++i) {
-            if ((qFamilyProperties[i].queueCount > 0) &&
-                (qFamilyProperties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT)) {
-                selectedFamilyIndex = i;
+
+        uint32_t currentGraphicsQueueFamilyIndex = UINT32_MAX;
+        uint32_t currentPresentationQueueFamilyIndex = UINT32_MAX;
+
+        //If a queue supports both graphics and presentation then use it. otherwise use separate queues.
+        // If theres not a compatible buffer for either feature, the device is not compatible
+        for (uint32_t i = 0; i < qFamilyCount ; ++i) {
+            if ((qFamilyProperties[i].queueCount > 0) && (qFamilyProperties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) && currentGraphicsQueueFamilyIndex == UINT32_MAX)
+                currentGraphicsQueueFamilyIndex = i;
+
+            if(glfwGetPhysicalDevicePresentationSupport(instance, physicalDevice, i) && currentPresentationQueueFamilyIndex == UINT32_MAX){
+                currentPresentationQueueFamilyIndex = i;
+            }
+
+            if((currentGraphicsQueueFamilyIndex != UINT32_MAX && currentPresentationQueueFamilyIndex != UINT32_MAX)){
+                selectedGraphicsCommandBuffer = currentGraphicsQueueFamilyIndex;
+                selectedPresentationCommandBuffer = currentPresentationQueueFamilyIndex;
+
                 std::cout << "Selected Device: " << deviceProperties.deviceName << std::endl;
                 return true;
             }
@@ -86,7 +136,7 @@ namespace KrautVK {
         return false;
     }
 
-    int KrautVK::initVulkan(const char *title) {
+    int KrautVK::kvkCreateInstance(const char *title) {
 
         //CREATE VULKAN INSTANCE
         if (!glfwVulkanSupported())
@@ -135,8 +185,12 @@ namespace KrautVK {
         getPhysicalDeviceQueueFamilyProperties = (PFN_vkGetPhysicalDeviceQueueFamilyProperties) glfwGetInstanceProcAddress(instance, "vkGetPhysicalDeviceQueueFamilyProperties");
         destroyInstance = (PFN_vkDestroyInstance) glfwGetInstanceProcAddress(instance, "vkDestroyInstance");
         destroySurfaceKHR = (PFN_vkDestroySurfaceKHR) glfwGetInstanceProcAddress(instance, "vkDestroySurfaceKHR");
+        enumerateDeviceExtensionProperties = (PFN_vkEnumerateDeviceExtensionProperties) glfwGetInstanceProcAddress(instance, "vkEnumerateDeviceExtensionProperties");
 
 
+    }
+
+    int KrautVK::kvkCreateDevice() {
 
         //INITIALIZE PHYSICAL DEVICES
         printf("Enumerating physical devices\n");
@@ -149,9 +203,11 @@ namespace KrautVK {
             return VULKAN_NOT_SUPPORTED;
 
         VkPhysicalDevice selectedDevice = nullptr;
-        uint32_t selectedFamilyIndex = UINT32_MAX;
+        uint32_t selectedGraphicsQueueFamilyIndex = UINT32_MAX;
+        uint32_t selectedPresentationQueueFamilyIndex = UINT32_MAX;
+
         for (uint32_t i = 0; i < deviceCount; i++) {
-            if (checkDeviceProperties(devices[i], selectedFamilyIndex)) {
+            if (kvkCheckDeviceProperties(devices[i], selectedGraphicsQueueFamilyIndex, selectedPresentationQueueFamilyIndex)) {
                 selectedDevice = devices[i];
                 break;
             }
@@ -160,27 +216,42 @@ namespace KrautVK {
         if (selectedDevice == nullptr)
             return VULKAN_NOT_SUPPORTED;
 
+        std::vector<VkDeviceQueueCreateInfo> qCreateInfos;
         std::vector<float> queuePriorities = {1.0f};
 
-        VkDeviceQueueCreateInfo queueCreateInfo = {
-                VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,     // VkStructureType              sType
-                nullptr,                                        // const void                  *pNext
-                0,                                              // VkDeviceQueueCreateFlags     flags
-                selectedFamilyIndex,                            // uint32_t                     queueFamilyIndex
-                static_cast<uint32_t>(queuePriorities.size()),  // uint32_t                     queueCount
-                &queuePriorities[0]                             // const float                 *pQueuePriorities
-        };
+        qCreateInfos.push_back( {
+                                        VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,     // VkStructureType              sType
+                                        nullptr,                                        // const void                  *pNext
+                                        0,                                              // VkDeviceQueueCreateFlags     flags
+                                        selectedGraphicsQueueFamilyIndex,                  // uint32_t                     queueFamilyIndex
+                                        static_cast<uint32_t>(queuePriorities.size()),  // uint32_t                     queueCount
+                                        &queuePriorities[0]                             // const float                 *pQueuePriorities
+                                } );
+
+        if(selectedGraphicsQueueFamilyIndex != selectedPresentationQueueFamilyIndex) {
+            qCreateInfos.push_back({
+                                           VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,     // VkStructureType              sType
+                                           nullptr,                                        // const void                  *pNext
+                                           0,                                              // VkDeviceQueueCreateFlags     flags
+                                           selectedGraphicsQueueFamilyIndex,                  // uint32_t                     queueFamilyIndex
+                                           static_cast<uint32_t>(queuePriorities.size()),  // uint32_t                     queueCount
+                                           &queuePriorities[0]                             // const float                 *pQueuePriorities
+                                   });
+        }
+
+        std::vector<const char*> extensions;
+        kvkGetRequiredDeviceExtensions(extensions);
 
         VkDeviceCreateInfo deviceCreateInfo = {
                 VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,           // VkStructureType                    sType
                 nullptr,                                        // const void                        *pNext
                 0,                                              // VkDeviceCreateFlags                flags
-                1,                                              // uint32_t                           queueCreateInfoCount
-                &queueCreateInfo,                               // const VkDeviceQueueCreateInfo     *pQueueCreateInfos
+                static_cast<uint32_t>(qCreateInfos.size()),     // uint32_t                           queueCreateInfoCount
+                &qCreateInfos[0],                               // const VkDeviceQueueCreateInfo     *pQueueCreateInfos
                 0,                                              // uint32_t                           enabledLayerCount
                 nullptr,                                        // const char * const                *ppEnabledLayerNames
-                0,                                              // uint32_t                           enabledExtensionCount
-                nullptr,                                        // const char * const                *ppEnabledExtensionNames
+                static_cast<uint32_t>(extensions.size()),       // uint32_t                           enabledExtensionCount
+                &extensions[0],                                 // const char * const                *ppEnabledExtensionNames
                 nullptr                                         // const VkPhysicalDeviceFeatures    *pEnabledFeatures
         };
 
@@ -193,12 +264,19 @@ namespace KrautVK {
         deviceWaitIdle = (PFN_vkDeviceWaitIdle) getDeviceProcAddr(device, "vkDeviceWaitIdle");
         destroyDevice = (PFN_vkDestroyDevice) getDeviceProcAddr(device, "vkDestroyDevice");
 
-
-
         //INITIALIZE COMMAND BUFFER
-        printf("Initializing command buffer\n");
-        queueFamilyIndex = selectedFamilyIndex;
-        getDeviceQueue(device, queueFamilyIndex, 0, &commandBuffer);
+        printf("Initializing command buffers\n");
+        graphicsQueueFamilyIndex = selectedGraphicsQueueFamilyIndex;
+        presentationQueueFamilyIndex = selectedPresentationQueueFamilyIndex;
+
+        getDeviceQueue(device, graphicsQueueFamilyIndex, 0, &GraphicsCommandBuffer);
+        getDeviceQueue(device, presentationQueueFamilyIndex, 0, &PresentationCommandBuffer);
+    }
+
+    int KrautVK::kvkInitVulkan(const char *title) {
+
+        kvkCreateInstance(title);
+        kvkCreateDevice();
 
         if(glfwCreateWindowSurface(instance, window, nullptr, &applicationSurface))
             return VULKAN_SURFACE_CREATION_FAILED;
@@ -207,7 +285,7 @@ namespace KrautVK {
         return SUCCESS;
     }
 
-    int KrautVK::init(int width, int height, char *title, int fullScreen) {
+    int KrautVK::kvkInit(int width, int height, char *title, int fullScreen) {
         std::cout << "\nKrautVK Alpha v" << major << "." << minor << "." << patch
                   << "\nCopyright 2018 Jonathan Crockett\n\n"
                   << "Licensed under the Apache License, Version 2.0 (the \"License\");\n"
@@ -221,12 +299,12 @@ namespace KrautVK {
                   << "limitations under the License.\n\n";
 
         printf("Initializing GLFW\n");
-        int status = initGLFW(width, height, title, fullScreen);
+        int status = kvkInitGLFW(width, height, title, fullScreen);
 
         if (status != SUCCESS)
             return status;
 
-        status = initVulkan(title);
+        status = kvkInitVulkan(title);
 
         if (status != SUCCESS)
             return status;
@@ -235,16 +313,16 @@ namespace KrautVK {
         return SUCCESS;
     }
 
-    int KrautVK::windowShouldClose() {
+    int KrautVK::kvkWindowShouldClose() {
         return glfwWindowShouldClose(window);
 
     }
 
-    void KrautVK::pollEvents() {
+    void KrautVK::kvkPollEvents() {
         glfwPollEvents();
     }
 
-    void KrautVK::terminate() {
+    void KrautVK::kvkTerminate() {
         if(device != nullptr) {
             deviceWaitIdle(device);
             destroyDevice(device, nullptr);
@@ -262,18 +340,18 @@ namespace KrautVK {
     }
 
     EXPORT int init(int width, int height, char *title, int fullScreen) {
-        return KrautVK::init(width, height, title, fullScreen);
+        return KrautVK::kvkInit(width, height, title, fullScreen);
     }
 
     EXPORT int windowShouldClose() {
-        return KrautVK::windowShouldClose();
+        return KrautVK::kvkWindowShouldClose();
     }
 
     EXPORT void pollEvents() {
-        KrautVK::pollEvents();
+        KrautVK::kvkPollEvents();
     }
 
     EXPORT void terminate() {
-        KrautVK::terminate();
+        KrautVK::kvkTerminate();
     }
 }

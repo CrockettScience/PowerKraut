@@ -19,6 +19,7 @@ limitations under the License.
 #include <cstdio>
 #include <vector>
 #include <iostream>
+#include <cstring>
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
@@ -51,6 +52,7 @@ namespace KrautVK {
     PFN_vkGetPhysicalDeviceFeatures getPhysicalDeviceFeatures;
     PFN_vkGetPhysicalDeviceQueueFamilyProperties getPhysicalDeviceQueueFamilyProperties;
     PFN_vkDestroyInstance destroyInstance;
+    PFN_vkEnumerateDeviceExtensionProperties enumerateDeviceExtensionProperties;
 
     PFN_vkGetDeviceProcAddr getDeviceProcAddr;
     PFN_vkGetDeviceQueue getDeviceQueue;
@@ -66,25 +68,35 @@ namespace KrautVK {
         static GLFWmonitor *monitor;
         static VkInstance instance;
         static VkDevice device;
-        static uint32_t queueFamilyIndex;
-        static VkQueue commandBuffer;
+        static uint32_t graphicsQueueFamilyIndex;
+        static uint32_t presentationQueueFamilyIndex;
+        static VkQueue GraphicsCommandBuffer;
+        static VkQueue PresentationCommandBuffer;
         static VkSurfaceKHR applicationSurface;
 
-        static int initGLFW(int width, int height, char *title, int fullScreen);
+        static int kvkInitGLFW(int width, int height, char *title, int fullScreen);
 
-        static int checkDeviceProperties(VkPhysicalDevice physicalDevice, uint32_t &selectedFamilyIndex);
+        static int kvkCheckExtensionAvailability(const char *extensionName, const std::vector<VkExtensionProperties> &availableExtensions);
 
-        static int initVulkan(const char *title);
+        static void kvkGetRequiredDeviceExtensions(std::vector<const char*> &deviceExtensions);
+
+        static int kvkCheckDeviceProperties(VkPhysicalDevice physicalDevice, uint32_t &selectedFamilyIndex, uint32_t &selectedPresentationCommandBuffer);
+
+        static int kvkCreateInstance(const char *title);
+
+        static int kvkCreateDevice();
+
+        static int kvkInitVulkan(const char *title);
 
     public:
 
-        static int init(int w, int h, char *title, int f);
+        static int kvkInit(int w, int h, char *title, int f);
 
-        static int windowShouldClose();
+        static int kvkWindowShouldClose();
 
-        static void pollEvents();
+        static void kvkPollEvents();
 
-        static void terminate();
+        static void kvkTerminate();
     };
 
     EXPORT int init(int w, int h, char *title, int f);
