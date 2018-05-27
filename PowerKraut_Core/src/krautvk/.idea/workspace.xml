@@ -25,16 +25,15 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.16767189">
+    <splitter split-orientation="horizontal" split-proportion="0.36248493">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="KrautVK.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/KrautVK.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="831">
-                  <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+                <state relative-caret-position="-764">
+                  <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
                   <folding>
-                    <element signature="e#0#563#0" />
                     <element signature="e#603#620#0" expanded="true" />
                   </folding>
                 </state>
@@ -48,37 +47,8 @@
           <file leaf-file-name="KrautVK.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/KrautVK.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="366">
-                  <caret line="795" column="44" lean-forward="true" selection-start-line="795" selection-start-column="44" selection-end-line="795" selection-end-column="44" />
-                  <folding>
-                    <element signature="e#0#563#0" />
-                    <element signature="e#1281#2039#0" />
-                    <element signature="e#2045#2414#0" />
-                    <element signature="e#2420#2601#0" />
-                    <element signature="e#2607#6046#0" />
-                    <element signature="e#6052#10420#0" />
-                    <element signature="e#10426#17405#0" />
-                    <element signature="e#17411#18172#0" />
-                    <element signature="e#18178#23456#0" />
-                    <element signature="e#23462#24123#0" />
-                    <element signature="e#24129#24977#0" />
-                    <element signature="e#24983#26289#0" />
-                    <element signature="e#26295#28510#0" />
-                    <element signature="e#28516#29499#0" />
-                    <element signature="e#29505#30186#0" />
-                    <element signature="e#30192#32074#0" />
-                    <element signature="e#32080#37315#0" />
-                    <element signature="e#37801#38436#0" />
-                    <element signature="e#38442#38758#0" />
-                    <element signature="e#40084#40174#0" />
-                    <element signature="e#40180#43434#0" />
-                    <element signature="e#43440#43503#0" />
-                    <element signature="e#44420#44556#0" />
-                    <element signature="e#44568#44648#0" />
-                    <element signature="e#44660#44720#0" />
-                    <element signature="e#44732#44790#0" />
-                    <element signature="e#44802#44857#0" />
-                  </folding>
+                <state relative-caret-position="195">
+                  <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -99,9 +69,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>int32_t</find>
+      <find>VULKAN_SWAPCHAIN_NOT_SUPPORTED</find>
     </findStrings>
     <replaceStrings>
       <replace>int16_t</replace>
+      <replace>false</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -126,9 +98,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2036" />
-    <option name="width" value="2073" />
-    <option name="height" value="2082" />
+    <option name="x" value="-14" />
+    <option name="width" value="2075" />
+    <option name="height" value="1049" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -190,16 +162,15 @@
       <workItem from="1526959059801" duration="7499000" />
       <workItem from="1527209049679" duration="15910000" />
       <workItem from="1527307694882" duration="13643000" />
-      <workItem from="1527437194263" duration="5033000" />
+      <workItem from="1527437194263" duration="9182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52260000" />
+    <option name="totallyTimeSpent" value="56409000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1833" height="932" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.078376874" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -211,7 +182,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.2631579" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.110275686" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -229,7 +200,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="27" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/KrautVK.cpp</url>
+          <line>689</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="32" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="dotnet">
@@ -292,7 +270,6 @@
         <state relative-caret-position="420">
           <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
           <folding>
-            <element signature="e#0#563#0" />
             <element signature="e#603#620#0" expanded="true" />
           </folding>
         </state>
@@ -302,35 +279,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="34" column="66" lean-forward="true" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#563#0" />
-            <element signature="e#1281#2039#0" />
-            <element signature="e#2045#2414#0" />
-            <element signature="e#2420#2601#0" />
-            <element signature="e#2607#6046#0" />
-            <element signature="e#6052#10420#0" />
-            <element signature="e#10426#17405#0" />
-            <element signature="e#17411#18172#0" />
-            <element signature="e#18178#23456#0" />
-            <element signature="e#23462#24123#0" />
-            <element signature="e#24129#24977#0" />
-            <element signature="e#24983#26289#0" />
-            <element signature="e#26295#28510#0" />
-            <element signature="e#28516#29499#0" />
-            <element signature="e#29505#30186#0" />
-            <element signature="e#30192#32074#0" />
-            <element signature="e#32080#37315#0" />
-            <element signature="e#37801#38436#0" />
-            <element signature="e#38442#38758#0" />
-            <element signature="e#40084#40174#0" />
-            <element signature="e#40180#43434#0" />
-            <element signature="e#43440#43503#0" />
-            <element signature="e#44420#44556#0" />
-            <element signature="e#44568#44648#0" />
-            <element signature="e#44660#44720#0" />
-            <element signature="e#44732#44790#0" />
-            <element signature="e#44802#44857#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -346,7 +294,6 @@
         <state relative-caret-position="990">
           <caret line="66" column="54" selection-start-line="66" selection-start-column="54" selection-end-line="66" selection-end-column="54" />
           <folding>
-            <element signature="e#0#563#0" />
             <element signature="e#603#620#0" expanded="true" />
           </folding>
         </state>
@@ -356,35 +303,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2910">
           <caret line="194" column="133" selection-start-line="194" selection-start-column="133" selection-end-line="194" selection-end-column="133" />
-          <folding>
-            <element signature="e#0#563#0" />
-            <element signature="e#1281#2039#0" />
-            <element signature="e#2045#2414#0" />
-            <element signature="e#2420#2601#0" />
-            <element signature="e#2607#6046#0" />
-            <element signature="e#6052#10420#0" />
-            <element signature="e#10426#17405#0" />
-            <element signature="e#17411#18172#0" />
-            <element signature="e#18178#23456#0" />
-            <element signature="e#23462#24123#0" />
-            <element signature="e#24129#24977#0" />
-            <element signature="e#24983#26289#0" />
-            <element signature="e#26295#28510#0" />
-            <element signature="e#28516#29499#0" />
-            <element signature="e#29505#30186#0" />
-            <element signature="e#30192#32074#0" />
-            <element signature="e#32080#37315#0" />
-            <element signature="e#37801#38436#0" />
-            <element signature="e#38442#38758#0" />
-            <element signature="e#40084#40174#0" />
-            <element signature="e#40180#43434#0" />
-            <element signature="e#43440#43503#0" />
-            <element signature="e#44420#44556#0" />
-            <element signature="e#44568#44648#0" />
-            <element signature="e#44660#44720#0" />
-            <element signature="e#44732#44790#0" />
-            <element signature="e#44802#44857#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -392,35 +310,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4215">
           <caret line="281" column="34" selection-start-line="281" selection-start-column="34" selection-end-line="281" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#563#0" />
-            <element signature="e#1281#2039#0" />
-            <element signature="e#2045#2414#0" />
-            <element signature="e#2420#2601#0" />
-            <element signature="e#2607#6046#0" />
-            <element signature="e#6052#10420#0" />
-            <element signature="e#10426#17405#0" />
-            <element signature="e#17411#18172#0" />
-            <element signature="e#18178#23456#0" />
-            <element signature="e#23462#24123#0" />
-            <element signature="e#24129#24977#0" />
-            <element signature="e#24983#26289#0" />
-            <element signature="e#26295#28510#0" />
-            <element signature="e#28516#29499#0" />
-            <element signature="e#29505#30186#0" />
-            <element signature="e#30192#32074#0" />
-            <element signature="e#32080#37315#0" />
-            <element signature="e#37801#38436#0" />
-            <element signature="e#38442#38758#0" />
-            <element signature="e#40084#40174#0" />
-            <element signature="e#40180#43434#0" />
-            <element signature="e#43440#43503#0" />
-            <element signature="e#44420#44556#0" />
-            <element signature="e#44568#44648#0" />
-            <element signature="e#44660#44720#0" />
-            <element signature="e#44732#44790#0" />
-            <element signature="e#44802#44857#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -429,7 +318,6 @@
         <state relative-caret-position="510">
           <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
           <folding>
-            <element signature="e#0#563#0" />
             <element signature="e#603#620#0" expanded="true" />
           </folding>
         </state>
@@ -447,7 +335,6 @@
         <state relative-caret-position="1320">
           <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
           <folding>
-            <element signature="e#0#563#0" />
             <element signature="e#603#620#0" expanded="true" />
           </folding>
         </state>
@@ -483,10 +370,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/KrautVK.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="831">
-          <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+        <state relative-caret-position="-764">
+          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
           <folding>
-            <element signature="e#0#563#0" />
             <element signature="e#603#620#0" expanded="true" />
           </folding>
         </state>
@@ -494,37 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/KrautVK.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="795" column="44" lean-forward="true" selection-start-line="795" selection-start-column="44" selection-end-line="795" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#563#0" />
-            <element signature="e#1281#2039#0" />
-            <element signature="e#2045#2414#0" />
-            <element signature="e#2420#2601#0" />
-            <element signature="e#2607#6046#0" />
-            <element signature="e#6052#10420#0" />
-            <element signature="e#10426#17405#0" />
-            <element signature="e#17411#18172#0" />
-            <element signature="e#18178#23456#0" />
-            <element signature="e#23462#24123#0" />
-            <element signature="e#24129#24977#0" />
-            <element signature="e#24983#26289#0" />
-            <element signature="e#26295#28510#0" />
-            <element signature="e#28516#29499#0" />
-            <element signature="e#29505#30186#0" />
-            <element signature="e#30192#32074#0" />
-            <element signature="e#32080#37315#0" />
-            <element signature="e#37801#38436#0" />
-            <element signature="e#38442#38758#0" />
-            <element signature="e#40084#40174#0" />
-            <element signature="e#40180#43434#0" />
-            <element signature="e#43440#43503#0" />
-            <element signature="e#44420#44556#0" />
-            <element signature="e#44568#44648#0" />
-            <element signature="e#44660#44720#0" />
-            <element signature="e#44732#44790#0" />
-            <element signature="e#44802#44857#0" />
-          </folding>
+        <state relative-caret-position="195">
+          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
         </state>
       </provider>
     </entry>

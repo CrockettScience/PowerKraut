@@ -86,6 +86,7 @@
               <e p="exceptions" t="Include">
                 <e p="KrautVKInitFailedException.cs" t="Include" />
                 <e p="KrautVKSemaphoreCreationFailedException.cs" t="Include" />
+                <e p="KrautVKUndefinedException.cs" t="Include" />
                 <e p="KrautVKVulkanDeviceCreationFailedException.cs" t="Include" />
                 <e p="KrautVKVulkanInstanceCreationFailedException.cs" t="Include" />
                 <e p="KrautVKVulkanNotSupportedException.cs" t="Include" />

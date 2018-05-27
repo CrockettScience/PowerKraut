@@ -34,8 +34,6 @@ limitations under the License.
 #define VULKAN_DEVICE_CREATION_FAILED (-5)
 #define VULKAN_SURFACE_CREATION_FAILED (-6)
 #define VULKAN_SEMAPHORE_CREATION_FAILED (-7)
-#define VULKAN_SWAPCHAIN_NOT_SUPPORTED (-8)
-#define VULKAN_COMMAND_POOL_CREATION_FAILED (-9)
 
 //FUNCTION HEADERS
 namespace KrautVK {
@@ -136,7 +134,7 @@ namespace KrautVK {
 
         static int kvkCreateSemaphores();
 
-        static int kvkCreateSwapChain();
+        static bool kvkCreateSwapChain();
 
         static uint32_t kvkGetSwapChainNumImages(VkSurfaceCapabilitiesKHR surfaceCapabilities);
 
@@ -150,7 +148,7 @@ namespace KrautVK {
 
         static VkPresentModeKHR kvkGetSwapChainPresentMode(std::vector<VkPresentModeKHR> presentModes);
 
-        static int kvkCreateCommandBuffers();
+        static bool kvkCreateCommandBuffers();
 
         static int kvkInitVulkan(const char *title);
 

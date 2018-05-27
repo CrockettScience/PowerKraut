@@ -25,29 +25,26 @@ namespace PowerKraut_Core.kraut.netwrapper{
         internal static void InitKrautVK(int width, int height, string title, bool fullscreen){
             var status = Init(width, height, title, fullscreen);
 
-            if (status == 0)
-                return;
-            
-            if (status == -1)
-                throw new KrautVKInitFailedException();
-            
-            if (status == -2)
-                throw new KrautVkWindowCreationFailedException();
-            
-            if (status == -3)
-                throw new KrautVKVulkanNotSupportedException();
-            
-            if (status == -4)
-                throw new KrautVKVulkanInstanceCreationFailedException();
-            
-            if (status == -5)
-                throw new KrautVKVulkanDeviceCreationFailedException();
-            
-            if (status == -6)
-                throw new KrautVKVulkanSurfaceCreationFailedException();
-            
-            if (status == -7)
-                throw new KrautVKSemaphoreCreationFailedException();
+            switch (status){
+                case 0:
+                    return;
+                case -1:
+                    throw new KrautVKInitFailedException();
+                case -2:
+                    throw new KrautVkWindowCreationFailedException();
+                case -3:
+                    throw new KrautVKVulkanNotSupportedException();
+                case -4:
+                    throw new KrautVKVulkanInstanceCreationFailedException();
+                case -5:
+                    throw new KrautVKVulkanDeviceCreationFailedException();
+                case -6:
+                    throw new KrautVKVulkanSurfaceCreationFailedException();
+                case -7:
+                    throw new KrautVKSemaphoreCreationFailedException();
+                default:
+                    throw new KrautVKUndefinedException();
+            }
         }
          
         [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "windowShouldClose")]

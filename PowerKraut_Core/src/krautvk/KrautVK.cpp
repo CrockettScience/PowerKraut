@@ -311,36 +311,36 @@ namespace KrautVK {
         return SUCCESS;
     }
 
-    int KrautVK::kvkCreateSwapChain() {
+    bool KrautVK::kvkCreateSwapChain() {
 
         if(kvk.device != VK_NULL_HANDLE) {
             deviceWaitIdle(kvk.device);
         }
         VkSurfaceCapabilitiesKHR surfaceCapabilities;
         if(getPhysicalDeviceSurfaceCapabilitiesKHR(kvk.physicalDevice, kvk.applicationSurface, &surfaceCapabilities) != VK_SUCCESS) {
-            return VULKAN_SWAPCHAIN_NOT_SUPPORTED;
+            return false;
         }
 
         uint32_t formatsCount;
         if((getPhysicalDeviceSurfaceFormatsKHR(kvk.physicalDevice, kvk.applicationSurface, &formatsCount, nullptr) != VK_SUCCESS) ||
             (formatsCount == 0)) {
-            return VULKAN_SWAPCHAIN_NOT_SUPPORTED;
+            return false;
         }
 
         std::vector<VkSurfaceFormatKHR> surfaceFormats(formatsCount);
         if(getPhysicalDeviceSurfaceFormatsKHR(kvk.physicalDevice, kvk.applicationSurface, &formatsCount, surfaceFormats.data()) != VK_SUCCESS) {
-            return VULKAN_SWAPCHAIN_NOT_SUPPORTED;
+            return false;
         }
 
         uint32_t presentModesCount;
         if((getPhysicalDeviceSurfacePresentModesKHR(kvk.physicalDevice, kvk.applicationSurface, &presentModesCount, nullptr) != VK_SUCCESS) ||
             (presentModesCount == 0) ) {
-            return VULKAN_SWAPCHAIN_NOT_SUPPORTED;
+            return false;
         }
 
         std::vector<VkPresentModeKHR> presentModes(presentModesCount);
         if(getPhysicalDeviceSurfacePresentModesKHR(kvk.physicalDevice, kvk.applicationSurface, &presentModesCount, presentModes.data()) != VK_SUCCESS ) {
-            return VULKAN_SWAPCHAIN_NOT_SUPPORTED;
+            return false;
         }
 
         uint32_t                      desiredNumberOfImages = kvkGetSwapChainNumImages(surfaceCapabilities);
@@ -352,11 +352,13 @@ namespace KrautVK {
         VkSwapchainKHR                oldSwapChain = kvk.swapchain;
 
         if(static_cast<int>(desiredUsage) == -1) {
-            return VULKAN_SWAPCHAIN_NOT_SUPPORTED;
+            return false;
         }
+
         if(static_cast<int>(desiredPresentMode) == -1) {
-            return VULKAN_SWAPCHAIN_NOT_SUPPORTED;
+            return false;
         }
+
         if((desiredExtent.width == 0) || (desiredExtent.height == 0)) {
             // Some asshole minimized the window, but I guess it's fine
             return SUCCESS;
@@ -384,13 +386,13 @@ namespace KrautVK {
         };
 
         if(createSwapchainKHR(kvk.device, &swap_chain_create_info, nullptr, &kvk.swapchain ) != VK_SUCCESS) {
-            return VULKAN_SWAPCHAIN_NOT_SUPPORTED;
+            return false;
         }
         if(oldSwapChain != VK_NULL_HANDLE) {
             destroySwapchainKHR(kvk.device, oldSwapChain, nullptr);
         }
 
-        return SUCCESS;
+        return true;
     }
 
     uint32_t KrautVK::kvkGetSwapChainNumImages(VkSurfaceCapabilitiesKHR surfaceCapabilities) {
@@ -506,7 +508,7 @@ namespace KrautVK {
         return static_cast<VkPresentModeKHR>(-1);
     }
 
-    int KrautVK::kvkCreateCommandBuffers() {
+    bool KrautVK::kvkCreateCommandBuffers() {
         VkCommandPoolCreateInfo cmdPoolCreateInfo = {
                 VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO,     // VkStructureType              sType
                 nullptr,                                        // const void*                  pNext
@@ -515,12 +517,12 @@ namespace KrautVK {
         };
 
         if(createCommandPool(kvk.device, &cmdPoolCreateInfo, nullptr, &kvk.presentationCmdPool) != VK_SUCCESS) {
-            return VULKAN_COMMAND_POOL_CREATION_FAILED;
+            return false;
         }
 
         uint32_t imageCount = 0;
         if((getSwapchainImagesKHR(kvk.device, kvk.swapchain, &imageCount, nullptr) != VK_SUCCESS) || (imageCount == 0) ) {
-            return VULKAN_COMMAND_POOL_CREATION_FAILED;
+            return false;
         }
 
         kvk.presentationCmdBuffers.resize(imageCount);
@@ -534,14 +536,11 @@ namespace KrautVK {
         };
 
         if(allocateCommandBuffers(kvk.device, &cmd_buffer_allocate_info, &kvk.presentationCmdBuffers[0] ) != VK_SUCCESS) {
-            return VULKAN_COMMAND_POOL_CREATION_FAILED;
+            return false;
         }
 
-        if(!kvkRecordCommandBuffers()) {
-            return VULKAN_COMMAND_POOL_CREATION_FAILED;
-        }
+        return kvkRecordCommandBuffers();
 
-        return SUCCESS;
     }
 
     bool KrautVK::kvkRecordCommandBuffers() {
@@ -617,6 +616,8 @@ namespace KrautVK {
                 return false;
             }
         }
+
+        return true;
     }
 
     int KrautVK::kvkInitVulkan(const char *title) {
@@ -653,18 +654,14 @@ namespace KrautVK {
     }
 
     bool KrautVK::kvkOnWindowSizeChanged() {
-        printf("KrautVK: window size change detected.");
         kvkClear();
 
-        if(kvkCreateSwapChain() != SUCCESS) {
+        if(!kvkCreateSwapChain()) {
             return false;
         }
 
-        if(kvkCreateCommandBuffers() != SUCCESS) {
-            return false;
-        }
+        return kvkCreateCommandBuffers();
 
-        return true;
     }
 
     int KrautVK::kvkInit(int width, int height, char *title, int fullScreen) {
@@ -689,15 +686,9 @@ namespace KrautVK {
         if (status != SUCCESS)
             return status;
 
-        printf("KrautVK Alpha Initialized!\nSetting up swapchain...\n");
-        status = kvkCreateSwapChain();
-        if(status != SUCCESS)
-            return status;
-
-        printf("Creating command buffers..\n");
-        status = kvkCreateCommandBuffers();
-        if(status != SUCCESS)
-            return status;
+        printf("KrautVK Alpha Initialized!\n");
+        if(!kvkCreateSwapChain() || !kvkCreateCommandBuffers())
+            return INT32_MIN;
 
         return SUCCESS;
     }
@@ -771,7 +762,7 @@ namespace KrautVK {
     }
 
     void KrautVK::kvkTerminate() {
-        printf("KrautVK terminating");
+        printf("KrautVK terminating\n");
         kvkClear();
 
         if(kvk.device != VK_NULL_HANDLE) {
@@ -798,8 +789,6 @@ namespace KrautVK {
         }
         glfwTerminate();
 
-
-        printf("KrautVK termination complete");
     }
 
     EXPORT int init(int width, int height, char *title, int fullScreen) {
