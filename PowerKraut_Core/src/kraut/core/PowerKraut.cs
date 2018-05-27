@@ -15,9 +15,7 @@ limitations under the License.
 */
 
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Reflection;
 using static PowerKraut_Core.kraut.netwrapper.KrautVK;
 
 namespace PowerKraut_Core.kraut.core{
@@ -39,6 +37,7 @@ namespace PowerKraut_Core.kraut.core{
         public void Start(int width, int height, string gameTitle, bool fullscreen){
             #if DEBUG
                 Console.WriteLine("PowerKraut Debug\nPID: " + Process.GetCurrentProcess().Id);
+                Console.ReadLine();
             #endif
             
             
@@ -60,6 +59,7 @@ namespace PowerKraut_Core.kraut.core{
 
         private void Loop(){
             while (!WindowShouldClose()){
+                Draw();
                 PollEvents();
             }
         }

@@ -42,6 +42,12 @@ namespace PowerKraut_Core.kraut.netwrapper{
             
             if (status == -5)
                 throw new KrautVKVulkanDeviceCreationFailedException();
+            
+            if (status == -6)
+                throw new KrautVKVulkanSurfaceCreationFailedException();
+            
+            if (status == -7)
+                throw new KrautVKSemaphoreCreationFailedException();
         }
          
         [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "windowShouldClose")]
@@ -53,5 +59,8 @@ namespace PowerKraut_Core.kraut.netwrapper{
         
         [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "terminate")]
         internal static extern void Terminate();
+
+        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "draw")]
+        internal static extern void Draw();
     }
 }

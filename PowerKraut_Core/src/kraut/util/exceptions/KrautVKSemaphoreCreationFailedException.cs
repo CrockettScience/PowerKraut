@@ -19,9 +19,9 @@ using System;
 namespace PowerKraut_Core.kraut.util.exceptions{
     /// <inheritdoc />
     /// <summary>
-    /// Thrown by KrautVK if Vulkan fails to create a surface in GLFW
+    /// Thrown by KrautVK if semaphore creation fails
     /// </summary>
-    public class VulkanSurfaceCreationFailedException : Exception{
+    public class KrautVKSemaphoreCreationFailedException : Exception {
         
     }
 }
