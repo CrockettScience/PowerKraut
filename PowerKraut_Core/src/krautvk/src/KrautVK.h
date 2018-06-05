@@ -13,16 +13,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 #ifndef KRAUTVK_H_
 #define KRAUTVK_H_
 
-#include <cstdio>
-#include <vector>
-#include <iostream>
-#include <cstring>
-
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
+#include "KrautVKCommon.h"
 
 //MACROS
 #define EXPORT extern "C" __declspec(dllexport)
@@ -80,45 +75,11 @@ namespace KrautVK {
     PFN_vkCmdClearColorImage cmdClearColorImage;
     PFN_vkEndCommandBuffer endCommandBuffer;
 
-    struct KrautVKParameters {
-        GLFWwindow *window{};
-        GLFWmonitor *monitor{};
-        VkInstance instance;
-        VkPhysicalDevice physicalDevice{};
-        VkDevice device{};
-        uint32_t graphicsQueueFamilyIndex{};
-        uint32_t presentationQueueFamilyIndex{};
-        VkQueue graphicsQueue{};
-        VkQueue presentationQueue{};
-        VkSurfaceKHR applicationSurface{};
-        VkSemaphore imageAvailableSemaphore{};
-        VkSemaphore renderingFinishedSemaphore{};
-        VkSwapchainKHR swapchain{};
-        VkCommandPool presentationCmdPool{};
-        std::vector<VkCommandBuffer> presentationCmdBuffers;
-
-        KrautVKParameters():
-                instance(VK_NULL_HANDLE),
-                physicalDevice(VK_NULL_HANDLE),
-                device(VK_NULL_HANDLE),
-                graphicsQueueFamilyIndex(0),
-                presentationQueueFamilyIndex(0),
-                graphicsQueue(VK_NULL_HANDLE),
-                presentationQueue(VK_NULL_HANDLE),
-                applicationSurface(VK_NULL_HANDLE),
-                imageAvailableSemaphore(VK_NULL_HANDLE),
-                renderingFinishedSemaphore(VK_NULL_HANDLE),
-                swapchain(VK_NULL_HANDLE),
-                presentationCmdPool(VK_NULL_HANDLE),
-                presentationCmdBuffers(0){}
-
-    };
-
     class KrautVK {
 
     private:
 
-        static KrautVKParameters kvk;
+        static KrautCommon kraut;
 
         static int kvkInitGLFW(int width, int height, char *title, int fullScreen);
 

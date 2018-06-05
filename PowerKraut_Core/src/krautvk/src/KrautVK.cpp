@@ -18,7 +18,7 @@ limitations under the License.
 
 namespace KrautVK {
 
-    KrautVKParameters KrautVK::kvk;
+    KrautCommon KrautVK::kraut;
 
     int KrautVK::kvkInitGLFW(int width, int height, char *title, int fullScreen) {
 
@@ -28,20 +28,20 @@ namespace KrautVK {
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
         glfwWindowHint(GLFW_RESIZABLE, false);
 
-        kvk.monitor = glfwGetPrimaryMonitor();
+        kraut.GLFW.Monitor = glfwGetPrimaryMonitor();
 
         if (fullScreen)
-            kvk.window = glfwCreateWindow(width, height, title, kvk.monitor, nullptr);
+            kraut.GLFW.Window = glfwCreateWindow(width, height, title, kraut.GLFW.Monitor, nullptr);
         else
-            kvk.window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+            kraut.GLFW.Window = glfwCreateWindow(width, height, title, nullptr, nullptr);
 
 
 
-        if (!kvk.window) {
+        if (!kraut.GLFW.Window) {
             return GLFW_WINDOW_CREATION_FAILED;
         }
 
-        glfwSetWindowSizeCallback(kvk.window, [] (GLFWwindow* unusedWindow, int unusedWidth, int unusedHeight) {
+        glfwSetWindowSizeCallback(kraut.GLFW.Window, [] (GLFWwindow* unusedWindow, int unusedWidth, int unusedHeight) {
             kvkOnWindowSizeChanged();
         });
 
@@ -117,7 +117,7 @@ namespace KrautVK {
             if ((qFamilyProperties[i].queueCount > 0) && (qFamilyProperties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) && currentGraphicsQueueFamilyIndex == UINT32_MAX)
                 currentGraphicsQueueFamilyIndex = i;
 
-            if(glfwGetPhysicalDevicePresentationSupport(kvk.instance, physicalDevice, i) && currentPresentationQueueFamilyIndex == UINT32_MAX){
+            if(glfwGetPhysicalDevicePresentationSupport(kraut.Vulkan.Instance, physicalDevice, i) && currentPresentationQueueFamilyIndex == UINT32_MAX){
                 currentPresentationQueueFamilyIndex = i;
             }
 
@@ -171,38 +171,38 @@ namespace KrautVK {
                 reqdExtensions                                  // const char * const        *ppEnabledExtensionNames
         };
 
-        if (createInstance(&instanceCreateInfo, nullptr, &kvk.instance) != SUCCESS)
+        if (createInstance(&instanceCreateInfo, nullptr, &kraut.Vulkan.Instance) != SUCCESS)
             return VULKAN_INSTANCE_CREATION_FAILED;
 
         printf("Loading instance level procedures...\n");
-        createDevice = (PFN_vkCreateDevice) glfwGetInstanceProcAddress(kvk.instance, "vkCreateDevice");
-        enumeratePhysicalDevices = (PFN_vkEnumeratePhysicalDevices) glfwGetInstanceProcAddress(kvk.instance, "vkEnumeratePhysicalDevices");
-        getPhysicalDeviceProperties = (PFN_vkGetPhysicalDeviceProperties) glfwGetInstanceProcAddress(kvk.instance, "vkGetPhysicalDeviceProperties");
-        getPhysicalDeviceFeatures = (PFN_vkGetPhysicalDeviceFeatures) glfwGetInstanceProcAddress(kvk.instance, "vkGetPhysicalDeviceFeatures");
-        getPhysicalDeviceQueueFamilyProperties = (PFN_vkGetPhysicalDeviceQueueFamilyProperties) glfwGetInstanceProcAddress(kvk.instance, "vkGetPhysicalDeviceQueueFamilyProperties");
-        destroyInstance = (PFN_vkDestroyInstance) glfwGetInstanceProcAddress(kvk.instance, "vkDestroyInstance");
-        destroySurfaceKHR = (PFN_vkDestroySurfaceKHR) glfwGetInstanceProcAddress(kvk.instance, "vkDestroySurfaceKHR");
-        enumerateDeviceExtensionProperties = (PFN_vkEnumerateDeviceExtensionProperties) glfwGetInstanceProcAddress(kvk.instance, "vkEnumerateDeviceExtensionProperties");
-        getPhysicalDeviceSurfaceCapabilitiesKHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR) glfwGetInstanceProcAddress(kvk.instance, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
-        getPhysicalDeviceSurfaceFormatsKHR = (PFN_vkGetPhysicalDeviceSurfaceFormatsKHR) glfwGetInstanceProcAddress(kvk.instance, "vkGetPhysicalDeviceSurfaceFormatsKHR");
-        getPhysicalDeviceSurfacePresentModesKHR = (PFN_vkGetPhysicalDeviceSurfacePresentModesKHR) glfwGetInstanceProcAddress(kvk.instance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
+        createDevice = (PFN_vkCreateDevice) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkCreateDevice");
+        enumeratePhysicalDevices = (PFN_vkEnumeratePhysicalDevices) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkEnumeratePhysicalDevices");
+        getPhysicalDeviceProperties = (PFN_vkGetPhysicalDeviceProperties) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkGetPhysicalDeviceProperties");
+        getPhysicalDeviceFeatures = (PFN_vkGetPhysicalDeviceFeatures) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkGetPhysicalDeviceFeatures");
+        getPhysicalDeviceQueueFamilyProperties = (PFN_vkGetPhysicalDeviceQueueFamilyProperties) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkGetPhysicalDeviceQueueFamilyProperties");
+        destroyInstance = (PFN_vkDestroyInstance) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkDestroyInstance");
+        destroySurfaceKHR = (PFN_vkDestroySurfaceKHR) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkDestroySurfaceKHR");
+        enumerateDeviceExtensionProperties = (PFN_vkEnumerateDeviceExtensionProperties) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkEnumerateDeviceExtensionProperties");
+        getPhysicalDeviceSurfaceCapabilitiesKHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+        getPhysicalDeviceSurfaceFormatsKHR = (PFN_vkGetPhysicalDeviceSurfaceFormatsKHR) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkGetPhysicalDeviceSurfaceFormatsKHR");
+        getPhysicalDeviceSurfacePresentModesKHR = (PFN_vkGetPhysicalDeviceSurfacePresentModesKHR) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
 
 
         return SUCCESS;
     }
 
     int KrautVK::kvkCreateDevice() {
-        if(glfwCreateWindowSurface(kvk.instance, kvk.window, nullptr, &kvk.applicationSurface))
+        if(glfwCreateWindowSurface(kraut.Vulkan.Instance, kraut.GLFW.Window, nullptr, &kraut.Vulkan.ApplicationSurface))
             return VULKAN_SURFACE_CREATION_FAILED;
 
         //INITIALIZE PHYSICAL DEVICES
         printf("Enumerating physical devices...\n");
         uint32_t deviceCount;
-        if (enumeratePhysicalDevices(kvk.instance, &deviceCount, nullptr) != SUCCESS || deviceCount == 0)
+        if (enumeratePhysicalDevices(kraut.Vulkan.Instance, &deviceCount, nullptr) != SUCCESS || deviceCount == 0)
             return VULKAN_NOT_SUPPORTED;
 
         std::vector <VkPhysicalDevice> devices(deviceCount);
-        if (enumeratePhysicalDevices(kvk.instance, &deviceCount, &devices[0]) != SUCCESS)
+        if (enumeratePhysicalDevices(kraut.Vulkan.Instance, &deviceCount, &devices[0]) != SUCCESS)
             return VULKAN_NOT_SUPPORTED;
 
         uint32_t selectedGraphicsQueueFamilyIndex = UINT32_MAX;
@@ -210,12 +210,12 @@ namespace KrautVK {
 
         for (uint32_t i = 0; i < deviceCount; i++) {
             if (kvkCheckDeviceProperties(devices[i], selectedGraphicsQueueFamilyIndex, selectedPresentationQueueFamilyIndex)) {
-                kvk.physicalDevice = devices[i];
+                kraut.Vulkan.PhysicalDevice = devices[i];
                 break;
             }
         }
 
-        if (kvk.physicalDevice == nullptr)
+        if (kraut.Vulkan.PhysicalDevice == nullptr)
             return VULKAN_NOT_SUPPORTED;
 
         std::vector<VkDeviceQueueCreateInfo> qCreateInfos;
@@ -257,39 +257,39 @@ namespace KrautVK {
                 nullptr                                         // const VkPhysicalDeviceFeatures    *pEnabledFeatures
         };
 
-        if(createDevice(kvk.physicalDevice, &deviceCreateInfo, nullptr, &kvk.device) != SUCCESS)
+        if(createDevice(kraut.Vulkan.PhysicalDevice, &deviceCreateInfo, nullptr, &kraut.Vulkan.Device) != SUCCESS)
             return VULKAN_DEVICE_CREATION_FAILED;
 
         printf("Loading device level procedures..\n");
-        getDeviceProcAddr = (PFN_vkGetDeviceProcAddr) glfwGetInstanceProcAddress(kvk.instance, "vkGetDeviceProcAddr");
-        getDeviceQueue = (PFN_vkGetDeviceQueue) getDeviceProcAddr(kvk.device, "vkGetDeviceQueue");
-        deviceWaitIdle = (PFN_vkDeviceWaitIdle) getDeviceProcAddr(kvk.device, "vkDeviceWaitIdle");
-        destroyDevice = (PFN_vkDestroyDevice) getDeviceProcAddr(kvk.device, "vkDestroyDevice");
-        createSemaphore = (PFN_vkCreateSemaphore) getDeviceProcAddr(kvk.device, "vkCreateSemaphore");
-        createSwapchainKHR = (PFN_vkCreateSwapchainKHR) getDeviceProcAddr(kvk.device, "vkCreateSwapchainKHR");
-        destroySwapchainKHR = (PFN_vkDestroySwapchainKHR) getDeviceProcAddr(kvk.device, "vkDestroySwapchainKHR");
-        getSwapchainImagesKHR = (PFN_vkGetSwapchainImagesKHR) getDeviceProcAddr(kvk.device, "vkGetSwapchainImagesKHR");
-        acquireNextImageKHR = (PFN_vkAcquireNextImageKHR) getDeviceProcAddr(kvk.device, "vkAcquireNextImageKHR");
-        queuePresentKHR = (PFN_vkQueuePresentKHR) getDeviceProcAddr(kvk.device, "vkQueuePresentKHR");
-        queueSubmit = (PFN_vkQueueSubmit) getDeviceProcAddr(kvk.device, "vkQueueSubmit");
-        createCommandPool = (PFN_vkCreateCommandPool) getDeviceProcAddr(kvk.device, "vkCreateCommandPool");
-        allocateCommandBuffers = (PFN_vkAllocateCommandBuffers) getDeviceProcAddr(kvk.device, "vkAllocateCommandBuffers");
-        freeCommandBuffers = (PFN_vkFreeCommandBuffers) getDeviceProcAddr(kvk.device, "vkFreeCommandBuffers");
-        destroyCommandPool = (PFN_vkDestroyCommandPool) getDeviceProcAddr(kvk.device, "vkDestroyCommandPool");
-        destroySemaphore = (PFN_vkDestroySemaphore) getDeviceProcAddr(kvk.device, "vkDestroySemaphore");
-        beginCommandBuffer = (PFN_vkBeginCommandBuffer) getDeviceProcAddr(kvk.device, "vkBeginCommandBuffer");
-        cmdPipelineBarrier = (PFN_vkCmdPipelineBarrier) getDeviceProcAddr(kvk.device, "vkCmdPipelineBarrier");
-        cmdClearColorImage = (PFN_vkCmdClearColorImage) getDeviceProcAddr(kvk.device, "vkCmdClearColorImage");
-        endCommandBuffer = (PFN_vkEndCommandBuffer) getDeviceProcAddr(kvk.device, "vkEndCommandBuffer");
+        getDeviceProcAddr = (PFN_vkGetDeviceProcAddr) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkGetDeviceProcAddr");
+        getDeviceQueue = (PFN_vkGetDeviceQueue) getDeviceProcAddr(kraut.Vulkan.Device, "vkGetDeviceQueue");
+        deviceWaitIdle = (PFN_vkDeviceWaitIdle) getDeviceProcAddr(kraut.Vulkan.Device, "vkDeviceWaitIdle");
+        destroyDevice = (PFN_vkDestroyDevice) getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyDevice");
+        createSemaphore = (PFN_vkCreateSemaphore) getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateSemaphore");
+        createSwapchainKHR = (PFN_vkCreateSwapchainKHR) getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateSwapchainKHR");
+        destroySwapchainKHR = (PFN_vkDestroySwapchainKHR) getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroySwapchainKHR");
+        getSwapchainImagesKHR = (PFN_vkGetSwapchainImagesKHR) getDeviceProcAddr(kraut.Vulkan.Device, "vkGetSwapchainImagesKHR");
+        acquireNextImageKHR = (PFN_vkAcquireNextImageKHR) getDeviceProcAddr(kraut.Vulkan.Device, "vkAcquireNextImageKHR");
+        queuePresentKHR = (PFN_vkQueuePresentKHR) getDeviceProcAddr(kraut.Vulkan.Device, "vkQueuePresentKHR");
+        queueSubmit = (PFN_vkQueueSubmit) getDeviceProcAddr(kraut.Vulkan.Device, "vkQueueSubmit");
+        createCommandPool = (PFN_vkCreateCommandPool) getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateCommandPool");
+        allocateCommandBuffers = (PFN_vkAllocateCommandBuffers) getDeviceProcAddr(kraut.Vulkan.Device, "vkAllocateCommandBuffers");
+        freeCommandBuffers = (PFN_vkFreeCommandBuffers) getDeviceProcAddr(kraut.Vulkan.Device, "vkFreeCommandBuffers");
+        destroyCommandPool = (PFN_vkDestroyCommandPool) getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyCommandPool");
+        destroySemaphore = (PFN_vkDestroySemaphore) getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroySemaphore");
+        beginCommandBuffer = (PFN_vkBeginCommandBuffer) getDeviceProcAddr(kraut.Vulkan.Device, "vkBeginCommandBuffer");
+        cmdPipelineBarrier = (PFN_vkCmdPipelineBarrier) getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdPipelineBarrier");
+        cmdClearColorImage = (PFN_vkCmdClearColorImage) getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdClearColorImage");
+        endCommandBuffer = (PFN_vkEndCommandBuffer) getDeviceProcAddr(kraut.Vulkan.Device, "vkEndCommandBuffer");
 
 
         //INITIALIZE COMMAND BUFFER
         printf("Initializing command buffers..\n");
-        kvk.graphicsQueueFamilyIndex = selectedGraphicsQueueFamilyIndex;
-        kvk.presentationQueueFamilyIndex = selectedPresentationQueueFamilyIndex;
+        kraut.GraphicsQueue.FamilyIndex = selectedGraphicsQueueFamilyIndex;
+        kraut.PresentQueue.FamilyIndex = selectedPresentationQueueFamilyIndex;
 
-        getDeviceQueue(kvk.device, kvk.graphicsQueueFamilyIndex, 0, &kvk.graphicsQueue);
-        getDeviceQueue(kvk.device, kvk.presentationQueueFamilyIndex, 0, &kvk.presentationQueue);
+        getDeviceQueue(kraut.Vulkan.Device, kraut.GraphicsQueue.FamilyIndex, 0, &kraut.GraphicsQueue.Handle);
+        getDeviceQueue(kraut.Vulkan.Device, kraut.PresentQueue.FamilyIndex, 0, &kraut.PresentQueue.Handle);
 
         return SUCCESS;
     }
@@ -303,8 +303,8 @@ namespace KrautVK {
                 0                                             // VkSemaphoreCreateFlags   flags
         };
 
-        if((createSemaphore(kvk.device, &semaphore_create_info, nullptr, &kvk.imageAvailableSemaphore) != VK_SUCCESS) ||
-            (createSemaphore(kvk.device, &semaphore_create_info, nullptr, &kvk.renderingFinishedSemaphore) != VK_SUCCESS)) {
+        if((createSemaphore(kraut.Vulkan.Device, &semaphore_create_info, nullptr, &kraut.Semaphores.ImageAvailable) != VK_SUCCESS) ||
+            (createSemaphore(kraut.Vulkan.Device, &semaphore_create_info, nullptr, &kraut.Semaphores.RenderingFinished) != VK_SUCCESS)) {
             return VULKAN_SEMAPHORE_CREATION_FAILED;
         }
 
@@ -313,33 +313,33 @@ namespace KrautVK {
 
     bool KrautVK::kvkCreateSwapChain() {
 
-        if(kvk.device != VK_NULL_HANDLE) {
-            deviceWaitIdle(kvk.device);
+        if(kraut.Vulkan.Device != VK_NULL_HANDLE) {
+            deviceWaitIdle(kraut.Vulkan.Device);
         }
         VkSurfaceCapabilitiesKHR surfaceCapabilities;
-        if(getPhysicalDeviceSurfaceCapabilitiesKHR(kvk.physicalDevice, kvk.applicationSurface, &surfaceCapabilities) != VK_SUCCESS) {
+        if(getPhysicalDeviceSurfaceCapabilitiesKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &surfaceCapabilities) != VK_SUCCESS) {
             return false;
         }
 
         uint32_t formatsCount;
-        if((getPhysicalDeviceSurfaceFormatsKHR(kvk.physicalDevice, kvk.applicationSurface, &formatsCount, nullptr) != VK_SUCCESS) ||
+        if((getPhysicalDeviceSurfaceFormatsKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &formatsCount, nullptr) != VK_SUCCESS) ||
             (formatsCount == 0)) {
             return false;
         }
 
         std::vector<VkSurfaceFormatKHR> surfaceFormats(formatsCount);
-        if(getPhysicalDeviceSurfaceFormatsKHR(kvk.physicalDevice, kvk.applicationSurface, &formatsCount, surfaceFormats.data()) != VK_SUCCESS) {
+        if(getPhysicalDeviceSurfaceFormatsKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &formatsCount, surfaceFormats.data()) != VK_SUCCESS) {
             return false;
         }
 
         uint32_t presentModesCount;
-        if((getPhysicalDeviceSurfacePresentModesKHR(kvk.physicalDevice, kvk.applicationSurface, &presentModesCount, nullptr) != VK_SUCCESS) ||
+        if((getPhysicalDeviceSurfacePresentModesKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &presentModesCount, nullptr) != VK_SUCCESS) ||
             (presentModesCount == 0) ) {
             return false;
         }
 
         std::vector<VkPresentModeKHR> presentModes(presentModesCount);
-        if(getPhysicalDeviceSurfacePresentModesKHR(kvk.physicalDevice, kvk.applicationSurface, &presentModesCount, presentModes.data()) != VK_SUCCESS ) {
+        if(getPhysicalDeviceSurfacePresentModesKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &presentModesCount, presentModes.data()) != VK_SUCCESS ) {
             return false;
         }
 
@@ -349,7 +349,7 @@ namespace KrautVK {
         VkImageUsageFlags             desiredUsage = kvkGetSwapChainUsageFlags(surfaceCapabilities);
         VkSurfaceTransformFlagBitsKHR desiredTransform = kvkGetSwapChainTransform(surfaceCapabilities);
         VkPresentModeKHR              desiredPresentMode = kvkGetSwapChainPresentMode(presentModes);
-        VkSwapchainKHR                oldSwapChain = kvk.swapchain;
+        VkSwapchainKHR                oldSwapChain = kraut.SwapChain.Handle;
 
         if(static_cast<int>(desiredUsage) == -1) {
             return false;
@@ -368,7 +368,7 @@ namespace KrautVK {
                 VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,    // VkStructureType                sType
                 nullptr,                                        // const void                    *pNext
                 0,                                              // VkSwapchainCreateFlagsKHR      flags
-                kvk.applicationSurface,                             // VkSurfaceKHR                   surface
+                kraut.Vulkan.ApplicationSurface,                // VkSurfaceKHR                   surface
                 desiredNumberOfImages,                          // uint32_t                       minImageCount
                 desiredFormat.format,                           // VkFormat                       imageFormat
                 desiredFormat.colorSpace,                       // VkColorSpaceKHR                imageColorSpace
@@ -385,11 +385,15 @@ namespace KrautVK {
                 oldSwapChain                                    // VkSwapchainKHR                 oldSwapchain
         };
 
-        if(createSwapchainKHR(kvk.device, &swap_chain_create_info, nullptr, &kvk.swapchain ) != VK_SUCCESS) {
+        if(createSwapchainKHR(kraut.Vulkan.Device, &swap_chain_create_info, nullptr, &kraut.SwapChain.Handle ) != VK_SUCCESS) {
             return false;
         }
+
+        kraut.SwapChain.Extent = desiredExtent;
+        kraut.SwapChain.Format = desiredFormat.format;
+
         if(oldSwapChain != VK_NULL_HANDLE) {
-            destroySwapchainKHR(kvk.device, oldSwapChain, nullptr);
+            destroySwapchainKHR(kraut.Vulkan.Device, oldSwapChain, nullptr);
         }
 
         return true;
@@ -513,29 +517,29 @@ namespace KrautVK {
                 VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO,     // VkStructureType              sType
                 nullptr,                                        // const void*                  pNext
                 0,                                              // VkCommandPoolCreateFlags     flags
-                kvk.presentationQueueFamilyIndex                    // uint32_t                     queueFamilyIndex
+                kraut.PresentQueue.FamilyIndex                  // uint32_t                     queueFamilyIndex
         };
 
-        if(createCommandPool(kvk.device, &cmdPoolCreateInfo, nullptr, &kvk.presentationCmdPool) != VK_SUCCESS) {
+        if(createCommandPool(kraut.Vulkan.Device, &cmdPoolCreateInfo, nullptr, &kraut.PresentBuffer.CommandPool) != VK_SUCCESS) {
             return false;
         }
 
         uint32_t imageCount = 0;
-        if((getSwapchainImagesKHR(kvk.device, kvk.swapchain, &imageCount, nullptr) != VK_SUCCESS) || (imageCount == 0) ) {
+        if((getSwapchainImagesKHR(kraut.Vulkan.Device, kraut.SwapChain.Handle, &imageCount, nullptr) != VK_SUCCESS) || (imageCount == 0) ) {
             return false;
         }
 
-        kvk.presentationCmdBuffers.resize(imageCount);
+        kraut.PresentBuffer.CommandBuffers.resize(imageCount);
 
         VkCommandBufferAllocateInfo cmd_buffer_allocate_info = {
                 VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO, // VkStructureType              sType
                 nullptr,                                        // const void*                  pNext
-                kvk.presentationCmdPool,                            // VkCommandPool                commandPool
+                kraut.PresentBuffer.CommandPool,                            // VkCommandPool                commandPool
                 VK_COMMAND_BUFFER_LEVEL_PRIMARY,                // VkCommandBufferLevel         level
                 imageCount                                      // uint32_t                     bufferCount
         };
 
-        if(allocateCommandBuffers(kvk.device, &cmd_buffer_allocate_info, &kvk.presentationCmdBuffers[0] ) != VK_SUCCESS) {
+        if(allocateCommandBuffers(kraut.Vulkan.Device, &cmd_buffer_allocate_info, &kraut.PresentBuffer.CommandBuffers[0] ) != VK_SUCCESS) {
             return false;
         }
 
@@ -544,10 +548,10 @@ namespace KrautVK {
     }
 
     bool KrautVK::kvkRecordCommandBuffers() {
-        uint32_t imageCount = static_cast<uint32_t>(kvk.presentationCmdBuffers.size());
+        uint32_t imageCount = static_cast<uint32_t>(kraut.PresentBuffer.CommandBuffers.size());
 
         std::vector<VkImage> swapChainImages( imageCount );
-        if( getSwapchainImagesKHR(kvk.device, kvk.swapchain, &imageCount, &swapChainImages[0]) != VK_SUCCESS) {
+        if( getSwapchainImagesKHR(kraut.Vulkan.Device, kraut.SwapChain.Handle, &imageCount, &swapChainImages[0]) != VK_SUCCESS) {
             std::cout << "Could not get swap chain images!" << std::endl;
             return false;
         }
@@ -600,18 +604,18 @@ namespace KrautVK {
 
             // We have to reorganize the data in order to pass specific operations on it,
             // pass those operations, then organize it back
-            beginCommandBuffer(kvk.presentationCmdBuffers[i], &cmdBufferBeginInfo);
-            cmdPipelineBarrier(kvk.presentationCmdBuffers[i], VK_PIPELINE_STAGE_TRANSFER_BIT,
+            beginCommandBuffer(kraut.PresentBuffer.CommandBuffers[i], &cmdBufferBeginInfo);
+            cmdPipelineBarrier(kraut.PresentBuffer.CommandBuffers[i], VK_PIPELINE_STAGE_TRANSFER_BIT,
                                  VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr, 1,
                                  &barrierFromPresentToClear);
 
-            cmdClearColorImage(kvk.presentationCmdBuffers[i], swapChainImages[i], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
+            cmdClearColorImage(kraut.PresentBuffer.CommandBuffers[i], swapChainImages[i], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
                                  &clearColor, 1, &imageSubresourceRange);
 
-            cmdPipelineBarrier(kvk.presentationCmdBuffers[i], VK_PIPELINE_STAGE_TRANSFER_BIT,
+            cmdPipelineBarrier(kraut.PresentBuffer.CommandBuffers[i], VK_PIPELINE_STAGE_TRANSFER_BIT,
                                  VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT, 0, 0, nullptr, 0, nullptr, 1,
                                  &barrierFromClearToPresent);
-            if (endCommandBuffer(kvk.presentationCmdBuffers[i]) != VK_SUCCESS) {
+            if (endCommandBuffer(kraut.PresentBuffer.CommandBuffers[i]) != VK_SUCCESS) {
                 std::cout << "Could not record command buffers!" << std::endl;
                 return false;
             }
@@ -638,17 +642,17 @@ namespace KrautVK {
     }
 
     int KrautVK::kvkClear() {
-        if(kvk.device != VK_NULL_HANDLE) {
-            deviceWaitIdle(kvk.device);
+        if(kraut.Vulkan.Device != VK_NULL_HANDLE) {
+            deviceWaitIdle(kraut.Vulkan.Device);
 
-            if((!kvk.presentationCmdBuffers.empty()) && (kvk.presentationCmdBuffers[0] != VK_NULL_HANDLE) ) {
-                freeCommandBuffers(kvk.device, kvk.presentationCmdPool, static_cast<uint32_t>(kvk.presentationCmdBuffers.size()), kvk.presentationCmdBuffers.data());
-                kvk.presentationCmdBuffers.clear();
+            if((!kraut.PresentBuffer.CommandBuffers.empty()) && (kraut.PresentBuffer.CommandBuffers[0] != VK_NULL_HANDLE) ) {
+                freeCommandBuffers(kraut.Vulkan.Device, kraut.PresentBuffer.CommandPool, static_cast<uint32_t>(kraut.PresentBuffer.CommandBuffers.size()), kraut.PresentBuffer.CommandBuffers.data());
+                kraut.PresentBuffer.CommandBuffers.clear();
             }
 
-            if(kvk.presentationCmdPool != VK_NULL_HANDLE ) {
-                destroyCommandPool(kvk.device, kvk.presentationCmdPool, nullptr);
-                kvk.presentationCmdPool = VK_NULL_HANDLE;
+            if(kraut.PresentBuffer.CommandPool != VK_NULL_HANDLE ) {
+                destroyCommandPool(kraut.Vulkan.Device, kraut.PresentBuffer.CommandPool, nullptr);
+                kraut.PresentBuffer.CommandPool = VK_NULL_HANDLE;
             }
         }
     }
@@ -694,7 +698,7 @@ namespace KrautVK {
     }
 
     int KrautVK::kvkWindowShouldClose() {
-        return glfwWindowShouldClose(kvk.window);
+        return glfwWindowShouldClose(kraut.GLFW.Window);
 
     }
 
@@ -702,7 +706,7 @@ namespace KrautVK {
 
         //Ask the swapchain to give us the next image available. Image will be available after the last call's command buffers have fully processed
         uint32_t imageIndex;
-        VkResult result = acquireNextImageKHR(kvk.device, kvk.swapchain, UINT64_MAX, kvk.imageAvailableSemaphore, VK_NULL_HANDLE, &imageIndex);
+        VkResult result = acquireNextImageKHR(kraut.Vulkan.Device, kraut.SwapChain.Handle, UINT64_MAX, kraut.Semaphores.ImageAvailable, VK_NULL_HANDLE, &imageIndex);
         switch(result) {
             case VK_SUCCESS:
             case VK_SUBOPTIMAL_KHR:
@@ -719,15 +723,15 @@ namespace KrautVK {
                 VK_STRUCTURE_TYPE_SUBMIT_INFO,                // VkStructureType              sType
                 nullptr,                                      // const void                  *pNext
                 1,                                            // uint32_t                     waitSemaphoreCount
-                &kvk.imageAvailableSemaphore,                     // const VkSemaphore           *pWaitSemaphores
+                &kraut.Semaphores.ImageAvailable,                 // const VkSemaphore           *pWaitSemaphores
                 &waitDstStageMask,                            // const VkPipelineStageFlags  *pWaitDstStageMask;
                 1,                                            // uint32_t                     commandBufferCount
-                &kvk.presentationCmdBuffers[imageIndex],          // const VkCommandBuffer       *pCommandBuffers
+                &kraut.PresentBuffer.CommandBuffers[imageIndex],      // const VkCommandBuffer       *pCommandBuffers
                 1,                                            // uint32_t                     signalSemaphoreCount
-                &kvk.renderingFinishedSemaphore                   // const VkSemaphore           *pSignalSemaphores
+                &kraut.Semaphores.RenderingFinished               // const VkSemaphore           *pSignalSemaphores
         };
 
-        if(queueSubmit(kvk.presentationQueue, 1, &submitInfo, VK_NULL_HANDLE ) != VK_SUCCESS) {
+        if(queueSubmit(kraut.PresentQueue.Handle, 1, &submitInfo, VK_NULL_HANDLE ) != VK_SUCCESS) {
             return false;
         }
 
@@ -736,13 +740,13 @@ namespace KrautVK {
                 VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,           // VkStructureType              sType
                 nullptr,                                      // const void                  *pNext
                 1,                                            // uint32_t                     waitSemaphoreCount
-                &kvk.renderingFinishedSemaphore,                  // const VkSemaphore           *pWaitSemaphores
+                &kraut.Semaphores.RenderingFinished,              // const VkSemaphore           *pWaitSemaphores
                 1,                                            // uint32_t                     swapchainCount
-                &kvk.swapchain,                                   // const VkSwapchainKHR        *pSwapchains
+                &kraut.SwapChain.Handle,                      // const VkSwapchainKHR        *pSwapchains
                 &imageIndex,                                  // const uint32_t              *pImageIndices
                 nullptr                                       // VkResult                    *pResults
         };
-        result = queuePresentKHR(kvk.presentationQueue, &presentInfo);
+        result = queuePresentKHR(kraut.PresentQueue.Handle, &presentInfo);
 
         switch(result) {
             case VK_SUCCESS:
@@ -765,31 +769,32 @@ namespace KrautVK {
         printf("KrautVK terminating\n");
         kvkClear();
 
-        if(kvk.device != VK_NULL_HANDLE) {
-            deviceWaitIdle(kvk.device);
+        if(kraut.Vulkan.Device != VK_NULL_HANDLE) {
+            deviceWaitIdle(kraut.Vulkan.Device);
 
-            if(kvk.imageAvailableSemaphore != VK_NULL_HANDLE) {
-                destroySemaphore(kvk.device, kvk.imageAvailableSemaphore, nullptr);
+            if(kraut.Semaphores.ImageAvailable != VK_NULL_HANDLE) {
+                destroySemaphore(kraut.Vulkan.Device, kraut.Semaphores.ImageAvailable, nullptr);
             }
-            if(kvk.renderingFinishedSemaphore != VK_NULL_HANDLE) {
-                destroySemaphore(kvk.device, kvk.renderingFinishedSemaphore, nullptr);
+            if(kraut.Semaphores.RenderingFinished != VK_NULL_HANDLE) {
+                destroySemaphore(kraut.Vulkan.Device, kraut.Semaphores.RenderingFinished, nullptr);
             }
-            if(kvk.swapchain != VK_NULL_HANDLE) {
-                destroySwapchainKHR(kvk.device, kvk.swapchain, nullptr );
+            if(kraut.SwapChain.Handle != VK_NULL_HANDLE) {
+                destroySwapchainKHR(kraut.Vulkan.Device, kraut.SwapChain.Handle, nullptr );
             }
-            destroyDevice(kvk.device, nullptr);
+            destroyDevice(kraut.Vulkan.Device, nullptr);
         }
 
-        if(kvk.applicationSurface != VK_NULL_HANDLE) {
-            destroySurfaceKHR(kvk.instance, kvk.applicationSurface, nullptr );
+        if(kraut.Vulkan.ApplicationSurface != VK_NULL_HANDLE) {
+            destroySurfaceKHR(kraut.Vulkan.Instance, kraut.Vulkan.ApplicationSurface, nullptr );
         }
 
-        if(kvk.instance != VK_NULL_HANDLE) {
-            destroyInstance(kvk.instance, nullptr);
+        if(kraut.Vulkan.Instance != VK_NULL_HANDLE) {
+            destroyInstance(kraut.Vulkan.Instance, nullptr);
         }
         glfwTerminate();
 
     }
+
 
     EXPORT int init(int width, int height, char *title, int fullScreen) {
         return KrautVK::kvkInit(width, height, title, fullScreen);

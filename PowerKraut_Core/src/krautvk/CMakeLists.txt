@@ -4,7 +4,7 @@ project(krautvk C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_SHARED_LIBRARY_PREFIX  "")
 
-add_library(krautvk SHARED KrautVK.cpp KrautVK.h)
+add_library(krautvk SHARED src/KrautVK.cpp src/KrautVK.h src/KrautVKCommon.h)
 
 target_link_libraries(krautvk ${PROJECT_SOURCE_DIR}/lib/glfw3.dll)
 
