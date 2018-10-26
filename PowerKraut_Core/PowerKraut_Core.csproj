@@ -24,7 +24,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Content Include="lib\*.dll">
+    <Content Include="lib\*.dll; lib\data\*.spv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

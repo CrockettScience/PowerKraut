@@ -29,7 +29,7 @@ namespace PowerKraut_Core.kraut.core{
         /// <summary>
         /// Holds the current active instance of PowerKraut
         /// </summary>
-        public static  PowerKrautInstance PkInstance => _pkSingleton ?? (_pkSingleton = new PowerKrautInstance());
+        private static  PowerKrautInstance PkInstance => _pkSingleton ?? (_pkSingleton = new PowerKrautInstance());
 
         /// <summary>
         /// Initializes Vulkan, opens a window and loads the first scene
@@ -66,7 +66,7 @@ namespace PowerKraut_Core.kraut.core{
 
         private static void Main(string[] args){
             
-            PkInstance.Start(2160, 1024, "KrautDemo", false);
+            PkInstance.Start(1920, 1080, "KrautDemo", false);
         }
     }
 }

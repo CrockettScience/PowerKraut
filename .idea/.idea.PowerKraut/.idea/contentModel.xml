@@ -10,7 +10,7 @@
           <e p="cmake_install.cmake" t="Include" />
           <e p="CMakeCache.txt" t="Include" />
           <e p="CMakeFiles" t="Include">
-            <e p="3.10.3" t="Include">
+            <e p="3.12.3" t="Include">
               <e p="CMakeCCompiler.cmake" t="Include" />
               <e p="CMakeCXXCompiler.cmake" t="Include" />
               <e p="CMakeDetermineCompilerABI_C.bin" t="Include" />
@@ -31,30 +31,39 @@
             <e p="cmake.check_cache" t="Include" />
             <e p="CMakeDirectoryInformation.cmake" t="Include" />
             <e p="CMakeOutput.log" t="Include" />
+            <e p="CMakeRuleHashes.txt" t="Include" />
             <e p="feature_tests.bin" t="Include" />
             <e p="feature_tests.c" t="Include" />
             <e p="feature_tests.cxx" t="Include" />
             <e p="krautvk.dir" t="Include">
               <e p="build.make" t="Include" />
-              <e p="C.includecache" t="Include" />
               <e p="cmake_clean.cmake" t="Include" />
               <e p="CXX.includecache" t="Include" />
               <e p="depend.internal" t="Include" />
               <e p="depend.make" t="Include" />
               <e p="DependInfo.cmake" t="Include" />
               <e p="flags.make" t="Include" />
-              <e p="includes_C.rsp" t="Include" />
               <e p="includes_CXX.rsp" t="Include" />
-              <e p="KrautVK.cpp.obj" t="Include" />
               <e p="link.txt" t="Include" />
               <e p="linklibs.rsp" t="Include" />
               <e p="objects.a" t="Include" />
               <e p="objects1.rsp" t="Include" />
               <e p="progress.make" t="Include" />
+              <e p="src" t="Include">
+                <e p="KrautVK.cpp.obj" t="Include" />
+              </e>
             </e>
             <e p="Makefile.cmake" t="Include" />
             <e p="Makefile2" t="Include" />
             <e p="progress.marks" t="Include" />
+            <e p="shaderbuilder.dir" t="Include">
+              <e p="build.make" t="Include" />
+              <e p="cmake_clean.cmake" t="Include" />
+              <e p="depend.internal" t="Include" />
+              <e p="depend.make" t="Include" />
+              <e p="DependInfo.cmake" t="Include" />
+              <e p="progress.make" t="Include" />
+            </e>
             <e p="TargetDirectories.txt" t="Include" />
           </e>
           <e p="glfw3.dll" t="Include" />
@@ -88,81 +97,465 @@
                 <e p="KrautVKSemaphoreCreationFailedException.cs" t="Include" />
                 <e p="KrautVKUndefinedException.cs" t="Include" />
                 <e p="KrautVKVulkanDeviceCreationFailedException.cs" t="Include" />
+                <e p="KrautVKVulkanFramebufferCreationFailed.cs" t="Include" />
                 <e p="KrautVKVulkanInstanceCreationFailedException.cs" t="Include" />
                 <e p="KrautVKVulkanNotSupportedException.cs" t="Include" />
+                <e p="KrautVKVulkanPipelineCreationFailed.cs" t="Include" />
+                <e p="KrautVKVulkanRenderPassCreationFailed.cs" t="Include" />
                 <e p="KrautVKVulkanSurfaceCreationFailedException.cs" t="Include" />
                 <e p="KrautVKWindowCreationFailedException.cs" t="Include" />
               </e>
             </e>
           </e>
           <e p="krautvk" t="Include">
-            <e p="cmake-build-debug" t="Include">
-              <e p="cmake_install.cmake" t="Include" />
-              <e p="CMakeCache.txt" t="Include" />
-              <e p="CMakeFiles" t="Include">
-                <e p="3.10.3" t="Include">
-                  <e p="CMakeCCompiler.cmake" t="Include" />
-                  <e p="CMakeCXXCompiler.cmake" t="Include" />
-                  <e p="CMakeDetermineCompilerABI_C.bin" t="Include" />
-                  <e p="CMakeDetermineCompilerABI_CXX.bin" t="Include" />
-                  <e p="CMakeRCCompiler.cmake" t="Include" />
-                  <e p="CMakeSystem.cmake" t="Include" />
-                  <e p="CompilerIdC" t="Include">
-                    <e p="a.exe" t="Include" />
-                    <e p="CMakeCCompilerId.c" t="Include" />
-                  </e>
-                  <e p="CompilerIdCXX" t="Include">
-                    <e p="a.exe" t="Include" />
-                    <e p="CMakeCXXCompilerId.cpp" t="Include" />
-                  </e>
-                </e>
-                <e p="clion-environment.txt" t="Include" />
-                <e p="clion-log.txt" t="Include" />
-                <e p="cmake.check_cache" t="Include" />
-                <e p="CMakeDirectoryInformation.cmake" t="Include" />
-                <e p="CMakeOutput.log" t="Include" />
-                <e p="feature_tests.bin" t="Include" />
-                <e p="feature_tests.c" t="Include" />
-                <e p="feature_tests.cxx" t="Include" />
-                <e p="krautvk.dir" t="Include">
-                  <e p="build.make" t="Include" />
-                  <e p="cmake_clean.cmake" t="Include" />
-                  <e p="depend.make" t="Include" />
-                  <e p="DependInfo.cmake" t="Include" />
-                  <e p="flags.make" t="Include" />
-                  <e p="includes_CXX.rsp" t="Include" />
-                  <e p="link.txt" t="Include" />
-                  <e p="linklibs.rsp" t="Include" />
-                  <e p="objects1.rsp" t="Include" />
-                  <e p="progress.make" t="Include" />
-                </e>
-                <e p="Makefile.cmake" t="Include" />
-                <e p="Makefile2" t="Include" />
-                <e p="progress.marks" t="Include" />
-                <e p="TargetDirectories.txt" t="Include" />
-              </e>
-              <e p="krautvk.cbp" t="Include" />
-              <e p="Makefile" t="Include" />
-            </e>
             <e p="CMakeLists.txt" t="Include" />
             <e p="include" t="Include">
-              <e p="GLFW" t="Include">
-                <e p="glfw3.h" t="Include" />
-                <e p="glfw3native.h" t="Include" />
+              <e p="STB" t="Include">
+                <e p=".travis.yml" t="Include" />
+                <e p="data" t="Include">
+                  <e p="atari_8bit_font_revised.png" t="Include" />
+                  <e p="easy_font_raw.png" t="Include" />
+                  <e p="herringbone" t="Include">
+                    <e p="license.txt" t="Include" />
+                    <e p="template_caves_limit_connectivity.png" t="Include" />
+                    <e p="template_caves_tiny_corridors.png" t="Include" />
+                    <e p="template_corner_caves.png" t="Include" />
+                    <e p="template_horizontal_corridors_v1.png" t="Include" />
+                    <e p="template_horizontal_corridors_v2.png" t="Include" />
+                    <e p="template_horizontal_corridors_v3.png" t="Include" />
+                    <e p="template_limit_connectivity_fat.png" t="Include" />
+                    <e p="template_limited_connectivity.png" t="Include" />
+                    <e p="template_maze_2_wide.png" t="Include" />
+                    <e p="template_maze_plus_2_wide.png" t="Include" />
+                    <e p="template_open_areas.png" t="Include" />
+                    <e p="template_ref2_corner_caves.png" t="Include" />
+                    <e p="template_rooms_and_corridors.png" t="Include" />
+                    <e p="template_rooms_and_corridors_2_wide_diagonal_bias.png" t="Include" />
+                    <e p="template_rooms_limit_connectivity.png" t="Include" />
+                    <e p="template_round_rooms_diagonal_corridors.png" t="Include" />
+                    <e p="template_sean_dungeon.png" t="Include" />
+                    <e p="template_simple_caves_2_wide.png" t="Include" />
+                    <e p="template_square_rooms_with_random_rects.png" t="Include" />
+                  </e>
+                  <e p="map_01.png" t="Include" />
+                  <e p="map_02.png" t="Include" />
+                  <e p="map_03.png" t="Include" />
+                </e>
+                <e p="deprecated" t="Include">
+                  <e p="rrsprintf.h" t="Include" />
+                  <e p="stb_image.c" t="Include" />
+                  <e p="stretchy_buffer.txt" t="Include" />
+                </e>
+                <e p="docs" t="Include">
+                  <e p="other_libs.md" t="Include" />
+                  <e p="stb_howto.txt" t="Include" />
+                  <e p="stb_voxel_render_interview.md" t="Include" />
+                  <e p="why_public_domain.md" t="Include" />
+                </e>
+                <e p="README.md" t="Include" />
+                <e p="stb.h" t="Include" />
+                <e p="stb_c_lexer.h" t="Include" />
+                <e p="stb_connected_components.h" t="Include" />
+                <e p="stb_divide.h" t="Include" />
+                <e p="stb_dxt.h" t="Include" />
+                <e p="stb_easy_font.h" t="Include" />
+                <e p="stb_herringbone_wang_tile.h" t="Include" />
+                <e p="stb_image.h" t="Include" />
+                <e p="stb_image_resize.h" t="Include" />
+                <e p="stb_image_write.h" t="Include" />
+                <e p="stb_leakcheck.h" t="Include" />
+                <e p="stb_perlin.h" t="Include" />
+                <e p="stb_rect_pack.h" t="Include" />
+                <e p="stb_sprintf.h" t="Include" />
+                <e p="stb_textedit.h" t="Include" />
+                <e p="stb_tilemap_editor.h" t="Include" />
+                <e p="stb_truetype.h" t="Include" />
+                <e p="stb_vorbis.c" t="Include" />
+                <e p="stb_voxel_render.h" t="Include" />
+                <e p="stretchy_buffer.h" t="Include" />
+                <e p="tests" t="Include">
+                  <e p="c_lexer_test.c" t="Include" />
+                  <e p="c_lexer_test.dsp" t="Include" />
+                  <e p="caveview" t="Include">
+                    <e p="cave_main.c" t="Include" />
+                    <e p="cave_mesher.c" t="Include" />
+                    <e p="cave_parse.c" t="Include" />
+                    <e p="cave_parse.h" t="Include" />
+                    <e p="cave_render.c" t="Include" />
+                    <e p="caveview.dsp" t="Include" />
+                    <e p="caveview.dsw" t="Include" />
+                    <e p="caveview.h" t="Include" />
+                    <e p="glext.h" t="Include" />
+                    <e p="glext_list.h" t="Include" />
+                    <e p="main.c" t="Include" />
+                    <e p="README.md" t="Include" />
+                    <e p="stb_gl.h" t="Include" />
+                    <e p="stb_glprog.h" t="Include" />
+                    <e p="win32" t="Include">
+                      <e p="SDL_windows_main.c" t="Include" />
+                    </e>
+                  </e>
+                  <e p="grid_reachability.c" t="Include" />
+                  <e p="herringbone.dsp" t="Include" />
+                  <e p="herringbone_generator.c" t="Include" />
+                  <e p="herringbone_map.c" t="Include" />
+                  <e p="herringbone_map.dsp" t="Include" />
+                  <e p="image_test.c" t="Include" />
+                  <e p="image_test.dsp" t="Include" />
+                  <e p="Makefile" t="Include" />
+                  <e p="oversample" t="Include">
+                    <e p="main.c" t="Include" />
+                    <e p="oversample.dsp" t="Include" />
+                    <e p="oversample.dsw" t="Include" />
+                    <e p="oversample.exe" t="Include" />
+                    <e p="README.md" t="Include" />
+                    <e p="stb_wingraph.h" t="Include" />
+                  </e>
+                  <e p="pg_test" t="Include">
+                    <e p="pg_test.c" t="Include" />
+                  </e>
+                  <e p="pngsuite" t="Include">
+                    <e p="16bit" t="Include">
+                      <e p="basi0g16.png" t="Include" />
+                      <e p="basi2c16.png" t="Include" />
+                      <e p="basi4a16.png" t="Include" />
+                      <e p="basi6a16.png" t="Include" />
+                      <e p="basn0g16.png" t="Include" />
+                      <e p="basn2c16.png" t="Include" />
+                      <e p="basn4a16.png" t="Include" />
+                      <e p="basn6a16.png" t="Include" />
+                      <e p="bgai4a16.png" t="Include" />
+                      <e p="bgan6a16.png" t="Include" />
+                      <e p="bggn4a16.png" t="Include" />
+                      <e p="bgyn6a16.png" t="Include" />
+                      <e p="oi1n0g16.png" t="Include" />
+                      <e p="oi1n2c16.png" t="Include" />
+                      <e p="oi2n0g16.png" t="Include" />
+                      <e p="oi2n2c16.png" t="Include" />
+                      <e p="oi4n0g16.png" t="Include" />
+                      <e p="oi4n2c16.png" t="Include" />
+                      <e p="oi9n0g16.png" t="Include" />
+                      <e p="oi9n2c16.png" t="Include" />
+                      <e p="tbbn2c16.png" t="Include" />
+                      <e p="tbgn2c16.png" t="Include" />
+                      <e p="tbwn0g16.png" t="Include" />
+                    </e>
+                    <e p="corrupt" t="Include">
+                      <e p="xc1n0g08.png" t="Include" />
+                      <e p="xc9n2c08.png" t="Include" />
+                      <e p="xcrn0g04.png" t="Include" />
+                      <e p="xcsn0g01.png" t="Include" />
+                      <e p="xd0n2c08.png" t="Include" />
+                      <e p="xd3n2c08.png" t="Include" />
+                      <e p="xd9n2c08.png" t="Include" />
+                      <e p="xdtn0g01.png" t="Include" />
+                      <e p="xhdn0g08.png" t="Include" />
+                      <e p="xlfn0g04.png" t="Include" />
+                      <e p="xs1n0g01.png" t="Include" />
+                      <e p="xs2n0g01.png" t="Include" />
+                      <e p="xs4n0g01.png" t="Include" />
+                      <e p="xs7n0g01.png" t="Include" />
+                    </e>
+                    <e p="PngSuite.LICENSE" t="Include" />
+                    <e p="primary" t="Include">
+                      <e p="basi0g01.png" t="Include" />
+                      <e p="basi0g02.png" t="Include" />
+                      <e p="basi0g04.png" t="Include" />
+                      <e p="basi0g08.png" t="Include" />
+                      <e p="basi2c08.png" t="Include" />
+                      <e p="basi3p01.png" t="Include" />
+                      <e p="basi3p02.png" t="Include" />
+                      <e p="basi3p04.png" t="Include" />
+                      <e p="basi3p08.png" t="Include" />
+                      <e p="basi4a08.png" t="Include" />
+                      <e p="basi6a08.png" t="Include" />
+                      <e p="basn0g01.png" t="Include" />
+                      <e p="basn0g02.png" t="Include" />
+                      <e p="basn0g04.png" t="Include" />
+                      <e p="basn0g08.png" t="Include" />
+                      <e p="basn2c08.png" t="Include" />
+                      <e p="basn3p01.png" t="Include" />
+                      <e p="basn3p02.png" t="Include" />
+                      <e p="basn3p04.png" t="Include" />
+                      <e p="basn3p08.png" t="Include" />
+                      <e p="basn4a08.png" t="Include" />
+                      <e p="basn6a08.png" t="Include" />
+                      <e p="bgai4a08.png" t="Include" />
+                      <e p="bgan6a08.png" t="Include" />
+                      <e p="bgbn4a08.png" t="Include" />
+                      <e p="bgwn6a08.png" t="Include" />
+                      <e p="s01i3p01.png" t="Include" />
+                      <e p="s01n3p01.png" t="Include" />
+                      <e p="s02i3p01.png" t="Include" />
+                      <e p="s02n3p01.png" t="Include" />
+                      <e p="s03i3p01.png" t="Include" />
+                      <e p="s03n3p01.png" t="Include" />
+                      <e p="s04i3p01.png" t="Include" />
+                      <e p="s04n3p01.png" t="Include" />
+                      <e p="s05i3p02.png" t="Include" />
+                      <e p="s05n3p02.png" t="Include" />
+                      <e p="s06i3p02.png" t="Include" />
+                      <e p="s06n3p02.png" t="Include" />
+                      <e p="s07i3p02.png" t="Include" />
+                      <e p="s07n3p02.png" t="Include" />
+                      <e p="s08i3p02.png" t="Include" />
+                      <e p="s08n3p02.png" t="Include" />
+                      <e p="s09i3p02.png" t="Include" />
+                      <e p="s09n3p02.png" t="Include" />
+                      <e p="s32i3p04.png" t="Include" />
+                      <e p="s32n3p04.png" t="Include" />
+                      <e p="s33i3p04.png" t="Include" />
+                      <e p="s33n3p04.png" t="Include" />
+                      <e p="s34i3p04.png" t="Include" />
+                      <e p="s34n3p04.png" t="Include" />
+                      <e p="s35i3p04.png" t="Include" />
+                      <e p="s35n3p04.png" t="Include" />
+                      <e p="s36i3p04.png" t="Include" />
+                      <e p="s36n3p04.png" t="Include" />
+                      <e p="s37i3p04.png" t="Include" />
+                      <e p="s37n3p04.png" t="Include" />
+                      <e p="s38i3p04.png" t="Include" />
+                      <e p="s38n3p04.png" t="Include" />
+                      <e p="s39i3p04.png" t="Include" />
+                      <e p="s39n3p04.png" t="Include" />
+                      <e p="s40i3p04.png" t="Include" />
+                      <e p="s40n3p04.png" t="Include" />
+                      <e p="tbbn0g04.png" t="Include" />
+                      <e p="tbbn3p08.png" t="Include" />
+                      <e p="tbgn3p08.png" t="Include" />
+                      <e p="tbrn2c08.png" t="Include" />
+                      <e p="tbwn3p08.png" t="Include" />
+                      <e p="tbyn3p08.png" t="Include" />
+                      <e p="tm3n3p02.png" t="Include" />
+                      <e p="tp0n0g08.png" t="Include" />
+                      <e p="tp0n2c08.png" t="Include" />
+                      <e p="tp0n3p08.png" t="Include" />
+                      <e p="tp1n3p08.png" t="Include" />
+                      <e p="z00n2c08.png" t="Include" />
+                      <e p="z03n2c08.png" t="Include" />
+                      <e p="z06n2c08.png" t="Include" />
+                      <e p="z09n2c08.png" t="Include" />
+                    </e>
+                    <e p="primary_check" t="Include">
+                      <e p="basi0g01.png" t="Include" />
+                      <e p="basi0g02.png" t="Include" />
+                      <e p="basi0g04.png" t="Include" />
+                      <e p="basi0g08.png" t="Include" />
+                      <e p="basi2c08.png" t="Include" />
+                      <e p="basi3p01.png" t="Include" />
+                      <e p="basi3p02.png" t="Include" />
+                      <e p="basi3p04.png" t="Include" />
+                      <e p="basi3p08.png" t="Include" />
+                      <e p="basi4a08.png" t="Include" />
+                      <e p="basi6a08.png" t="Include" />
+                      <e p="basn0g01.png" t="Include" />
+                      <e p="basn0g02.png" t="Include" />
+                      <e p="basn0g04.png" t="Include" />
+                      <e p="basn0g08.png" t="Include" />
+                      <e p="basn2c08.png" t="Include" />
+                      <e p="basn3p01.png" t="Include" />
+                      <e p="basn3p02.png" t="Include" />
+                      <e p="basn3p04.png" t="Include" />
+                      <e p="basn3p08.png" t="Include" />
+                      <e p="basn4a08.png" t="Include" />
+                      <e p="basn6a08.png" t="Include" />
+                      <e p="bgai4a08.png" t="Include" />
+                      <e p="bgan6a08.png" t="Include" />
+                      <e p="bgbn4a08.png" t="Include" />
+                      <e p="bgwn6a08.png" t="Include" />
+                      <e p="s01i3p01.png" t="Include" />
+                      <e p="s01n3p01.png" t="Include" />
+                      <e p="s02i3p01.png" t="Include" />
+                      <e p="s02n3p01.png" t="Include" />
+                      <e p="s03i3p01.png" t="Include" />
+                      <e p="s03n3p01.png" t="Include" />
+                      <e p="s04i3p01.png" t="Include" />
+                      <e p="s04n3p01.png" t="Include" />
+                      <e p="s05i3p02.png" t="Include" />
+                      <e p="s05n3p02.png" t="Include" />
+                      <e p="s06i3p02.png" t="Include" />
+                      <e p="s06n3p02.png" t="Include" />
+                      <e p="s07i3p02.png" t="Include" />
+                      <e p="s07n3p02.png" t="Include" />
+                      <e p="s08i3p02.png" t="Include" />
+                      <e p="s08n3p02.png" t="Include" />
+                      <e p="s09i3p02.png" t="Include" />
+                      <e p="s09n3p02.png" t="Include" />
+                      <e p="s32i3p04.png" t="Include" />
+                      <e p="s32n3p04.png" t="Include" />
+                      <e p="s33i3p04.png" t="Include" />
+                      <e p="s33n3p04.png" t="Include" />
+                      <e p="s34i3p04.png" t="Include" />
+                      <e p="s34n3p04.png" t="Include" />
+                      <e p="s35i3p04.png" t="Include" />
+                      <e p="s35n3p04.png" t="Include" />
+                      <e p="s36i3p04.png" t="Include" />
+                      <e p="s36n3p04.png" t="Include" />
+                      <e p="s37i3p04.png" t="Include" />
+                      <e p="s37n3p04.png" t="Include" />
+                      <e p="s38i3p04.png" t="Include" />
+                      <e p="s38n3p04.png" t="Include" />
+                      <e p="s39i3p04.png" t="Include" />
+                      <e p="s39n3p04.png" t="Include" />
+                      <e p="s40i3p04.png" t="Include" />
+                      <e p="s40n3p04.png" t="Include" />
+                      <e p="tbbn0g04.png" t="Include" />
+                      <e p="tbbn3p08.png" t="Include" />
+                      <e p="tbgn3p08.png" t="Include" />
+                      <e p="tbrn2c08.png" t="Include" />
+                      <e p="tbwn3p08.png" t="Include" />
+                      <e p="tbyn3p08.png" t="Include" />
+                      <e p="tm3n3p02.png" t="Include" />
+                      <e p="tp0n0g08.png" t="Include" />
+                      <e p="tp0n2c08.png" t="Include" />
+                      <e p="tp0n3p08.png" t="Include" />
+                      <e p="tp1n3p08.png" t="Include" />
+                      <e p="z00n2c08.png" t="Include" />
+                      <e p="z03n2c08.png" t="Include" />
+                      <e p="z06n2c08.png" t="Include" />
+                      <e p="z09n2c08.png" t="Include" />
+                    </e>
+                    <e p="unused" t="Include">
+                      <e p="ccwn2c08.png" t="Include" />
+                      <e p="ccwn3p08.png" t="Include" />
+                      <e p="cdfn2c08.png" t="Include" />
+                      <e p="cdhn2c08.png" t="Include" />
+                      <e p="cdsn2c08.png" t="Include" />
+                      <e p="cdun2c08.png" t="Include" />
+                      <e p="ch1n3p04.png" t="Include" />
+                      <e p="ch2n3p08.png" t="Include" />
+                      <e p="cm0n0g04.png" t="Include" />
+                      <e p="cm7n0g04.png" t="Include" />
+                      <e p="cm9n0g04.png" t="Include" />
+                      <e p="cs3n2c16.png" t="Include" />
+                      <e p="cs3n3p08.png" t="Include" />
+                      <e p="cs5n2c08.png" t="Include" />
+                      <e p="cs5n3p08.png" t="Include" />
+                      <e p="cs8n2c08.png" t="Include" />
+                      <e p="cs8n3p08.png" t="Include" />
+                      <e p="ct0n0g04.png" t="Include" />
+                      <e p="ct1n0g04.png" t="Include" />
+                      <e p="cten0g04.png" t="Include" />
+                      <e p="ctfn0g04.png" t="Include" />
+                      <e p="ctgn0g04.png" t="Include" />
+                      <e p="cthn0g04.png" t="Include" />
+                      <e p="ctjn0g04.png" t="Include" />
+                      <e p="ctzn0g04.png" t="Include" />
+                      <e p="f00n0g08.png" t="Include" />
+                      <e p="f00n2c08.png" t="Include" />
+                      <e p="f01n0g08.png" t="Include" />
+                      <e p="f01n2c08.png" t="Include" />
+                      <e p="f02n0g08.png" t="Include" />
+                      <e p="f02n2c08.png" t="Include" />
+                      <e p="f03n0g08.png" t="Include" />
+                      <e p="f03n2c08.png" t="Include" />
+                      <e p="f04n0g08.png" t="Include" />
+                      <e p="f04n2c08.png" t="Include" />
+                      <e p="f99n0g04.png" t="Include" />
+                      <e p="g03n0g16.png" t="Include" />
+                      <e p="g03n2c08.png" t="Include" />
+                      <e p="g03n3p04.png" t="Include" />
+                      <e p="g04n0g16.png" t="Include" />
+                      <e p="g04n2c08.png" t="Include" />
+                      <e p="g04n3p04.png" t="Include" />
+                      <e p="g05n0g16.png" t="Include" />
+                      <e p="g05n2c08.png" t="Include" />
+                      <e p="g05n3p04.png" t="Include" />
+                      <e p="g07n0g16.png" t="Include" />
+                      <e p="g07n2c08.png" t="Include" />
+                      <e p="g07n3p04.png" t="Include" />
+                      <e p="g10n0g16.png" t="Include" />
+                      <e p="g10n2c08.png" t="Include" />
+                      <e p="g10n3p04.png" t="Include" />
+                      <e p="g25n0g16.png" t="Include" />
+                      <e p="g25n2c08.png" t="Include" />
+                      <e p="g25n3p04.png" t="Include" />
+                      <e p="pp0n2c16.png" t="Include" />
+                      <e p="pp0n6a08.png" t="Include" />
+                      <e p="ps1n0g08.png" t="Include" />
+                      <e p="ps1n2c16.png" t="Include" />
+                      <e p="ps2n0g08.png" t="Include" />
+                      <e p="ps2n2c16.png" t="Include" />
+                    </e>
+                  </e>
+                  <e p="prerelease" t="Include">
+                    <e p="stb_lib.h" t="Include" />
+                  </e>
+                  <e p="resample_test.cpp" t="Include" />
+                  <e p="resample_test_c.c" t="Include" />
+                  <e p="resize.dsp" t="Include" />
+                  <e p="sdf" t="Include">
+                    <e p="sdf_test.c" t="Include" />
+                    <e p="sdf_test_arial_16.png" t="Include" />
+                    <e p="sdf_test_times_16.png" t="Include" />
+                    <e p="sdf_test_times_50.png" t="Include" />
+                  </e>
+                  <e p="stb.c" t="Include" />
+                  <e p="stb.dsp" t="Include" />
+                  <e p="stb.dsw" t="Include" />
+                  <e p="stb_cpp.cpp" t="Include" />
+                  <e p="stb_cpp.dsp" t="Include" />
+                  <e p="stblib.dsp" t="Include" />
+                  <e p="stblib_test.c" t="Include" />
+                  <e p="stblib_test_companion.c" t="Include" />
+                  <e p="stretch_test.c" t="Include" />
+                  <e p="stretch_test.dsp" t="Include" />
+                  <e p="stretchy_buffer_test.c" t="Include" />
+                  <e p="test_c_compilation.c" t="Include" />
+                  <e p="test_c_lexer.c" t="Include" />
+                  <e p="test_cpp_compilation.cpp" t="Include" />
+                  <e p="test_dxt.c" t="Include" />
+                  <e p="test_easyfont.c" t="Include" />
+                  <e p="test_image.c" t="Include" />
+                  <e p="test_image_write.c" t="Include" />
+                  <e p="test_perlin.c" t="Include" />
+                  <e p="test_sprintf.c" t="Include" />
+                  <e p="test_truetype.c" t="Include" />
+                  <e p="test_vorbis.c" t="Include" />
+                  <e p="test_voxel.c" t="Include" />
+                  <e p="textedit_sample.c" t="Include" />
+                  <e p="tilemap_editor_integration_example.c" t="Include" />
+                  <e p="vorbseek" t="Include">
+                    <e p="vorbseek.c" t="Include" />
+                    <e p="vorbseek.dsp" t="Include" />
+                  </e>
+                </e>
+                <e p="tools" t="Include">
+                  <e p="easy_font_maker.c" t="Include" />
+                  <e p="make_readme.c" t="Include" />
+                  <e p="make_readme.dsp" t="Include" />
+                  <e p="mr.bat" t="Include" />
+                  <e p="README.footer.md" t="Include" />
+                  <e p="README.header.md" t="Include" />
+                  <e p="README.list" t="Include" />
+                  <e p="unicode" t="Include">
+                    <e p="unicode.dsp" t="Include" />
+                  </e>
+                  <e p="unicode.c" t="Include" />
+                </e>
               </e>
             </e>
             <e p="lib" t="Include">
               <e p="glfw3.dll" t="Include" />
+              <e p="spirv" t="Include">
+                <e p="shader.frag" t="Include" />
+                <e p="shader.vert" t="Include" />
+                <e p="shaderbuilder.bat" t="Include" />
+                <e p="shaderfrag.spv" t="Include" />
+                <e p="shadervert.spv" t="Include" />
+              </e>
             </e>
             <e p="src" t="Include">
               <e p="KrautVK.cpp" t="Include" />
               <e p="KrautVK.h" t="Include" />
+              <e p="KrautVKCommon.cpp" t="Include" />
               <e p="KrautVKCommon.h" t="Include" />
             </e>
           </e>
         </e>
       </e>
     </e>
-    <e p="C:\Users\John Crockett\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_PowerKraut.-852894099.00" t="ExcludeRecursive" />
+    <e p="C:\Users\John Crockett\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\John Crockett\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_PowerKraut.-852894099.00" t="ExcludeRecursive" />
   </component>
 </project>

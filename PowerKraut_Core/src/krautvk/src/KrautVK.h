@@ -17,25 +17,14 @@ limitations under the License.
 #ifndef KRAUTVK_H_
 #define KRAUTVK_H_
 
-#include "KrautVKCommon.h"
-
-//MACROS
-#define EXPORT extern "C" __declspec(dllexport)
-#define SUCCESS (0)
-#define GLFW_INIT_FAILED (-1)
-#define GLFW_WINDOW_CREATION_FAILED (-2)
-#define VULKAN_NOT_SUPPORTED (-3)
-#define VULKAN_INSTANCE_CREATION_FAILED (-4)
-#define VULKAN_DEVICE_CREATION_FAILED (-5)
-#define VULKAN_SURFACE_CREATION_FAILED (-6)
-#define VULKAN_SEMAPHORE_CREATION_FAILED (-7)
+#include "KrautVKCommon.cpp"
 
 //FUNCTION HEADERS
 namespace KrautVK {
 
     //KRAUTVK VERSION
     uint32_t major = 0;
-    uint32_t minor = 3;
+    uint32_t minor = 4;
     uint32_t patch = 0;
     uint32_t version = VK_MAKE_VERSION(major, minor, patch);
 
@@ -50,18 +39,24 @@ namespace KrautVK {
     PFN_vkDestroyInstance destroyInstance;
     PFN_vkEnumerateDeviceExtensionProperties enumerateDeviceExtensionProperties;
     PFN_vkDestroySurfaceKHR destroySurfaceKHR;
+    PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR getPhysicalDeviceSurfaceCapabilitiesKHR;
+    PFN_vkGetPhysicalDeviceSurfaceFormatsKHR getPhysicalDeviceSurfaceFormatsKHR;
+    PFN_vkGetPhysicalDeviceSurfacePresentModesKHR getPhysicalDeviceSurfacePresentModesKHR;
 
     PFN_vkGetDeviceProcAddr getDeviceProcAddr;
     PFN_vkGetDeviceQueue getDeviceQueue;
     PFN_vkDeviceWaitIdle deviceWaitIdle;
     PFN_vkDestroyDevice destroyDevice;
+    PFN_vkDestroyImageView destroyImageView;
     PFN_vkCreateSemaphore createSemaphore;
     PFN_vkCreateSwapchainKHR createSwapchainKHR;
+    PFN_vkCreateImageView createImageView;
+    PFN_vkCreateRenderPass createRenderPass;
+    PFN_vkCreateFramebuffer createFramebuffer;
+    PFN_vkCreateShaderModule createShaderModule;
     PFN_vkDestroySwapchainKHR destroySwapchainKHR;
+    PFN_vkDestroyShaderModule destroyShaderModule;
     PFN_vkGetSwapchainImagesKHR getSwapchainImagesKHR;
-    PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR getPhysicalDeviceSurfaceCapabilitiesKHR;
-    PFN_vkGetPhysicalDeviceSurfaceFormatsKHR getPhysicalDeviceSurfaceFormatsKHR;
-    PFN_vkGetPhysicalDeviceSurfacePresentModesKHR getPhysicalDeviceSurfacePresentModesKHR;
     PFN_vkAcquireNextImageKHR acquireNextImageKHR;
     PFN_vkQueuePresentKHR queuePresentKHR;
     PFN_vkQueueSubmit queueSubmit;
@@ -72,18 +67,25 @@ namespace KrautVK {
     PFN_vkDestroySemaphore destroySemaphore;
     PFN_vkBeginCommandBuffer beginCommandBuffer;
     PFN_vkCmdPipelineBarrier cmdPipelineBarrier;
-    PFN_vkCmdClearColorImage cmdClearColorImage;
     PFN_vkEndCommandBuffer endCommandBuffer;
+    PFN_vkCmdBeginRenderPass cmdBeginRenderPass;
+    PFN_vkCmdBindPipeline cmdBindPipeline;
+    PFN_vkCmdDraw cmdDraw;
+    PFN_vkCmdEndRenderPass cmdEndRenderPass;
+    PFN_vkDestroyPipeline destroyPipeline;
+    PFN_vkDestroyRenderPass destroyRenderPass;
+    PFN_vkDestroyFramebuffer destroyFramebuffer;
+    PFN_vkCreateGraphicsPipelines createGraphicsPipelines;
+    PFN_vkCreatePipelineLayout createPipelineLayout;
+    PFN_vkDestroyPipelineLayout destroyPipelineLayout;
 
     class KrautVK {
 
     private:
 
-        static KrautCommon kraut;
+        static int kvkInitGLFW(const int &width, const int &height, const char* title,const int &fullScreen);
 
-        static int kvkInitGLFW(int width, int height, char *title, int fullScreen);
-
-        static int kvkCheckExtensionAvailability(const char *extensionName, const std::vector<VkExtensionProperties> &availableExtensions);
+        static int kvkCheckExtensionAvailability(const char* extensionName, const std::vector<VkExtensionProperties> &availableExtensions);
 
         static void kvkGetRequiredDeviceExtensions(std::vector<const char*> &deviceExtensions);
 
@@ -109,19 +111,31 @@ namespace KrautVK {
 
         static VkPresentModeKHR kvkGetSwapChainPresentMode(std::vector<VkPresentModeKHR> presentModes);
 
-        static bool kvkCreateCommandBuffers();
+        static bool kvkCreateCommandBuffers(const uint32_t &width, const uint32_t &height);
 
-        static int kvkInitVulkan(const char *title);
+        static int kvkInitVulkan(const char* &title, const uint32_t &width, const uint32_t &height);
 
-        static int kvkClear();
+        static int kvkCreateRenderPass();
 
-        static bool kvkOnWindowSizeChanged();
+        static int kvkCreateFrameBuffers(const uint32_t &width, const uint32_t &height);
 
-        static bool kvkRecordCommandBuffers();
+        static void kvkClear();
+
+        static bool kvkOnWindowSizeChanged(const int &width, const int &height);
+
+        static bool kvkRecordCommandBuffers(const uint32_t &width, const uint32_t &height);
+
+        static int kvkCreatePipelines(const uint32_t &width, const uint32_t &height);
+
+        static GarbageCollector<VkPipelineLayout, PFN_vkDestroyPipelineLayout> kvkLoadPipelineLayout();
+
+        static GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule> kvkLoadShader(std::string const &filename);
 
     public:
 
-        static int kvkInit(int w, int h, char *title, int f);
+        static KrautCommon kraut;
+
+        static int kvkInit(const int &w, const int &h, const char* title, const int &f);
 
         static int kvkWindowShouldClose();
 
@@ -132,15 +146,15 @@ namespace KrautVK {
         static void kvkTerminate();
     };
 
-    EXPORT int init(int w, int h, char *title, int f);
+    EXPORT int KrautInit(int w, int h, char* title, int f, char* dllPath);
 
-    EXPORT int windowShouldClose();
+    EXPORT int KrautWindowShouldClose();
 
-    EXPORT void pollEvents();
+    EXPORT void KrautPollEvents();
 
-    EXPORT void terminate();
+    EXPORT void KrautTerminate();
 
-    EXPORT void draw();
+    EXPORT void KrautDraw();
 }
 
 #endif

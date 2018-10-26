@@ -14,16 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using PowerKraut_Core.kraut.util.exceptions;
 
 namespace PowerKraut_Core.kraut.netwrapper{
     internal static class KrautVK{
-        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "init")]
-        private static extern int Init(int width, int height, string title, bool fullscreen);
+        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.StdCall, EntryPoint = "KrautInit")]
+        private static extern int Init(int width, int height, string title, bool fullscreen, string dllPath);
 
         internal static void InitKrautVK(int width, int height, string title, bool fullscreen){
-            var status = Init(width, height, title, fullscreen);
+            var status = Init(width, height, title, fullscreen, AppDomain.CurrentDomain.BaseDirectory + "lib");
 
             switch (status){
                 case 0:
@@ -42,22 +44,28 @@ namespace PowerKraut_Core.kraut.netwrapper{
                     throw new KrautVKVulkanSurfaceCreationFailedException();
                 case -7:
                     throw new KrautVKSemaphoreCreationFailedException();
+                case -8:
+                    throw new KrautVKVulkanRenderPassCreationFailed();
+                case -9:
+                    throw new KrautVKVulkanFramebufferCreationFailed();
+                case -10:
+                    throw new KrautVKVulkanPipelineCreationFailed();
                 default:
                     throw new KrautVKUndefinedException();
             }
         }
          
-        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "windowShouldClose")]
+        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.StdCall, EntryPoint = "KrautWindowShouldClose")]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool WindowShouldClose();
         
-        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "pollEvents")]
+        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.StdCall, EntryPoint = "KrautPollEvents")]
         internal static extern void PollEvents();
         
-        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "terminate")]
+        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.StdCall, EntryPoint = "KrautTerminate")]
         internal static extern void Terminate();
 
-        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.Cdecl, EntryPoint = "draw")]
+        [DllImport("lib\\krautvk", CallingConvention = CallingConvention.StdCall, EntryPoint = "KrautDraw")]
         internal static extern void Draw();
     }
 }
