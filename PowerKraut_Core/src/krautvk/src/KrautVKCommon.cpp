@@ -142,5 +142,25 @@ namespace KrautVK {
                 1.0f
         };
     }
+
+    void RenderingResourcesData::DestroyRecources(const VkDevice &device, const VkCommandPool &pool) {
+        //Destroy Framebuffer
+        if (Framebuffer != VK_NULL_HANDLE)
+            destroyFramebuffer(device, Framebuffer, nullptr);
+
+        //Destroy Command Buffer
+        if (CommandBuffer != VK_NULL_HANDLE)
+            freeCommandBuffers(device, pool, 1, &CommandBuffer);
+
+        //Destroy Semaphores
+        if (ImageAvailableSemaphore != VK_NULL_HANDLE)
+            destroySemaphore(device, ImageAvailableSemaphore, nullptr);
+
+        if (FinishedRenderingSemaphore != VK_NULL_HANDLE)
+            destroySemaphore(device, FinishedRenderingSemaphore, nullptr);
+
+        if (Fence != VK_NULL_HANDLE)
+            destroyFence(device, Fence, nullptr);
+    }
 }
 

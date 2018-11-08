@@ -66,7 +66,7 @@ namespace PowerKraut_Core.kraut.core{
 
         private static void Main(string[] args){
             
-            PkInstance.Start(1920, 1080, "KrautDemo", false);
+            PkInstance.Start(1920, 1080, "Powerkraut", false);
         }
     }
 }

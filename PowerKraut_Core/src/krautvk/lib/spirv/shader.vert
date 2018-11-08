@@ -1,12 +1,16 @@
 #version 450
 
+layout(location = 0) in vec4 i_Position;
+layout(location = 1) in vec4 i_Color;
+
 out gl_PerVertex
 {
   vec4 gl_Position;
 };
 
+layout(location = 0) out vec4 v_Color;
+
 void main() {
-    vec2 pos[14] = vec2[14](vec2(-0.5, -0.7), vec2(-0.5, 0.7), vec2(-0.4, 0.7), vec2(-0.4, 0.0), vec2(-0.1, -0.35), vec2(-0.4, -0.7), vec2(-0.5, -0.7), 
-							vec2(0.1, -0.7), vec2(0.1, 0.7), vec2(0.2, 0.7), vec2(0.5, 0.7), vec2(0.2, 0.0), vec2(0.5, -0.7), vec2(0.2, -0.7));
-    gl_Position = vec4( pos[gl_VertexIndex + (7 * gl_InstanceIndex)], 0.0, 1.0 );
+    gl_Position = i_Position;
+    v_Color = i_Color;
 }

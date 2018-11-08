@@ -12,5 +12,6 @@ Global
 		{D04A2E70-77DF-40F2-BEBA-EB7EE742FEAB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D04A2E70-77DF-40F2-BEBA-EB7EE742FEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D04A2E70-77DF-40F2-BEBA-EB7EE742FEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D04A2E70-77DF-40F2-BEBA-EB7EE742FEAB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

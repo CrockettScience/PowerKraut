@@ -66,6 +66,10 @@
             </e>
             <e p="TargetDirectories.txt" t="Include" />
           </e>
+          <e p="data" t="Include">
+            <e p="shaderfrag.spv" t="Include" />
+            <e p="shadervert.spv" t="Include" />
+          </e>
           <e p="glfw3.dll" t="Include" />
           <e p="krautvk.cbp" t="Include" />
           <e p="krautvk.dll" t="Include" />
@@ -77,8 +81,10 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.0" t="Include">
-              <e p="PowerKraut_Core.AssemblyInfo.cs" t="Include" />
+            <e p="netcoreapp2.1" t="Include">
+              <e p="win10-x64" t="Include">
+                <e p="PowerKraut_Core.AssemblyInfo.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
@@ -96,13 +102,16 @@
                 <e p="KrautVKInitFailedException.cs" t="Include" />
                 <e p="KrautVKSemaphoreCreationFailedException.cs" t="Include" />
                 <e p="KrautVKUndefinedException.cs" t="Include" />
+                <e p="KrautVKVulkanCommandBufferCreationFailed.cs" t="Include" />
                 <e p="KrautVKVulkanDeviceCreationFailedException.cs" t="Include" />
+                <e p="KrautVKVulkanFenceCreationFailed.cs" t="Include" />
                 <e p="KrautVKVulkanFramebufferCreationFailed.cs" t="Include" />
                 <e p="KrautVKVulkanInstanceCreationFailedException.cs" t="Include" />
                 <e p="KrautVKVulkanNotSupportedException.cs" t="Include" />
                 <e p="KrautVKVulkanPipelineCreationFailed.cs" t="Include" />
                 <e p="KrautVKVulkanRenderPassCreationFailed.cs" t="Include" />
                 <e p="KrautVKVulkanSurfaceCreationFailedException.cs" t="Include" />
+                <e p="KrautVKVulkanVertexCreationFailed.cs" t="Include" />
                 <e p="KrautVKWindowCreationFailedException.cs" t="Include" />
               </e>
             </e>
@@ -110,6 +119,10 @@
           <e p="krautvk" t="Include">
             <e p="CMakeLists.txt" t="Include" />
             <e p="include" t="Include">
+              <e p="GLFW" t="Include">
+                <e p="glfw3.h" t="Include" />
+                <e p="glfw3native.h" t="Include" />
+              </e>
               <e p="STB" t="Include">
                 <e p=".travis.yml" t="Include" />
                 <e p="data" t="Include">

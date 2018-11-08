@@ -22,62 +22,6 @@ limitations under the License.
 //FUNCTION HEADERS
 namespace KrautVK {
 
-    //KRAUTVK VERSION
-    uint32_t major = 0;
-    uint32_t minor = 4;
-    uint32_t patch = 0;
-    uint32_t version = VK_MAKE_VERSION(major, minor, patch);
-
-    //VULKAN FUNCTION POINTERS
-    PFN_vkCreateInstance createInstance;
-
-    PFN_vkCreateDevice createDevice;
-    PFN_vkEnumeratePhysicalDevices enumeratePhysicalDevices;
-    PFN_vkGetPhysicalDeviceProperties getPhysicalDeviceProperties;
-    PFN_vkGetPhysicalDeviceFeatures getPhysicalDeviceFeatures;
-    PFN_vkGetPhysicalDeviceQueueFamilyProperties getPhysicalDeviceQueueFamilyProperties;
-    PFN_vkDestroyInstance destroyInstance;
-    PFN_vkEnumerateDeviceExtensionProperties enumerateDeviceExtensionProperties;
-    PFN_vkDestroySurfaceKHR destroySurfaceKHR;
-    PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR getPhysicalDeviceSurfaceCapabilitiesKHR;
-    PFN_vkGetPhysicalDeviceSurfaceFormatsKHR getPhysicalDeviceSurfaceFormatsKHR;
-    PFN_vkGetPhysicalDeviceSurfacePresentModesKHR getPhysicalDeviceSurfacePresentModesKHR;
-
-    PFN_vkGetDeviceProcAddr getDeviceProcAddr;
-    PFN_vkGetDeviceQueue getDeviceQueue;
-    PFN_vkDeviceWaitIdle deviceWaitIdle;
-    PFN_vkDestroyDevice destroyDevice;
-    PFN_vkDestroyImageView destroyImageView;
-    PFN_vkCreateSemaphore createSemaphore;
-    PFN_vkCreateSwapchainKHR createSwapchainKHR;
-    PFN_vkCreateImageView createImageView;
-    PFN_vkCreateRenderPass createRenderPass;
-    PFN_vkCreateFramebuffer createFramebuffer;
-    PFN_vkCreateShaderModule createShaderModule;
-    PFN_vkDestroySwapchainKHR destroySwapchainKHR;
-    PFN_vkDestroyShaderModule destroyShaderModule;
-    PFN_vkGetSwapchainImagesKHR getSwapchainImagesKHR;
-    PFN_vkAcquireNextImageKHR acquireNextImageKHR;
-    PFN_vkQueuePresentKHR queuePresentKHR;
-    PFN_vkQueueSubmit queueSubmit;
-    PFN_vkCreateCommandPool createCommandPool;
-    PFN_vkAllocateCommandBuffers allocateCommandBuffers;
-    PFN_vkFreeCommandBuffers freeCommandBuffers;
-    PFN_vkDestroyCommandPool destroyCommandPool;
-    PFN_vkDestroySemaphore destroySemaphore;
-    PFN_vkBeginCommandBuffer beginCommandBuffer;
-    PFN_vkCmdPipelineBarrier cmdPipelineBarrier;
-    PFN_vkEndCommandBuffer endCommandBuffer;
-    PFN_vkCmdBeginRenderPass cmdBeginRenderPass;
-    PFN_vkCmdBindPipeline cmdBindPipeline;
-    PFN_vkCmdDraw cmdDraw;
-    PFN_vkCmdEndRenderPass cmdEndRenderPass;
-    PFN_vkDestroyPipeline destroyPipeline;
-    PFN_vkDestroyRenderPass destroyRenderPass;
-    PFN_vkDestroyFramebuffer destroyFramebuffer;
-    PFN_vkCreateGraphicsPipelines createGraphicsPipelines;
-    PFN_vkCreatePipelineLayout createPipelineLayout;
-    PFN_vkDestroyPipelineLayout destroyPipelineLayout;
 
     class KrautVK {
 
@@ -97,6 +41,8 @@ namespace KrautVK {
 
         static int kvkCreateSemaphores();
 
+        static int kvkCreateFences();
+
         static bool kvkCreateSwapChain();
 
         static uint32_t kvkGetSwapChainNumImages(VkSurfaceCapabilitiesKHR surfaceCapabilities);
@@ -111,25 +57,25 @@ namespace KrautVK {
 
         static VkPresentModeKHR kvkGetSwapChainPresentMode(std::vector<VkPresentModeKHR> presentModes);
 
-        static bool kvkCreateCommandBuffers(const uint32_t &width, const uint32_t &height);
-
-        static int kvkInitVulkan(const char* &title, const uint32_t &width, const uint32_t &height);
+        static int kvkCreateCommandBuffers();
 
         static int kvkCreateRenderPass();
 
-        static int kvkCreateFrameBuffers(const uint32_t &width, const uint32_t &height);
+        static bool kvkCreateFrameBuffers(VkFramebuffer &framebuffer, VkImageView imageView);
 
-        static void kvkClear();
+        static bool kvkOnWindowSizeChanged();
 
-        static bool kvkOnWindowSizeChanged(const int &width, const int &height);
+        static bool kvkRecordCommandBuffers(VkCommandBuffer commandBuffer, const ImageParameters &imageParameters, VkFramebuffer &framebuffer);
 
-        static bool kvkRecordCommandBuffers(const uint32_t &width, const uint32_t &height);
-
-        static int kvkCreatePipelines(const uint32_t &width, const uint32_t &height);
+        static int kvkCreatePipelines();
 
         static GarbageCollector<VkPipelineLayout, PFN_vkDestroyPipelineLayout> kvkLoadPipelineLayout();
 
         static GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule> kvkLoadShader(std::string const &filename);
+
+        static int kvkCreateVertexBuffer();
+
+        static bool kvkAllocateBufferMemory(VkBuffer buffer, VkDeviceMemory *memory);
 
     public:
 

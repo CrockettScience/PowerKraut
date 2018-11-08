@@ -50,6 +50,12 @@ namespace PowerKraut_Core.kraut.netwrapper{
                     throw new KrautVKVulkanFramebufferCreationFailed();
                 case -10:
                     throw new KrautVKVulkanPipelineCreationFailed();
+                case -11:
+                    throw new KrautVKVulkanVertexCreationFailed();
+                case -12:
+                    throw new KrautVKVulkanFenceCreationFailed();
+                case -13:
+                    throw new KrautVKVulkanCommandBufferCreationFailed();
                 default:
                     throw new KrautVKUndefinedException();
             }

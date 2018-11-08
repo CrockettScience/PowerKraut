@@ -2,422 +2,39 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="krautvk" targetName="shaderbuilder" />
       <config projectName="krautvk" targetName="krautvk" />
+      <config projectName="krautvk" targetName="shaderbuilder" />
     </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" GENERATION_DIR="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.0/lib" />
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" GENERATION_DIR="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.1/win10-x64/lib" />
       <configuration PROFILE_NAME="Release" CONFIG_NAME="Release" GENERATION_DIR="$PROJECT_DIR$/../../lib" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a89cb1c0-d097-423e-9fcb-4e5a4f7038ab" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanFramebufferCreationFailed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanPipelineCreationFailed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanRenderPassCreationFailed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/.github/CONTRIBUTING.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/.github/PULL_REQUEST_TEMPLATE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/atari_8bit_font_revised.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/easy_font_raw.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/license.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_caves_limit_connectivity.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_caves_tiny_corridors.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_corner_caves.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_horizontal_corridors_v1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_horizontal_corridors_v2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_horizontal_corridors_v3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_limit_connectivity_fat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_limited_connectivity.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_maze_2_wide.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_maze_plus_2_wide.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_open_areas.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_ref2_corner_caves.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_rooms_and_corridors.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_rooms_and_corridors_2_wide_diagonal_bias.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_rooms_limit_connectivity.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_round_rooms_diagonal_corridors.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_sean_dungeon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_simple_caves_2_wide.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/herringbone/template_square_rooms_with_random_rects.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/map_01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/map_02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/data/map_03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/deprecated/rrsprintf.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/deprecated/stb_image.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/deprecated/stretchy_buffer.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/docs/other_libs.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/docs/stb_howto.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/docs/stb_voxel_render_interview.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/docs/why_public_domain.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_c_lexer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_connected_components.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_divide.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_dxt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_easy_font.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_herringbone_wang_tile.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_image.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_image_resize.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_image_write.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_leakcheck.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_perlin.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_rect_pack.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_sprintf.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_textedit.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_tilemap_editor.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_truetype.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_vorbis.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stb_voxel_render.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/stretchy_buffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/c_lexer_test.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/c_lexer_test.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/cave_main.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/cave_mesher.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/cave_parse.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/cave_parse.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/cave_render.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/caveview.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/caveview.dsw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/caveview.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/glext.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/glext_list.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/main.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/stb_gl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/stb_glprog.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/caveview/win32/SDL_windows_main.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/grid_reachability.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/herringbone.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/herringbone_generator.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/herringbone_map.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/herringbone_map.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/image_test.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/image_test.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/oversample/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/oversample/main.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/oversample/oversample.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/oversample/oversample.dsw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/oversample/stb_wingraph.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pg_test/pg_test.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/basi0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/basi2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/basi4a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/basi6a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/basn0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/basn2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/basn4a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/basn6a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/bgai4a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/bgan6a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/bggn4a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/bgyn6a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/oi1n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/oi1n2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/oi2n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/oi2n2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/oi4n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/oi4n2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/oi9n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/oi9n2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/tbbn2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/tbgn2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/16bit/tbwn0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/PngSuite.LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xc1n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xc9n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xcrn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xcsn0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xd0n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xd3n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xd9n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xdtn0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xhdn0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xlfn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xs1n0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xs2n0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xs4n0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/corrupt/xs7n0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi0g02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi4a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basi6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn0g02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn4a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/basn6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/bgai4a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/bgan6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/bgbn4a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/bgwn6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s01i3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s01n3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s02i3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s02n3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s03i3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s03n3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s04i3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s04n3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s05i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s05n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s06i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s06n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s07i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s07n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s08i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s08n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s09i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s09n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s32i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s32n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s33i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s33n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s34i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s34n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s35i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s35n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s36i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s36n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s37i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s37n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s38i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s38n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s39i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s39n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s40i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/s40n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tbbn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tbbn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tbgn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tbrn2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tbwn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tbyn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tm3n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tp0n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tp0n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tp0n3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/tp1n3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/z00n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/z03n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/z06n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary/z09n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi0g02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi4a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basi6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn0g01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn0g02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn4a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/basn6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/bgai4a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/bgan6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/bgbn4a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/bgwn6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s01i3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s01n3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s02i3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s02n3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s03i3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s03n3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s04i3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s04n3p01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s05i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s05n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s06i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s06n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s07i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s07n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s08i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s08n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s09i3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s09n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s32i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s32n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s33i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s33n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s34i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s34n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s35i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s35n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s36i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s36n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s37i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s37n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s38i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s38n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s39i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s39n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s40i3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/s40n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tbbn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tbbn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tbgn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tbrn2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tbwn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tbyn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tm3n3p02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tp0n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tp0n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tp0n3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/tp1n3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/z00n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/z03n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/z06n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/primary_check/z09n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ccwn2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ccwn3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cdfn2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cdhn2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cdsn2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cdun2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ch1n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ch2n3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cm0n0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cm7n0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cm9n0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cs3n2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cs3n3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cs5n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cs5n3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cs8n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cs8n3p08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ct0n0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ct1n0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cten0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ctfn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ctgn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/cthn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ctjn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ctzn0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f00n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f00n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f01n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f01n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f02n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f02n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f03n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f03n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f04n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f04n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/f99n0g04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g03n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g03n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g03n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g04n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g04n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g04n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g05n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g05n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g05n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g07n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g07n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g07n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g10n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g10n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g10n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g25n0g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g25n2c08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/g25n3p04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/pp0n2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/pp0n6a08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ps1n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ps1n2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ps2n0g08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/pngsuite/unused/ps2n2c16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/prerelease/stb_lib.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/resample_test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/resample_test_c.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/resize.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/sdf/sdf_test.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/sdf/sdf_test_arial_16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/sdf/sdf_test_times_16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/sdf/sdf_test_times_50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stb.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stb.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stb.dsw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stb_cpp.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stb_cpp.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stblib.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stblib_test.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stblib_test_companion.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stretch_test.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stretch_test.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/stretchy_buffer_test.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_c_compilation.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_c_lexer.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_cpp_compilation.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_dxt.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_easyfont.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_image.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_image_write.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_perlin.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_sprintf.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_truetype.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_vorbis.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/test_voxel.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/textedit_sample.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/tilemap_editor_integration_example.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/vorbseek/vorbseek.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tests/vorbseek/vorbseek.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/README.footer.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/README.header.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/README.list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/easy_font_maker.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/make_readme.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/make_readme.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/mr.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/unicode.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/STB/tools/unicode/unicode.dsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spirv/shader.frag" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spirv/shader.vert" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spirv/shaderbuilder.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/KrautVKCommon.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanCommandBufferCreationFailed.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanFenceCreationFailed.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanVertexCreationFailed.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../.idea/.idea.PowerKraut/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/.idea.PowerKraut/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/.idea.PowerKraut/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/.idea.PowerKraut/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PowerKraut.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PowerKraut_Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../PowerKraut_Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kraut/core/PowerKraut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/core/PowerKraut.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kraut/netwrapper/KrautVK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/netwrapper/KrautVK.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/spirv/shader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/spirv/shader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shader.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/spirv/shaderfrag.spv" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shaderfrag.spv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/spirv/shadervert.spv" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shadervert.spv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KrautVK.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVK.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KrautVK.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVK.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KrautVKCommon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKCommon.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KrautVKCommon.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKCommon.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.0/lib/" />
     <ignored path="$PROJECT_DIR$/../../lib/" />
+    <ignored path="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.1/win10-x64/lib/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -429,16 +46,21 @@
     <session id="387941143">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.38" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.38" value="2" />
+          <entry key="project.open.time.40" value="1" />
+          <entry key="project.open.time.41" value="2" />
+          <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.52" value="1" />
+          <entry key="project.open.time.95" value="1" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="3316" />
-          <entry key="h" value="1697" />
+          <entry key="cpp" value="5883" />
+          <entry key="h" value="2975" />
           <entry key="mm" value="10" />
           <entry key="txt" value="614" />
         </counts>
@@ -446,38 +68,39 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="614" />
-          <entry key="ObjectiveC" value="5023" />
+          <entry key="ObjectiveC" value="8868" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Makefile" value="1" />
+          <entry key="Makefile" value="2" />
+          <entry key="PowerKraut_Core (disassembly)" value="1" />
           <entry key="cpp" value="9" />
           <entry key="dotnet (disassembly)" value="20" />
-          <entry key="h" value="12" />
+          <entry key="h" value="13" />
           <entry key="tcc" value="4" />
-          <entry key="txt" value="1" />
+          <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CMakeLists.txt" value="1" />
-          <entry key="Disassembly" value="20" />
-          <entry key="ObjectiveC" value="25" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="CMakeLists.txt" value="2" />
+          <entry key="Disassembly" value="21" />
+          <entry key="ObjectiveC" value="26" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.42602825">
+    <splitter split-orientation="horizontal" split-proportion="0.3707483">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/KrautVK.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="15" selection-start-line="15" selection-end-line="15" />
+                <state relative-caret-position="255">
+                  <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -485,20 +108,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="51" column="39" lean-forward="true" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-                  <folding>
-                    <element signature="e#98#114#0" expanded="true" />
-                    <element signature="e#446#822#1" />
-                    <element signature="e#1117#1433#1" />
-                    <element signature="e#1436#1658#1" />
-                    <element signature="e#1661#2020#1" />
-                    <element signature="e#2023#2251#1" />
-                    <element signature="e#2254#2329#1" />
-                    <element signature="e#2332#2918#1" />
-                    <element signature="e#7381#7399#0" expanded="true" />
-                    <element signature="e#7404#8748#1" />
-                  </folding>
+                <state relative-caret-position="301">
+                  <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -506,18 +117,18 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" selection-start-line="6" selection-end-line="6" />
+                <state relative-caret-position="2280">
+                  <caret line="152" column="64" selection-start-line="152" selection-start-column="64" selection-end-line="152" selection-end-column="64" />
                   <folding>
-                    <element signature="e#126#544#0" />
-                    <element signature="e#558#1171#0" />
-                    <element signature="e#1185#2721#0" />
-                    <element signature="e#2735#3538#0" />
-                    <element signature="e#3552#4423#0" />
+                    <element signature="e#670#1042#0" />
+                    <element signature="e#1048#1587#0" />
+                    <element signature="e#1593#2975#0" />
+                    <element signature="e#2981#3686#0" />
+                    <element signature="e#3692#4473#0" />
                   </folding>
                 </state>
               </provider>
@@ -526,36 +137,42 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/KrautVK.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="490">
-                  <caret line="613" column="26" selection-start-line="613" selection-start-column="26" selection-end-line="613" selection-end-column="26" />
+                <state relative-caret-position="356">
+                  <caret line="1289" column="18" selection-start-line="1289" selection-start-column="18" selection-end-line="1289" selection-end-column="18" />
                   <folding>
-                    <element signature="e#661#1511#0" />
-                    <element signature="e#1517#1882#0" />
-                    <element signature="e#1888#2073#0" />
-                    <element signature="e#2079#5595#0" />
-                    <element signature="e#5601#10124#0" />
-                    <element signature="e#10130#21164#0" />
-                    <element signature="e#21170#22016#0" />
-                    <element signature="e#22022#28155#0" />
-                    <element signature="e#28161#28821#0" />
-                    <element signature="e#28827#29678#0" />
-                    <element signature="e#29684#30983#0" />
-                    <element signature="e#30989#33293#0" />
-                    <element signature="e#33299#34281#0" />
-                    <element signature="e#34287#34972#0" />
-                    <element signature="e#43598#44413#0" />
-                    <element signature="e#44419#46817#0" />
-                    <element signature="e#46823#47389#0" />
-                    <element signature="e#47395#47496#0" />
-                    <element signature="e#50923#50986#0" />
-                    <element signature="e#50992#53880#0" />
-                    <element signature="e#57901#61688#0" />
-                    <element signature="e#77857#79198#0" />
-                    <element signature="e#79204#80487#0" />
-                    <element signature="e#81970#82472#1" />
-                    <element signature="e#82484#82569#1" />
-                    <element signature="e#82581#82646#1" />
-                    <element signature="e#82658#82721#1" />
+                    <element signature="e#645#1482#0" />
+                    <element signature="e#1488#1853#0" />
+                    <element signature="e#1859#2044#0" />
+                    <element signature="e#2050#5566#0" />
+                    <element signature="e#5572#10557#0" />
+                    <element signature="e#10563#23426#0" />
+                    <element signature="e#23432#24389#0" />
+                    <element signature="e#24395#25124#0" />
+                    <element signature="e#25130#33769#0" />
+                    <element signature="e#31367#32027#0" />
+                    <element signature="e#32033#32884#0" />
+                    <element signature="e#32890#34189#0" />
+                    <element signature="e#36809#38864#1" />
+                    <element signature="e#38957#39852#1" />
+                    <element signature="e#37493#38178#0" />
+                    <element signature="e#38184#40049#0" />
+                    <element signature="e#40055#48601#0" />
+                    <element signature="e#48607#48692#0" />
+                    <element signature="e#48698#48799#0" />
+                    <element signature="e#48805#53006#0" />
+                    <element signature="e#53012#53075#0" />
+                    <element signature="e#53081#55507#0" />
+                    <element signature="e#55513#61341#0" />
+                    <element signature="e#61347#65362#0" />
+                    <element signature="e#65368#82381#0" />
+                    <element signature="e#82387#83728#0" />
+                    <element signature="e#83734#85017#0" />
+                    <element signature="e#88147#89558#0" />
+                    <element signature="e#89564#91666#0" />
+                    <element signature="e#91678#92180#1" />
+                    <element signature="e#92192#92277#1" />
+                    <element signature="e#92289#92354#1" />
+                    <element signature="e#92366#92429#1" />
                   </folding>
                 </state>
               </provider>
@@ -575,12 +192,24 @@
       <find>3</find>
       <find>triangle</find>
       <find>instance</find>
+      <find>kraut.SwapChain</find>
+      <find>createCommandPool</find>
+      <find>createcommandbuffers</find>
+      <find>allocatecommandbuffers</find>
+      <find>createFrameBuffer</find>
+      <find>Resourcecoun</find>
+      <find>/*</find>
+      <find>extent</find>
+      <find>swapchain</find>
+      <find>layout</find>
+      <find>VertexData</find>
     </findStrings>
     <replaceStrings>
       <replace>int16_t</replace>
       <replace>false</replace>
       <replace>kraut.PresentBuffer.CommandPool</replace>
       <replace>kraut.Semaphores.RenderingFinishedSemaphore</replace>
+      <replace>kraut.Vulkan.SwapChain</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -597,11 +226,11 @@
         <option value="$PROJECT_DIR$/src/KVKCommon.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/KrautVKExport.h" />
-        <option value="$PROJECT_DIR$/src/KrautVKCommon.cpp" />
         <option value="$PROJECT_DIR$/src/KrautVKExport.cpp" />
-        <option value="$PROJECT_DIR$/src/KrautVK.cpp" />
+        <option value="$PROJECT_DIR$/src/KrautVKCommon.cpp" />
         <option value="$PROJECT_DIR$/src/KrautVK.h" />
         <option value="$PROJECT_DIR$/src/KrautVKCommon.h" />
+        <option value="$PROJECT_DIR$/src/KrautVK.cpp" />
       </list>
     </option>
   </component>
@@ -613,16 +242,26 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="527" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="krautvk" type="cbb8eebc:String" user="krautvk" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -639,22 +278,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="krautvk" type="cbb8eebc:String" user="krautvk" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.1/win10-x64/lib" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RecentsManager">
@@ -675,17 +303,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.krautvk">
-    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Release" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="krautvk" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="krautvk" CONFIG_NAME="Debug">
+    <configuration name="krautvk" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="krautvk" CONFIG_NAME="Release">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="shaderbuilder" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="shaderbuilder" CONFIG_NAME="Debug">
+    <configuration name="shaderbuilder" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="shaderbuilder" CONFIG_NAME="Release">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -721,12 +349,19 @@
       <workItem from="1533175713758" duration="39000" />
       <workItem from="1534476257413" duration="1028000" />
       <workItem from="1540333995423" duration="20414000" />
-      <workItem from="1540397513313" duration="57826000" />
+      <workItem from="1540397513313" duration="58958000" />
+      <workItem from="1540954278169" duration="709000" />
+      <workItem from="1541467990196" duration="7056000" />
+      <workItem from="1541519959817" duration="3824000" />
+      <workItem from="1541564035269" duration="5727000" />
+      <workItem from="1541604645478" duration="6173000" />
+      <workItem from="1541640316621" duration="9345000" />
+      <workItem from="1541691653508" duration="5616000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160507000" />
+    <option name="totallyTimeSpent" value="200089000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -741,17 +376,17 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13166311" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.05970149" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.329718" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.19739696" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.19522777" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32957393" />
       <window_info anchor="bottom" id="Version Control" order="10" />
@@ -768,6 +403,17 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/KrautVK.cpp</url>
+          <line>807</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -834,13 +480,6 @@
     <entry file="file://C:/Program Files/mingw-w64/x86_64-7.3.0-posix-seh-rt_v5-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_vector.h" />
     <entry file="file://$PROJECT_DIR$/src/KVKCommon.cpp" />
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/Makefile" />
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/alloc_traits.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -911,92 +550,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KrautVKExport.h">
+    <entry file="file://$PROJECT_DIR$/src/KrautVKExport.h" />
+    <entry file="file://$PROJECT_DIR$/src/KrautVKExport.cpp" />
+    <entry file="file://$PROJECT_DIR$/include/STB/tests/Makefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="2280">
+          <caret line="152" column="64" selection-start-line="152" selection-start-column="64" selection-end-line="152" selection-end-column="64" />
           <folding>
-            <element signature="e#126#544#0" />
-            <element signature="e#558#1171#0" />
-            <element signature="e#1185#2721#0" />
-            <element signature="e#2735#3538#0" />
-            <element signature="e#3552#4423#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KrautVKExport.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KrautVK.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="613" column="26" selection-start-line="613" selection-start-column="26" selection-end-line="613" selection-end-column="26" />
-          <folding>
-            <element signature="e#661#1511#0" />
-            <element signature="e#1517#1882#0" />
-            <element signature="e#1888#2073#0" />
-            <element signature="e#2079#5595#0" />
-            <element signature="e#5601#10124#0" />
-            <element signature="e#10130#21164#0" />
-            <element signature="e#21170#22016#0" />
-            <element signature="e#22022#28155#0" />
-            <element signature="e#28161#28821#0" />
-            <element signature="e#28827#29678#0" />
-            <element signature="e#29684#30983#0" />
-            <element signature="e#30989#33293#0" />
-            <element signature="e#33299#34281#0" />
-            <element signature="e#34287#34972#0" />
-            <element signature="e#43598#44413#0" />
-            <element signature="e#44419#46817#0" />
-            <element signature="e#46823#47389#0" />
-            <element signature="e#47395#47496#0" />
-            <element signature="e#50923#50986#0" />
-            <element signature="e#50992#53880#0" />
-            <element signature="e#57901#61688#0" />
-            <element signature="e#77857#79198#0" />
-            <element signature="e#79204#80487#0" />
-            <element signature="e#81970#82472#1" />
-            <element signature="e#82484#82569#1" />
-            <element signature="e#82581#82646#1" />
-            <element signature="e#82658#82721#1" />
+            <element signature="e#670#1042#0" />
+            <element signature="e#1048#1587#0" />
+            <element signature="e#1593#2975#0" />
+            <element signature="e#2981#3686#0" />
+            <element signature="e#3692#4473#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KrautVK.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="255">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="933" selection-start-line="933" selection-end-line="933" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="51" column="39" lean-forward="true" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+        <state relative-caret-position="301">
+          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KrautVK.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="1289" column="18" selection-start-line="1289" selection-start-column="18" selection-end-line="1289" selection-end-column="18" />
           <folding>
-            <element signature="e#98#114#0" expanded="true" />
-            <element signature="e#446#822#1" />
-            <element signature="e#1117#1433#1" />
-            <element signature="e#1436#1658#1" />
-            <element signature="e#1661#2020#1" />
-            <element signature="e#2023#2251#1" />
-            <element signature="e#2254#2329#1" />
-            <element signature="e#2332#2918#1" />
-            <element signature="e#7381#7399#0" expanded="true" />
-            <element signature="e#7404#8748#1" />
+            <element signature="e#645#1482#0" />
+            <element signature="e#1488#1853#0" />
+            <element signature="e#1859#2044#0" />
+            <element signature="e#2050#5566#0" />
+            <element signature="e#5572#10557#0" />
+            <element signature="e#10563#23426#0" />
+            <element signature="e#23432#24389#0" />
+            <element signature="e#24395#25124#0" />
+            <element signature="e#25130#33769#0" />
+            <element signature="e#31367#32027#0" />
+            <element signature="e#32033#32884#0" />
+            <element signature="e#32890#34189#0" />
+            <element signature="e#36809#38864#1" />
+            <element signature="e#38957#39852#1" />
+            <element signature="e#37493#38178#0" />
+            <element signature="e#38184#40049#0" />
+            <element signature="e#40055#48601#0" />
+            <element signature="e#48607#48692#0" />
+            <element signature="e#48698#48799#0" />
+            <element signature="e#48805#53006#0" />
+            <element signature="e#53012#53075#0" />
+            <element signature="e#53081#55507#0" />
+            <element signature="e#55513#61341#0" />
+            <element signature="e#61347#65362#0" />
+            <element signature="e#65368#82381#0" />
+            <element signature="e#82387#83728#0" />
+            <element signature="e#83734#85017#0" />
+            <element signature="e#88147#89558#0" />
+            <element signature="e#89564#91666#0" />
+            <element signature="e#91678#92180#1" />
+            <element signature="e#92192#92277#1" />
+            <element signature="e#92289#92354#1" />
+            <element signature="e#92366#92429#1" />
           </folding>
         </state>
       </provider>
