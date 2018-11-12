@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="krautvk" targetName="krautvk" />
       <config projectName="krautvk" targetName="shaderbuilder" />
+      <config projectName="krautvk" targetName="krautvk" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,18 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a89cb1c0-d097-423e-9fcb-4e5a4f7038ab" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanCommandBufferCreationFailed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanFenceCreationFailed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanVertexCreationFailed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/.idea.PowerKraut/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/.idea.PowerKraut/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../PowerKraut.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PowerKraut.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PowerKraut_Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../PowerKraut_Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kraut/netwrapper/KrautVK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/netwrapper/KrautVK.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/spirv/shader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shader.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/spirv/shader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shader.vert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/spirv/shaderfrag.spv" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shaderfrag.spv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/spirv/shadervert.spv" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shadervert.spv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KrautVK.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVK.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KrautVK.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVK.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KrautVKCommon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKCommon.cpp" afterDir="false" />
@@ -46,35 +35,36 @@
     <session id="387941143">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.38" value="2" />
+          <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.41" value="2" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.95" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="5883" />
-          <entry key="h" value="2975" />
-          <entry key="mm" value="10" />
+          <entry key="cpp" value="7233" />
+          <entry key="h" value="3386" />
+          <entry key="mm" value="24" />
           <entry key="txt" value="614" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="614" />
-          <entry key="ObjectiveC" value="8868" />
+          <entry key="ObjectiveC" value="10643" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Makefile" value="2" />
-          <entry key="PowerKraut_Core (disassembly)" value="1" />
+          <entry key="Makefile" value="3" />
+          <entry key="PowerKraut_Core (disassembly)" value="4" />
           <entry key="cpp" value="9" />
           <entry key="dotnet (disassembly)" value="20" />
           <entry key="h" value="13" />
@@ -85,22 +75,22 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="2" />
-          <entry key="Disassembly" value="21" />
+          <entry key="Disassembly" value="24" />
           <entry key="ObjectiveC" value="26" />
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3707483">
+    <splitter split-orientation="horizontal" split-proportion="0.3107676">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/KrautVK.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+                <state relative-caret-position="1605">
+                  <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -108,8 +98,19 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="301">
-                  <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+                <state relative-caret-position="345">
+                  <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+                  <folding>
+                    <element signature="e#6138#7484#1" />
+                    <element signature="e#6712#7600#1" />
+                    <element signature="e#7564#7688#1" />
+                    <element signature="e#7742#7985#1" />
+                    <element signature="e#7992#8412#1" />
+                    <element signature="e#8419#8738#1" />
+                    <element signature="e#8745#9091#1" />
+                    <element signature="e#9098#9501#1" />
+                    <element signature="e#10247#10334#1" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -121,14 +122,16 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2280">
-                  <caret line="152" column="64" selection-start-line="152" selection-start-column="64" selection-end-line="152" selection-end-column="64" />
+                <state relative-caret-position="240">
+                  <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
                   <folding>
                     <element signature="e#670#1042#0" />
                     <element signature="e#1048#1587#0" />
                     <element signature="e#1593#2975#0" />
                     <element signature="e#2981#3686#0" />
                     <element signature="e#3692#4473#0" />
+                    <element signature="e#4479#4671#0" />
+                    <element signature="e#4677#5439#0" />
                   </folding>
                 </state>
               </provider>
@@ -137,42 +140,39 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/KrautVK.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="356">
-                  <caret line="1289" column="18" selection-start-line="1289" selection-start-column="18" selection-end-line="1289" selection-end-column="18" />
+                <state relative-caret-position="555">
+                  <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
                   <folding>
-                    <element signature="e#645#1482#0" />
                     <element signature="e#1488#1853#0" />
                     <element signature="e#1859#2044#0" />
                     <element signature="e#2050#5566#0" />
                     <element signature="e#5572#10557#0" />
-                    <element signature="e#10563#23426#0" />
-                    <element signature="e#23432#24389#0" />
-                    <element signature="e#24395#25124#0" />
                     <element signature="e#25130#33769#0" />
-                    <element signature="e#31367#32027#0" />
-                    <element signature="e#32033#32884#0" />
-                    <element signature="e#32890#34189#0" />
-                    <element signature="e#36809#38864#1" />
-                    <element signature="e#38957#39852#1" />
-                    <element signature="e#37493#38178#0" />
-                    <element signature="e#38184#40049#0" />
-                    <element signature="e#40055#48601#0" />
-                    <element signature="e#48607#48692#0" />
-                    <element signature="e#48698#48799#0" />
-                    <element signature="e#48805#53006#0" />
-                    <element signature="e#53012#53075#0" />
-                    <element signature="e#53081#55507#0" />
-                    <element signature="e#55513#61341#0" />
-                    <element signature="e#61347#65362#0" />
-                    <element signature="e#65368#82381#0" />
-                    <element signature="e#82387#83728#0" />
-                    <element signature="e#83734#85017#0" />
-                    <element signature="e#88147#89558#0" />
-                    <element signature="e#89564#91666#0" />
-                    <element signature="e#91678#92180#1" />
-                    <element signature="e#92192#92277#1" />
-                    <element signature="e#92289#92354#1" />
-                    <element signature="e#92366#92429#1" />
+                    <element signature="e#33775#34435#0" />
+                    <element signature="e#34441#35292#0" />
+                    <element signature="e#35298#36597#0" />
+                    <element signature="e#36603#38907#0" />
+                    <element signature="e#38913#39895#0" />
+                    <element signature="e#39901#40586#0" />
+                    <element signature="e#40620#41537#0" />
+                    <element signature="e#42463#51010#0" />
+                    <element signature="e#51016#51101#0" />
+                    <element signature="e#51107#51208#0" />
+                    <element signature="e#51214#55415#0" />
+                    <element signature="e#55421#55484#0" />
+                    <element signature="e#57922#63750#0" />
+                    <element signature="e#63756#65320#0" />
+                    <element signature="e#65326#82339#0" />
+                    <element signature="e#82345#83686#0" />
+                    <element signature="e#88106#89517#0" />
+                    <element signature="e#87292#88171#0" />
+                    <element signature="e#87250#88074#0" />
+                    <element signature="e#87149#87768#0" />
+                    <element signature="e#93217#96088#0" />
+                    <element signature="e#91637#92139#1" />
+                    <element signature="e#92151#92236#1" />
+                    <element signature="e#92248#92313#1" />
+                    <element signature="e#92400#92461#1" />
                   </folding>
                 </state>
               </provider>
@@ -203,6 +203,11 @@
       <find>swapchain</find>
       <find>layout</find>
       <find>VertexData</find>
+      <find>printf</find>
+      <find>cout</find>
+      <find>bindbuffermemory</find>
+      <find>mapMem</find>
+      <find>kvkbase</find>
     </findStrings>
     <replaceStrings>
       <replace>int16_t</replace>
@@ -227,10 +232,10 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/KrautVKExport.h" />
         <option value="$PROJECT_DIR$/src/KrautVKExport.cpp" />
-        <option value="$PROJECT_DIR$/src/KrautVKCommon.cpp" />
         <option value="$PROJECT_DIR$/src/KrautVK.h" />
-        <option value="$PROJECT_DIR$/src/KrautVKCommon.h" />
+        <option value="$PROJECT_DIR$/src/KrautVKCommon.cpp" />
         <option value="$PROJECT_DIR$/src/KrautVK.cpp" />
+        <option value="$PROJECT_DIR$/src/KrautVKCommon.h" />
       </list>
     </option>
   </component>
@@ -242,7 +247,8 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="601" />
+    <option name="y" value="-16" />
     <option name="width" value="974" />
     <option name="height" value="527" />
   </component>
@@ -251,17 +257,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="krautvk" type="cbb8eebc:String" user="krautvk" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,6 +268,17 @@
               <item name="krautvk" type="b2602c69:ProjectViewProjectNode" />
               <item name="krautvk" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="krautvk" type="cbb8eebc:String" user="krautvk" />
             </path>
           </expand>
           <select />
@@ -356,12 +362,13 @@
       <workItem from="1541564035269" duration="5727000" />
       <workItem from="1541604645478" duration="6173000" />
       <workItem from="1541640316621" duration="9345000" />
-      <workItem from="1541691653508" duration="5616000" />
+      <workItem from="1541691653508" duration="6087000" />
+      <workItem from="1541973435349" duration="17013000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200089000" />
+    <option name="totallyTimeSpent" value="217573000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -376,17 +383,17 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.05970149" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.0" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.329718" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.19522777" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.19631237" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32957393" />
       <window_info anchor="bottom" id="Version Control" order="10" />
@@ -405,18 +412,24 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/KrautVK.cpp</url>
-          <line>807</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PowerKraut_Core">
+        <watch expression="Com::kraut" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>Com::kraut</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>kraut</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>Tools::rootPath</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -449,21 +462,6 @@
       </expression>
       <expression>
         <expression-string>kvk.presentationCmdBuffers</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>presentationCmdBuffers[0]</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>presentationCmdBuffers[imageIndex]</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>renderingFinishedSemaphore</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -552,38 +550,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KrautVKExport.h" />
     <entry file="file://$PROJECT_DIR$/src/KrautVKExport.cpp" />
-    <entry file="file://$PROJECT_DIR$/include/STB/tests/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2280">
-          <caret line="152" column="64" selection-start-line="152" selection-start-column="64" selection-end-line="152" selection-end-column="64" />
-          <folding>
-            <element signature="e#670#1042#0" />
-            <element signature="e#1048#1587#0" />
-            <element signature="e#1593#2975#0" />
-            <element signature="e#2981#3686#0" />
-            <element signature="e#3692#4473#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KrautVK.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -594,51 +564,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.h">
+    <entry file="file://$PROJECT_DIR$/include/STB/tests/Makefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding>
+            <element signature="e#670#1042#0" />
+            <element signature="e#1048#1587#0" />
+            <element signature="e#1593#2975#0" />
+            <element signature="e#2981#3686#0" />
+            <element signature="e#3692#4473#0" />
+            <element signature="e#4479#4671#0" />
+            <element signature="e#4677#5439#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KrautVK.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KrautVK.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="1289" column="18" selection-start-line="1289" selection-start-column="18" selection-end-line="1289" selection-end-column="18" />
+        <state relative-caret-position="555">
+          <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
           <folding>
-            <element signature="e#645#1482#0" />
             <element signature="e#1488#1853#0" />
             <element signature="e#1859#2044#0" />
             <element signature="e#2050#5566#0" />
             <element signature="e#5572#10557#0" />
-            <element signature="e#10563#23426#0" />
-            <element signature="e#23432#24389#0" />
-            <element signature="e#24395#25124#0" />
             <element signature="e#25130#33769#0" />
-            <element signature="e#31367#32027#0" />
-            <element signature="e#32033#32884#0" />
-            <element signature="e#32890#34189#0" />
-            <element signature="e#36809#38864#1" />
-            <element signature="e#38957#39852#1" />
-            <element signature="e#37493#38178#0" />
-            <element signature="e#38184#40049#0" />
-            <element signature="e#40055#48601#0" />
-            <element signature="e#48607#48692#0" />
-            <element signature="e#48698#48799#0" />
-            <element signature="e#48805#53006#0" />
-            <element signature="e#53012#53075#0" />
-            <element signature="e#53081#55507#0" />
-            <element signature="e#55513#61341#0" />
-            <element signature="e#61347#65362#0" />
-            <element signature="e#65368#82381#0" />
-            <element signature="e#82387#83728#0" />
-            <element signature="e#83734#85017#0" />
-            <element signature="e#88147#89558#0" />
-            <element signature="e#89564#91666#0" />
-            <element signature="e#91678#92180#1" />
-            <element signature="e#92192#92277#1" />
-            <element signature="e#92289#92354#1" />
-            <element signature="e#92366#92429#1" />
+            <element signature="e#33775#34435#0" />
+            <element signature="e#34441#35292#0" />
+            <element signature="e#35298#36597#0" />
+            <element signature="e#36603#38907#0" />
+            <element signature="e#38913#39895#0" />
+            <element signature="e#39901#40586#0" />
+            <element signature="e#40620#41537#0" />
+            <element signature="e#42463#51010#0" />
+            <element signature="e#51016#51101#0" />
+            <element signature="e#51107#51208#0" />
+            <element signature="e#51214#55415#0" />
+            <element signature="e#55421#55484#0" />
+            <element signature="e#57922#63750#0" />
+            <element signature="e#63756#65320#0" />
+            <element signature="e#65326#82339#0" />
+            <element signature="e#82345#83686#0" />
+            <element signature="e#88106#89517#0" />
+            <element signature="e#87292#88171#0" />
+            <element signature="e#87250#88074#0" />
+            <element signature="e#87149#87768#0" />
+            <element signature="e#93217#96088#0" />
+            <element signature="e#91637#92139#1" />
+            <element signature="e#92151#92236#1" />
+            <element signature="e#92248#92313#1" />
+            <element signature="e#92400#92461#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+          <folding>
+            <element signature="e#6138#7484#1" />
+            <element signature="e#6712#7600#1" />
+            <element signature="e#7564#7688#1" />
+            <element signature="e#7742#7985#1" />
+            <element signature="e#7992#8412#1" />
+            <element signature="e#8419#8738#1" />
+            <element signature="e#8745#9091#1" />
+            <element signature="e#9098#9501#1" />
+            <element signature="e#10247#10334#1" />
           </folding>
         </state>
       </provider>

@@ -20,8 +20,7 @@ limitations under the License.
 #include "KrautVKCommon.cpp"
 
 //FUNCTION HEADERS
-namespace KrautVK {
-
+namespace KVKBase {
 
     class KrautVK {
 
@@ -39,10 +38,6 @@ namespace KrautVK {
 
         static int kvkCreateDevice();
 
-        static int kvkCreateSemaphores();
-
-        static int kvkCreateFences();
-
         static bool kvkCreateSwapChain();
 
         static uint32_t kvkGetSwapChainNumImages(VkSurfaceCapabilitiesKHR surfaceCapabilities);
@@ -57,7 +52,7 @@ namespace KrautVK {
 
         static VkPresentModeKHR kvkGetSwapChainPresentMode(std::vector<VkPresentModeKHR> presentModes);
 
-        static int kvkCreateCommandBuffers();
+        static int kvkCreateCommandPool();
 
         static int kvkCreateRenderPass();
 
@@ -65,21 +60,30 @@ namespace KrautVK {
 
         static bool kvkOnWindowSizeChanged();
 
-        static bool kvkRecordCommandBuffers(VkCommandBuffer commandBuffer, const ImageParameters &imageParameters, VkFramebuffer &framebuffer);
+        static bool kvkRecordCommandBuffers(VkCommandBuffer commandBuffer, const Com::ImageParameters &imageParameters, VkFramebuffer &framebuffer);
 
         static int kvkCreatePipelines();
 
         static GarbageCollector<VkPipelineLayout, PFN_vkDestroyPipelineLayout> kvkLoadPipelineLayout();
 
-        static GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule> kvkLoadShader(std::string const &filename);
+
+        static bool kvkCreateBuffer(VkBufferCreateFlags usage, VkMemoryPropertyFlagBits memoryProperty, Com::BufferParameters &buffer);
+
+        static int kvkCreateStagingBuffer();
 
         static int kvkCreateVertexBuffer();
 
-        static bool kvkAllocateBufferMemory(VkBuffer buffer, VkDeviceMemory *memory);
+        static int kvkCopyBufferToGPU();
+
+        static bool kvkAllocateBufferMemory(VkBuffer buffer, VkMemoryPropertyFlagBits memoryProperty, VkDeviceMemory *memory);
+
+        static int kvkAllocateCommandBuffer(VkCommandPool pool, uint32_t count, VkCommandBuffer *commandBuffer);
+
+        static int kvkCreateSemaphore(VkSemaphore *semaphore);
+
+        static int kvkCreateFence(VkFence *fence);
 
     public:
-
-        static KrautCommon kraut;
 
         static int kvkInit(const int &w, const int &h, const char* title, const int &f);
 

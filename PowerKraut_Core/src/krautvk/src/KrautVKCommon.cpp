@@ -16,7 +16,9 @@ limitations under the License.
 
 #include "KrautVKCommon.h"
 
-namespace KrautVK {
+namespace KVKBase {
+
+    Com::KrautCommon Com::kraut;
 
     std::string Tools::rootPath = std::string("");
 
@@ -143,24 +145,47 @@ namespace KrautVK {
         };
     }
 
-    void RenderingResourcesData::DestroyRecources(const VkDevice &device, const VkCommandPool &pool) {
+    GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule> Tools::loadShader(std::string const &filename) {
+        const std::vector<char> spv = Tools::getBinaryData(filename);
+        if(spv.empty()) {
+            return GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule>();
+        }
+
+        VkShaderModuleCreateInfo shaderModuleCreateInfo = {
+                VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO,    // VkStructureType                sType
+                nullptr,                                        // const void                    *pNext
+                0,                                              // VkShaderModuleCreateFlags      flags
+                spv.size(),                                     // size_t                         codeSize
+                reinterpret_cast<const uint32_t*>(&spv[0])      // const uint32_t                *pCode
+        };
+
+        VkShaderModule shaderModule;
+        if(createShaderModule(Com::kraut.Vulkan.Device, &shaderModuleCreateInfo, nullptr, &shaderModule) != VK_SUCCESS) {
+            return GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule>();
+        }
+
+        return GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule>(shaderModule, destroyShaderModule, Com::kraut.Vulkan.Device);
+
+    }
+
+    void Com::RenderingResourcesData::DestroyRecources() {
         //Destroy Framebuffer
         if (Framebuffer != VK_NULL_HANDLE)
-            destroyFramebuffer(device, Framebuffer, nullptr);
+            destroyFramebuffer(Com::kraut.Vulkan.Device, Framebuffer, nullptr);
 
         //Destroy Command Buffer
         if (CommandBuffer != VK_NULL_HANDLE)
-            freeCommandBuffers(device, pool, 1, &CommandBuffer);
+            freeCommandBuffers(Com::kraut.Vulkan.Device, Com::kraut.Vulkan.CommandPool, 1, &CommandBuffer);
 
         //Destroy Semaphores
         if (ImageAvailableSemaphore != VK_NULL_HANDLE)
-            destroySemaphore(device, ImageAvailableSemaphore, nullptr);
+            destroySemaphore(Com::kraut.Vulkan.Device, ImageAvailableSemaphore, nullptr);
 
         if (FinishedRenderingSemaphore != VK_NULL_HANDLE)
-            destroySemaphore(device, FinishedRenderingSemaphore, nullptr);
+            destroySemaphore(Com::kraut.Vulkan.Device, FinishedRenderingSemaphore, nullptr);
 
         if (Fence != VK_NULL_HANDLE)
-            destroyFence(device, Fence, nullptr);
+            destroyFence(Com::kraut.Vulkan.Device, Fence, nullptr);
     }
 }
 

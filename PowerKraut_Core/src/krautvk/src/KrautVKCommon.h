@@ -60,13 +60,13 @@ limitations under the License.
 //__RENDERING RESOURCES
 #define KVK_RESOURCE_COUNT          (3)
 
-namespace KrautVK {
+namespace KVKBase {
 
 
     //KRAUTVK VERSION
     uint32_t major = 0;
     uint32_t minor = 5;
-    uint32_t patch = 0;
+    uint32_t patch = 1;
     uint32_t version = VK_MAKE_VERSION(major, minor, patch);
 
     //VULKAN FUNCTION POINTERS
@@ -136,22 +136,7 @@ namespace KrautVK {
     PFN_vkCmdSetViewport cmdSetViewport;
     PFN_vkCmdSetScissor cmdSetScissor;
     PFN_vkCmdBindVertexBuffers cmdBindVertexBuffers;
-
-    class Tools{
-    public :
-        static std::string rootPath;
-
-        static void findAndReplace(std::string& str, const std::string& find, const std::string& replace);
-
-        static std::vector<char> getBinaryData(std::string const &filename);
-
-        static std::vector<char> getImageData( std::string const &filename, int requestedComponents, int *width, int *height, int *components, int *dataSize );
-
-        static std::array<float, 16> getProjMatrixPerspective(float const aspectRatio, float const fieldOfView, float const nearClip, float const farClip);
-
-        static std::array<float, 16> getProjMatrixOrtho( float const leftPlane, float const rightPlane, float const topPlane, float const bottomPlane, float const nearPlane, float const farPlane );
-
-    };
+    PFN_vkCmdCopyBuffer cmdCopyBuffer;
 
     template<class T, class F>
     class GarbageCollector {
@@ -205,6 +190,23 @@ namespace KrautVK {
         VkDevice  Device{};
     };
 
+    class Tools{
+    public :
+        static std::string rootPath;
+
+        static void findAndReplace(std::string& str, const std::string& find, const std::string& replace);
+
+        static std::vector<char> getBinaryData(std::string const &filename);
+
+        static std::vector<char> getImageData( std::string const &filename, int requestedComponents, int *width, int *height, int *components, int *dataSize );
+
+        static std::array<float, 16> getProjMatrixPerspective(float const aspectRatio, float const fieldOfView, float const nearClip, float const farClip);
+
+        static std::array<float, 16> getProjMatrixOrtho( float const leftPlane, float const rightPlane, float const topPlane, float const bottomPlane, float const nearPlane, float const farPlane );
+
+        static GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule> loadShader(std::string const &filename);
+    };
+
     //Struct to keep vertex attribute data to be passed into the shaders
     struct VertexData {
         float   x, y, z, w;             //Position
@@ -212,132 +214,143 @@ namespace KrautVK {
     };
 
     //Important structures to keep Vulkan Data
-    struct QueueParameters {
-        VkQueue                       Handle;
-        uint32_t                      FamilyIndex;
+    class Com {
 
-        QueueParameters() :
-                Handle( VK_NULL_HANDLE ),
-                FamilyIndex( 0 ) {
-        }
-    };
+    public:
 
-    struct ImageParameters {
-        VkImage                       Handle;
-        VkImageView                   View;
-        VkSampler                     Sampler;
-        VkDeviceMemory                Memory;
+        struct QueueParameters {
+            VkQueue Handle;
+            uint32_t FamilyIndex;
 
-        ImageParameters() :
-                Handle( VK_NULL_HANDLE ),
-                View( VK_NULL_HANDLE ),
-                Sampler( VK_NULL_HANDLE ),
-                Memory( VK_NULL_HANDLE ) {
-        }
-    };
+            QueueParameters() :
+                    Handle(VK_NULL_HANDLE),
+                    FamilyIndex(0) {
+            }
+        };
 
-    struct BufferParameters {
-        VkBuffer                        Handle;
-        VkDeviceMemory                  Memory;
-        uint32_t                        Size;
+        struct ImageParameters {
+            VkImage Handle;
+            VkImageView View;
+            VkSampler Sampler;
+            VkDeviceMemory Memory;
 
-        BufferParameters() :
-                Handle(VK_NULL_HANDLE),
-                Memory(VK_NULL_HANDLE),
-                Size(0) {
-        }
-    };
+            ImageParameters() :
+                    Handle(VK_NULL_HANDLE),
+                    View(VK_NULL_HANDLE),
+                    Sampler(VK_NULL_HANDLE),
+                    Memory(VK_NULL_HANDLE) {
+            }
+        };
 
-    struct DescriptorSetParameters {
-        VkDescriptorPool                Pool;
-        VkDescriptorSetLayout           Layout;
-        VkDescriptorSet                 Handle;
+        struct BufferParameters {
+            VkBuffer Handle;
+            VkDeviceMemory Memory;
+            uint32_t Size;
 
-        DescriptorSetParameters() :
-                Pool(VK_NULL_HANDLE),
-                Layout(VK_NULL_HANDLE),
-                Handle(VK_NULL_HANDLE) {
-        }
-    };
+            BufferParameters() :
+                    Handle(VK_NULL_HANDLE),
+                    Memory(VK_NULL_HANDLE),
+                    Size(0) {
+            }
+        };
 
-    struct SwapChainParameters {
-        VkSwapchainKHR                Handle;
-        VkFormat                      Format;
-        std::vector<ImageParameters>  Images;
-        VkExtent2D                    Extent;
+        struct DescriptorSetParameters {
+            VkDescriptorPool Pool;
+            VkDescriptorSetLayout Layout;
+            VkDescriptorSet Handle;
 
-        SwapChainParameters() :
-                Handle( VK_NULL_HANDLE ),
-                Format( VK_FORMAT_UNDEFINED ),
-                Images(),
-                Extent() {
-        }
-    };
+            DescriptorSetParameters() :
+                    Pool(VK_NULL_HANDLE),
+                    Layout(VK_NULL_HANDLE),
+                    Handle(VK_NULL_HANDLE) {
+            }
+        };
 
-    struct RenderingResourcesData {
-        VkFramebuffer                         Framebuffer;
-        VkCommandBuffer                       CommandBuffer;
-        VkSemaphore                           ImageAvailableSemaphore;
-        VkSemaphore                           FinishedRenderingSemaphore;
-        VkFence                               Fence;
+        struct SwapChainParameters {
+            VkSwapchainKHR Handle;
+            VkFormat Format;
+            std::vector<ImageParameters> Images;
+            VkExtent2D Extent;
 
-        RenderingResourcesData() :
-                Framebuffer(VK_NULL_HANDLE),
-                CommandBuffer(VK_NULL_HANDLE),
-                ImageAvailableSemaphore(VK_NULL_HANDLE),
-                FinishedRenderingSemaphore(VK_NULL_HANDLE),
-                Fence(VK_NULL_HANDLE){
-        }
+            SwapChainParameters() :
+                    Handle(VK_NULL_HANDLE),
+                    Format(VK_FORMAT_UNDEFINED),
+                    Images(),
+                    Extent() {
+            }
+        };
 
-        void DestroyRecources(const VkDevice &device, const VkCommandPool &pool);
-    };
+        struct RenderingResourcesData {
+            VkFramebuffer Framebuffer;
+            VkCommandBuffer CommandBuffer;
+            VkSemaphore ImageAvailableSemaphore;
+            VkSemaphore FinishedRenderingSemaphore;
+            VkFence Fence;
 
-    struct GLFWParameters {
-        GLFWmonitor *Monitor;
-        GLFWwindow *Window;
-    };
 
-    struct VulkanParameters {
-        VkInstance                              Instance;
-        VkPhysicalDevice                        PhysicalDevice;
-        VkDevice                                Device;
-        VkSurfaceKHR                            ApplicationSurface;
-        VkRenderPass                            RenderPass;
-        VkPipeline                              GraphicsPipeline;
-        SwapChainParameters                     SwapChain;
-        std::vector<RenderingResourcesData>     RenderingResources;
-        VkCommandPool                           CommandPool;
+            void DestroyRecources();
 
-        static const size_t                     ResourceCount = KVK_RESOURCE_COUNT;
+            RenderingResourcesData() :
+                    Framebuffer(VK_NULL_HANDLE),
+                    CommandBuffer(VK_NULL_HANDLE),
+                    ImageAvailableSemaphore(VK_NULL_HANDLE),
+                    FinishedRenderingSemaphore(VK_NULL_HANDLE),
+                    Fence(VK_NULL_HANDLE) {
+            }
+        };
 
-        VulkanParameters() :
-                Instance(VK_NULL_HANDLE),
-                PhysicalDevice(VK_NULL_HANDLE),
-                Device(VK_NULL_HANDLE),
-                ApplicationSurface(VK_NULL_HANDLE),
-                RenderPass(VK_NULL_HANDLE),
-                GraphicsPipeline(VK_NULL_HANDLE),
-                SwapChain(),
-                RenderingResources(ResourceCount),
-                CommandPool(){
-        }
-    };
+        struct GLFWParameters {
+            GLFWmonitor *Monitor;
+            GLFWwindow *Window;
+        };
 
-    struct KrautCommon {
-        GLFWParameters              GLFW;
-        VulkanParameters            Vulkan;
-        QueueParameters             GraphicsQueue;
-        QueueParameters             PresentQueue;
-        BufferParameters            VertexBuffer;
+        struct VulkanParameters {
+            VkInstance Instance;
+            VkPhysicalDevice PhysicalDevice;
+            VkDevice Device;
+            VkSurfaceKHR ApplicationSurface;
+            VkRenderPass RenderPass;
+            VkPipeline GraphicsPipeline;
+            SwapChainParameters SwapChain;
+            std::vector<RenderingResourcesData> RenderingResources;
+            VkCommandPool CommandPool;
 
-        KrautCommon() :
-                GLFW(),
-                Vulkan(),
-                GraphicsQueue(),
-                PresentQueue(),
-                VertexBuffer(){
+            static const size_t ResourceCount = KVK_RESOURCE_COUNT;
 
-        }
+            VulkanParameters() :
+                    Instance(VK_NULL_HANDLE),
+                    PhysicalDevice(VK_NULL_HANDLE),
+                    Device(VK_NULL_HANDLE),
+                    ApplicationSurface(VK_NULL_HANDLE),
+                    RenderPass(VK_NULL_HANDLE),
+                    GraphicsPipeline(VK_NULL_HANDLE),
+                    SwapChain(),
+                    RenderingResources(ResourceCount),
+                    CommandPool() {
+            }
+        };
+
+        struct KrautCommon {
+            GLFWParameters GLFW;
+            VulkanParameters Vulkan;
+            QueueParameters GraphicsQueue;
+            QueueParameters PresentQueue;
+            BufferParameters VertexBuffer;
+            BufferParameters StagingBuffer;
+
+            KrautCommon() :
+                    GLFW(),
+                    Vulkan(),
+                    GraphicsQueue(),
+                    PresentQueue(),
+                    VertexBuffer(),
+                    StagingBuffer(){
+
+            }
+
+        };
+
+        static KrautCommon kraut;
 
     };
 }
