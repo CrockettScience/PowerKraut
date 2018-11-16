@@ -64,10 +64,9 @@ namespace KVKBase {
 
         static int kvkCreatePipelines();
 
-        static GarbageCollector<VkPipelineLayout, PFN_vkDestroyPipelineLayout> kvkLoadPipelineLayout();
+        static bool kvkCreatePipelineLayout();
 
-
-        static bool kvkCreateBuffer(VkBufferCreateFlags usage, VkMemoryPropertyFlagBits memoryProperty, Com::BufferParameters &buffer);
+        static bool kvkCreateBuffer(Com::BufferParameters &buffer, VkBufferCreateFlags usage, VkMemoryPropertyFlagBits memoryProperty);
 
         static int kvkCreateStagingBuffer();
 
@@ -83,6 +82,28 @@ namespace KVKBase {
 
         static int kvkCreateFence(VkFence *fence);
 
+        static bool kvkCreateImage(const uint32_t &width, const uint32_t &height, VkImage *image);
+
+        static bool kvkAllocateImageMemory(VkImage image, VkMemoryPropertyFlagBits property, VkDeviceMemory *memory);
+
+        static int kvkCreateTexture(std::string relPath, Com::ImageParameters &image);
+
+        static bool kvkCreateImageView(Com::ImageParameters &image, const VkFormat &format);
+
+        static bool kvkCopyTextureToGPU(Com::ImageParameters &image, char* textureData, uint32_t dataSize, uint32_t width, uint32_t height);
+
+        static bool kvkCreateSampler(VkSampler *sampler);
+
+        static int kvkCreateDescriptorSet();
+
+        static bool kvkLayoutDescriptorSet();
+
+        static bool kvkCreateDescriptorPool();
+
+        static bool kvkAllocateDescriptorSet();
+
+        static void kvkUpdateDescriptorSet();
+
     public:
 
         static int kvkInit(const int &w, const int &h, const char* title, const int &f);
@@ -95,16 +116,6 @@ namespace KVKBase {
 
         static void kvkTerminate();
     };
-
-    EXPORT int KrautInit(int w, int h, char* title, int f, char* dllPath);
-
-    EXPORT int KrautWindowShouldClose();
-
-    EXPORT void KrautPollEvents();
-
-    EXPORT void KrautTerminate();
-
-    EXPORT void KrautDraw();
 }
 
 #endif

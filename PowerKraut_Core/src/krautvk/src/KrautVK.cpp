@@ -21,17 +21,17 @@ limitations under the License.
 
 //Temporary hard-coded vertex data for alpha developement and testing
 const std::vector<float> GlobalVertexData = {
-                -0.7f, -0.7f, 0.0f, 1.0f,
-                1.0f, 0.0f, 1.0f, 0.0f,
-
-                -0.7f, 0.7f, 0.0f, 1.0f,
-                1.0f, 1.0f, 0.0f, 0.0f,
-
-                0.7f, -0.7f, 0.0f, 1.0f,
-                0.0f, 1.0f, 1.0f, 0.0f,
-
-                0.7f, 0.7f, 0.0f, 1.0f,
-                0.0f, 1.0f, 0.0f, 0.0f
+        -0.9f, -0.9f, 0.0f, 1.0f,
+        0.0f, 0.0f,
+        //
+        -0.9f, 0.9f, 0.0f, 1.0f,
+        0.0f, 1.0f,
+        //
+        0.9f, -0.9f, 0.0f, 1.0f,
+        1.0f, 0.0f,
+        //
+        0.9f, 0.9f, 0.0f, 1.0f,
+        1.0f, 1.0f,
 };
 
 namespace KVKBase {
@@ -102,17 +102,15 @@ namespace KVKBase {
             }
         }
 
-        VkPhysicalDeviceProperties deviceProperties;
-        VkPhysicalDeviceFeatures deviceFeatures;
+        getPhysicalDeviceProperties(physicalDevice, &kraut.Vulkan.Device.Properties);
+        getPhysicalDeviceFeatures(physicalDevice, &kraut.Vulkan.Device.Features);
+        getPhysicalDeviceMemoryProperties(physicalDevice, &kraut.Vulkan.Device.MemoryProperties);
 
-        getPhysicalDeviceProperties(physicalDevice, &deviceProperties);
-        getPhysicalDeviceFeatures(physicalDevice, &deviceFeatures);
+        uint32_t majorVersion = VK_VERSION_MAJOR(kraut.Vulkan.Device.Properties.apiVersion);
+        uint32_t minorVersion = VK_VERSION_MINOR(kraut.Vulkan.Device.Properties.apiVersion);  //Reserved for when it's time to expect finer version requirements
+        uint32_t patchVersion = VK_VERSION_PATCH(kraut.Vulkan.Device.Properties.apiVersion);
 
-        uint32_t majorVersion = VK_VERSION_MAJOR(deviceProperties.apiVersion);
-        uint32_t minorVersion = VK_VERSION_MINOR(deviceProperties.apiVersion);  //Reserved for when it's time to expect finer version requirements
-        uint32_t patchVersion = VK_VERSION_PATCH(deviceProperties.apiVersion);
-
-        if ((majorVersion < 1) || (deviceProperties.limits.maxImageDimension2D < 4096)) {
+        if ((majorVersion < 1) || (kraut.Vulkan.Device.Properties.limits.maxImageDimension2D < 4096)) {
             return false;
         }
 
@@ -144,7 +142,7 @@ namespace KVKBase {
                 selectedGraphicsCommandBuffer = currentGraphicsQueueFamilyIndex;
                 selectedPresentationCommandBuffer = currentPresentationQueueFamilyIndex;
 
-                std::cout << "Selected Device: " << deviceProperties.deviceName << std::endl;
+                std::cout << "Selected Device: " << kraut.Vulkan.Device.Properties.deviceName << std::endl;
                 return true;
             }
         }
@@ -229,12 +227,12 @@ namespace KVKBase {
         for (uint32_t i = 0; i < deviceCount; i++) {
             if (kvkCheckDeviceProperties(devices[i], selectedGraphicsQueueFamilyIndex,
                                          selectedPresentationQueueFamilyIndex)) {
-                kraut.Vulkan.PhysicalDevice = devices[i];
+                kraut.Vulkan.Device.PhysicalDevice = devices[i];
                 break;
             }
         }
 
-        if (kraut.Vulkan.PhysicalDevice == nullptr)
+        if (kraut.Vulkan.Device.PhysicalDevice == nullptr)
             return VULKAN_NOT_SUPPORTED;
 
         std::vector<VkDeviceQueueCreateInfo> qCreateInfos;
@@ -276,113 +274,125 @@ namespace KVKBase {
                 nullptr                                         // const VkPhysicalDeviceFeatures    *pEnabledFeatures
         };
 
-        if (createDevice(kraut.Vulkan.PhysicalDevice, &deviceCreateInfo, nullptr, &kraut.Vulkan.Device) != SUCCESS)
+        if (createDevice(kraut.Vulkan.Device.PhysicalDevice, &deviceCreateInfo, nullptr, &kraut.Vulkan.Device.Handle) != SUCCESS)
             return VULKAN_DEVICE_CREATION_FAILED;
 
         getDeviceProcAddr = (PFN_vkGetDeviceProcAddr) glfwGetInstanceProcAddress(kraut.Vulkan.Instance, "vkGetDeviceProcAddr");
 
-        getDeviceQueue = (PFN_vkGetDeviceQueue)                                         getDeviceProcAddr(kraut.Vulkan.Device, "vkGetDeviceQueue");
-        deviceWaitIdle = (PFN_vkDeviceWaitIdle)                                         getDeviceProcAddr(kraut.Vulkan.Device, "vkDeviceWaitIdle");
-        destroyDevice = (PFN_vkDestroyDevice)                                           getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyDevice");
-        createSemaphore = (PFN_vkCreateSemaphore)                                       getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateSemaphore");
-        createSwapchainKHR = (PFN_vkCreateSwapchainKHR)                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateSwapchainKHR");
-        destroySwapchainKHR = (PFN_vkDestroySwapchainKHR)                               getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroySwapchainKHR");
-        getSwapchainImagesKHR = (PFN_vkGetSwapchainImagesKHR)                           getDeviceProcAddr(kraut.Vulkan.Device, "vkGetSwapchainImagesKHR");
-        acquireNextImageKHR = (PFN_vkAcquireNextImageKHR)                               getDeviceProcAddr(kraut.Vulkan.Device, "vkAcquireNextImageKHR");
-        queuePresentKHR = (PFN_vkQueuePresentKHR)                                       getDeviceProcAddr(kraut.Vulkan.Device, "vkQueuePresentKHR");
-        queueSubmit = (PFN_vkQueueSubmit)                                               getDeviceProcAddr(kraut.Vulkan.Device, "vkQueueSubmit");
-        createCommandPool = (PFN_vkCreateCommandPool)                                   getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateCommandPool");
-        allocateCommandBuffers = (PFN_vkAllocateCommandBuffers)                         getDeviceProcAddr(kraut.Vulkan.Device, "vkAllocateCommandBuffers");
-        freeCommandBuffers = (PFN_vkFreeCommandBuffers)                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkFreeCommandBuffers");
-        destroyCommandPool = (PFN_vkDestroyCommandPool)                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyCommandPool");
-        destroySemaphore = (PFN_vkDestroySemaphore)                                     getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroySemaphore");
-        beginCommandBuffer = (PFN_vkBeginCommandBuffer)                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkBeginCommandBuffer");
-        cmdPipelineBarrier = (PFN_vkCmdPipelineBarrier)                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdPipelineBarrier");
-        endCommandBuffer = (PFN_vkEndCommandBuffer)                                     getDeviceProcAddr(kraut.Vulkan.Device, "vkEndCommandBuffer");
-        destroyImageView = (PFN_vkDestroyImageView)                                     getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyImageView");
-        createImageView = (PFN_vkCreateImageView)                                       getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateImageView");
-        createRenderPass = (PFN_vkCreateRenderPass)                                     getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateRenderPass");
-        createFramebuffer = (PFN_vkCreateFramebuffer)                                   getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateFramebuffer");
-        createShaderModule = (PFN_vkCreateShaderModule)                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateShaderModule");
-        destroyShaderModule = (PFN_vkDestroyShaderModule)                               getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyShaderModule");
-        cmdBeginRenderPass = (PFN_vkCmdBeginRenderPass)                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdBeginRenderPass");
-        cmdBindPipeline = (PFN_vkCmdBindPipeline)                                       getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdBindPipeline");
-        cmdDraw = (PFN_vkCmdDraw)                                                       getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdDraw");
-        cmdEndRenderPass = (PFN_vkCmdEndRenderPass)                                     getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdEndRenderPass");
-        destroyPipeline = (PFN_vkDestroyPipeline)                                       getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyPipeline");
-        destroyRenderPass = (PFN_vkDestroyRenderPass)                                   getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyRenderPass");
-        destroyFramebuffer = (PFN_vkDestroyFramebuffer)                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyFramebuffer");
-        createGraphicsPipelines = (PFN_vkCreateGraphicsPipelines)                       getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateGraphicsPipelines");
-        createPipelineLayout = (PFN_vkCreatePipelineLayout)                             getDeviceProcAddr(kraut.Vulkan.Device, "vkCreatePipelineLayout");
-        destroyPipelineLayout = (PFN_vkDestroyPipelineLayout)                           getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyPipelineLayout");
-        createBuffer = (PFN_vkCreateBuffer)                                             getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateBuffer");
-        bindBufferMemory = (PFN_vkBindBufferMemory)                                     getDeviceProcAddr(kraut.Vulkan.Device, "vkBindBufferMemory");
-        mapMemory = (PFN_vkMapMemory)                                                   getDeviceProcAddr(kraut.Vulkan.Device, "vkMapMemory");
-        flushMappedMemoryRanges = (PFN_vkFlushMappedMemoryRanges)                       getDeviceProcAddr(kraut.Vulkan.Device, "vkFlushMappedMemoryRanges");
-        unmapMemory = (PFN_vkUnmapMemory)                                               getDeviceProcAddr(kraut.Vulkan.Device, "vkUnmapMemory");
-        getBufferMemoryRequirements = (PFN_vkGetBufferMemoryRequirements)               getDeviceProcAddr(kraut.Vulkan.Device, "vkGetBufferMemoryRequirements");
-        allocateMemory = (PFN_vkAllocateMemory)                                         getDeviceProcAddr(kraut.Vulkan.Device, "vkAllocateMemory");
-        createFence = (PFN_vkCreateFence)                                               getDeviceProcAddr(kraut.Vulkan.Device, "vkCreateFence");
-        destroyFence = (PFN_vkDestroyFence)                                             getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyFence");
-        destroyBuffer = (PFN_vkDestroyBuffer)                                           getDeviceProcAddr(kraut.Vulkan.Device, "vkDestroyBuffer");
-        freeMemory = (PFN_vkFreeMemory)                                                 getDeviceProcAddr(kraut.Vulkan.Device, "vkFreeMemory");
-        resetFences = (PFN_vkResetFences)                                               getDeviceProcAddr(kraut.Vulkan.Device, "vkResetFences");
-        waitForFences = (PFN_vkWaitForFences)                                           getDeviceProcAddr(kraut.Vulkan.Device, "vkWaitForFences");
-        cmdSetViewport = (PFN_vkCmdSetViewport)                                         getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdSetViewport");
-        cmdSetScissor = (PFN_vkCmdSetScissor)                                           getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdSetScissor");
-        cmdBindVertexBuffers = (PFN_vkCmdBindVertexBuffers)                             getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdBindVertexBuffers");
-        cmdCopyBuffer = (PFN_vkCmdCopyBuffer)                                           getDeviceProcAddr(kraut.Vulkan.Device, "vkCmdCopyBuffer");
-
-
+        getDeviceQueue = (PFN_vkGetDeviceQueue)                                         getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkGetDeviceQueue");
+        deviceWaitIdle = (PFN_vkDeviceWaitIdle)                                         getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDeviceWaitIdle");
+        destroyDevice = (PFN_vkDestroyDevice)                                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyDevice");
+        createSemaphore = (PFN_vkCreateSemaphore)                                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateSemaphore");
+        createSwapchainKHR = (PFN_vkCreateSwapchainKHR)                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateSwapchainKHR");
+        destroySwapchainKHR = (PFN_vkDestroySwapchainKHR)                               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroySwapchainKHR");
+        getSwapchainImagesKHR = (PFN_vkGetSwapchainImagesKHR)                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkGetSwapchainImagesKHR");
+        acquireNextImageKHR = (PFN_vkAcquireNextImageKHR)                               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkAcquireNextImageKHR");
+        queuePresentKHR = (PFN_vkQueuePresentKHR)                                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkQueuePresentKHR");
+        queueSubmit = (PFN_vkQueueSubmit)                                               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkQueueSubmit");
+        createCommandPool = (PFN_vkCreateCommandPool)                                   getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateCommandPool");
+        allocateCommandBuffers = (PFN_vkAllocateCommandBuffers)                         getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkAllocateCommandBuffers");
+        freeCommandBuffers = (PFN_vkFreeCommandBuffers)                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkFreeCommandBuffers");
+        destroyCommandPool = (PFN_vkDestroyCommandPool)                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyCommandPool");
+        destroySemaphore = (PFN_vkDestroySemaphore)                                     getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroySemaphore");
+        beginCommandBuffer = (PFN_vkBeginCommandBuffer)                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkBeginCommandBuffer");
+        cmdPipelineBarrier = (PFN_vkCmdPipelineBarrier)                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdPipelineBarrier");
+        endCommandBuffer = (PFN_vkEndCommandBuffer)                                     getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkEndCommandBuffer");
+        destroyImageView = (PFN_vkDestroyImageView)                                     getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyImageView");
+        createImageView = (PFN_vkCreateImageView)                                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateImageView");
+        createRenderPass = (PFN_vkCreateRenderPass)                                     getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateRenderPass");
+        createFramebuffer = (PFN_vkCreateFramebuffer)                                   getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateFramebuffer");
+        createShaderModule = (PFN_vkCreateShaderModule)                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateShaderModule");
+        destroyShaderModule = (PFN_vkDestroyShaderModule)                               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyShaderModule");
+        cmdBeginRenderPass = (PFN_vkCmdBeginRenderPass)                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdBeginRenderPass");
+        cmdBindPipeline = (PFN_vkCmdBindPipeline)                                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdBindPipeline");
+        cmdDraw = (PFN_vkCmdDraw)                                                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdDraw");
+        cmdEndRenderPass = (PFN_vkCmdEndRenderPass)                                     getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdEndRenderPass");
+        destroyPipeline = (PFN_vkDestroyPipeline)                                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyPipeline");
+        destroyRenderPass = (PFN_vkDestroyRenderPass)                                   getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyRenderPass");
+        destroyFramebuffer = (PFN_vkDestroyFramebuffer)                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyFramebuffer");
+        createGraphicsPipelines = (PFN_vkCreateGraphicsPipelines)                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateGraphicsPipelines");
+        createPipelineLayout = (PFN_vkCreatePipelineLayout)                             getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreatePipelineLayout");
+        destroyPipelineLayout = (PFN_vkDestroyPipelineLayout)                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyPipelineLayout");
+        createBuffer = (PFN_vkCreateBuffer)                                             getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateBuffer");
+        bindBufferMemory = (PFN_vkBindBufferMemory)                                     getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkBindBufferMemory");
+        mapMemory = (PFN_vkMapMemory)                                                   getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkMapMemory");
+        flushMappedMemoryRanges = (PFN_vkFlushMappedMemoryRanges)                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkFlushMappedMemoryRanges");
+        unmapMemory = (PFN_vkUnmapMemory)                                               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkUnmapMemory");
+        getBufferMemoryRequirements = (PFN_vkGetBufferMemoryRequirements)               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkGetBufferMemoryRequirements");
+        allocateMemory = (PFN_vkAllocateMemory)                                         getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkAllocateMemory");
+        createFence = (PFN_vkCreateFence)                                               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateFence");
+        destroyFence = (PFN_vkDestroyFence)                                             getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyFence");
+        destroyBuffer = (PFN_vkDestroyBuffer)                                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyBuffer");
+        freeMemory = (PFN_vkFreeMemory)                                                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkFreeMemory");
+        resetFences = (PFN_vkResetFences)                                               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkResetFences");
+        waitForFences = (PFN_vkWaitForFences)                                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkWaitForFences");
+        cmdSetViewport = (PFN_vkCmdSetViewport)                                         getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdSetViewport");
+        cmdSetScissor = (PFN_vkCmdSetScissor)                                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdSetScissor");
+        cmdBindVertexBuffers = (PFN_vkCmdBindVertexBuffers)                             getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdBindVertexBuffers");
+        cmdCopyBuffer = (PFN_vkCmdCopyBuffer)                                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdCopyBuffer");
+        bindImageMemory = (PFN_vkBindImageMemory)                                       getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkBindImageMemory");
+        createSampler = (PFN_vkCreateSampler)                                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateSampler");
+        cmdCopyBufferToImage = (PFN_vkCmdCopyBufferToImage)                             getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdCopyBufferToImage");
+        createImage = (PFN_vkCreateImage)                                               getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateImage");
+        getImageMemoryRequirements = (PFN_vkGetImageMemoryRequirements)                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkGetImageMemoryRequirements");
+        createDescriptorSetLayout = (PFN_vkCreateDescriptorSetLayout)                   getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateDescriptorSetLayout");
+        createDescriptorPool = (PFN_vkCreateDescriptorPool)                             getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCreateDescriptorPool");
+        allocateDescriptorSets = (PFN_vkAllocateDescriptorSets)                         getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkAllocateDescriptorSets");
+        updateDescriptorSets = (PFN_vkUpdateDescriptorSets)                             getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkUpdateDescriptorSets");
+        cmdBindDescriptorSets = (PFN_vkCmdBindDescriptorSets)                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkCmdBindDescriptorSets");
+        destroyDescriptorPool = (PFN_vkDestroyDescriptorPool)                           getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyDescriptorPool");
+        destroyDescriptorSetLayout = (PFN_vkDestroyDescriptorSetLayout)                 getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyDescriptorSetLayout");
+        destroySampler = (PFN_vkDestroySampler)                                         getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroySampler");
+        destroyImage = (PFN_vkDestroyImage)                                             getDeviceProcAddr(kraut.Vulkan.Device.Handle, "vkDestroyImage");
 
         //INITIALIZE COMMAND BUFFER
         kraut.GraphicsQueue.FamilyIndex = selectedGraphicsQueueFamilyIndex;
         kraut.PresentQueue.FamilyIndex = selectedPresentationQueueFamilyIndex;
 
-        getDeviceQueue(kraut.Vulkan.Device, kraut.GraphicsQueue.FamilyIndex, 0, &kraut.GraphicsQueue.Handle);
-        getDeviceQueue(kraut.Vulkan.Device, kraut.PresentQueue.FamilyIndex, 0, &kraut.PresentQueue.Handle);
+        getDeviceQueue(kraut.Vulkan.Device.Handle, kraut.GraphicsQueue.FamilyIndex, 0, &kraut.GraphicsQueue.Handle);
+        getDeviceQueue(kraut.Vulkan.Device.Handle, kraut.PresentQueue.FamilyIndex, 0, &kraut.PresentQueue.Handle);
 
         return SUCCESS;
     }
 
     bool KrautVK::kvkCreateSwapChain() {
 
-        if (kraut.Vulkan.Device != VK_NULL_HANDLE) {
-            deviceWaitIdle(kraut.Vulkan.Device);
+        if (kraut.Vulkan.Device.Handle != VK_NULL_HANDLE) {
+            deviceWaitIdle(kraut.Vulkan.Device.Handle);
         }
 
         for(size_t i = 0; i < kraut.Vulkan.SwapChain.Images.size(); ++i) {
             if(kraut.Vulkan.SwapChain.Images[i].View != VK_NULL_HANDLE) {
-                destroyImageView(kraut.Vulkan.Device, kraut.Vulkan.SwapChain.Images[i].View, nullptr);
+                destroyImageView(kraut.Vulkan.Device.Handle, kraut.Vulkan.SwapChain.Images[i].View, nullptr);
                 kraut.Vulkan.SwapChain.Images[i].View = VK_NULL_HANDLE;
             }
         }
         kraut.Vulkan.SwapChain.Images.clear();
 
         VkSurfaceCapabilitiesKHR surfaceCapabilities;
-        if (getPhysicalDeviceSurfaceCapabilitiesKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &surfaceCapabilities) != VK_SUCCESS) {
+        if (getPhysicalDeviceSurfaceCapabilitiesKHR(kraut.Vulkan.Device.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &surfaceCapabilities) != VK_SUCCESS) {
             return false;
         }
 
         uint32_t formatsCount;
-        if ((getPhysicalDeviceSurfaceFormatsKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &formatsCount, nullptr) != VK_SUCCESS) ||
+        if ((getPhysicalDeviceSurfaceFormatsKHR(kraut.Vulkan.Device.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &formatsCount, nullptr) != VK_SUCCESS) ||
             (formatsCount == 0)) {
             return false;
         }
 
         std::vector<VkSurfaceFormatKHR> surfaceFormats(formatsCount);
-        if (getPhysicalDeviceSurfaceFormatsKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &formatsCount, surfaceFormats.data()) != VK_SUCCESS) {
+        if (getPhysicalDeviceSurfaceFormatsKHR(kraut.Vulkan.Device.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &formatsCount, surfaceFormats.data()) != VK_SUCCESS) {
             return false;
         }
 
         uint32_t presentModesCount;
-        if ((getPhysicalDeviceSurfacePresentModesKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &presentModesCount, nullptr) != VK_SUCCESS) ||
+        if ((getPhysicalDeviceSurfacePresentModesKHR(kraut.Vulkan.Device.PhysicalDevice, kraut.Vulkan.ApplicationSurface, &presentModesCount, nullptr) != VK_SUCCESS) ||
             (presentModesCount == 0)) {
             return false;
         }
 
         std::vector<VkPresentModeKHR> presentModes(presentModesCount);
-        if (getPhysicalDeviceSurfacePresentModesKHR(kraut.Vulkan.PhysicalDevice, kraut.Vulkan.ApplicationSurface,
+        if (getPhysicalDeviceSurfacePresentModesKHR(kraut.Vulkan.Device.PhysicalDevice, kraut.Vulkan.ApplicationSurface,
                                                     &presentModesCount, presentModes.data()) != VK_SUCCESS) {
             return false;
         }
@@ -408,7 +418,7 @@ namespace KVKBase {
             return SUCCESS;
         }
 
-        VkSwapchainCreateInfoKHR swap_chain_create_info = {
+        VkSwapchainCreateInfoKHR swapChainCreateInfo = {
                 VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,    // VkStructureType                sType
                 nullptr,                                        // const void                    *pNext
                 0,                                              // VkSwapchainCreateFlagsKHR      flags
@@ -429,7 +439,7 @@ namespace KVKBase {
                 oldSwapChain                                    // VkSwapchainKHR                 oldSwapchain
         };
 
-        if (createSwapchainKHR(kraut.Vulkan.Device, &swap_chain_create_info, nullptr, &kraut.Vulkan.SwapChain.Handle) !=
+        if (createSwapchainKHR(kraut.Vulkan.Device.Handle, &swapChainCreateInfo, nullptr, &kraut.Vulkan.SwapChain.Handle) !=
             VK_SUCCESS) {
             return false;
         }
@@ -438,11 +448,11 @@ namespace KVKBase {
         kraut.Vulkan.SwapChain.Format = desiredFormat.format;
 
         if (oldSwapChain != VK_NULL_HANDLE) {
-            destroySwapchainKHR(kraut.Vulkan.Device, oldSwapChain, nullptr);
+            destroySwapchainKHR(kraut.Vulkan.Device.Handle, oldSwapChain, nullptr);
         }
 
         uint32_t imageCount = 0;
-        if((getSwapchainImagesKHR( kraut.Vulkan.Device, kraut.Vulkan.SwapChain.Handle, &imageCount, nullptr ) != VK_SUCCESS) ||
+        if((getSwapchainImagesKHR( kraut.Vulkan.Device.Handle, kraut.Vulkan.SwapChain.Handle, &imageCount, nullptr ) != VK_SUCCESS) ||
             (imageCount == 0) ) {
             std::cout << "Could not get swap chain images!" << std::endl;
             return false;
@@ -450,7 +460,7 @@ namespace KVKBase {
         kraut.Vulkan.SwapChain.Images.resize( imageCount );
 
         std::vector<VkImage> images( imageCount );
-        if(getSwapchainImagesKHR(kraut.Vulkan.Device, kraut.Vulkan.SwapChain.Handle, &imageCount, images.data() ) != VK_SUCCESS ) {
+        if(getSwapchainImagesKHR(kraut.Vulkan.Device.Handle, kraut.Vulkan.SwapChain.Handle, &imageCount, images.data() ) != VK_SUCCESS ) {
             std::cout << "Could not get swap chain images!" << std::endl;
             return false;
         }
@@ -460,34 +470,10 @@ namespace KVKBase {
         }
 
         for (size_t i = 0; i < kraut.Vulkan.SwapChain.Images.size(); ++i) {
-            VkImageViewCreateInfo imageViewCreateInfo = {
-                    VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,           // VkStructureType                sType
-                    nullptr,                                            // const void                    *pNext
-                    0,                                                  // VkImageViewCreateFlags         flags
-                    kraut.Vulkan.SwapChain.Images[i].Handle,                   // VkImage                        image
-                    VK_IMAGE_VIEW_TYPE_2D,                              // VkImageViewType                viewType
-                    kraut.Vulkan.SwapChain.Format,                             // VkFormat                       format
 
-                    {                                                   // VkComponentMapping             components
-                            VK_COMPONENT_SWIZZLE_IDENTITY,              // VkComponentSwizzle             r
-                            VK_COMPONENT_SWIZZLE_IDENTITY,              // VkComponentSwizzle             g
-                            VK_COMPONENT_SWIZZLE_IDENTITY,              // VkComponentSwizzle             b
-                            VK_COMPONENT_SWIZZLE_IDENTITY               // VkComponentSwizzle             a
-                    },
+            if(!kvkCreateImageView(kraut.Vulkan.SwapChain.Images[i], kraut.Vulkan.SwapChain.Format))
+                return false;
 
-                    {                                                   // VkImageSubresourceRange        subresourceRange
-                            VK_IMAGE_ASPECT_COLOR_BIT,                  // VkImageAspectFlags             aspectMask
-                            0,                                          // uint32_t                       baseMipLevel
-                            1,                                          // uint32_t                       levelCount
-                            0,                                          // uint32_t                       baseArrayLayer
-                            1                                           // uint32_t                       layerCount
-                    }
-            };
-
-            if (createImageView(kraut.Vulkan.Device, &imageViewCreateInfo, nullptr,
-                                &kraut.Vulkan.SwapChain.Images[i].View) != VK_SUCCESS) {
-                return VULKAN_FRAMEBUFFERS_CREATION_FAILED;
-            }
         }
 
         return true;
@@ -622,7 +608,7 @@ namespace KVKBase {
                 kraut.PresentQueue.FamilyIndex                                                              // uint32_t                     queueFamilyIndex
         };
 
-        if (createCommandPool(kraut.Vulkan.Device, &cmdPoolCreateInfo, nullptr, &kraut.Vulkan.CommandPool) != VK_SUCCESS) {
+        if (createCommandPool(kraut.Vulkan.Device.Handle, &cmdPoolCreateInfo, nullptr, &kraut.Vulkan.CommandPool) != VK_SUCCESS) {
             return VULKAN_COMMAND_BUFFER_CREATION_FAILED;
         }
 
@@ -706,8 +692,8 @@ namespace KVKBase {
                         0                                                   // int32_t                                y
                 },
                 {                                                   // VkExtent2D                             extent
-                        kraut.Vulkan.SwapChain.Extent.width,                        // uint32_t                               width
-                        kraut.Vulkan.SwapChain.Extent.height                        // uint32_t                               height
+                        kraut.Vulkan.SwapChain.Extent.width,                // uint32_t                               width
+                        kraut.Vulkan.SwapChain.Extent.height                // uint32_t                               height
                 }
         };
 
@@ -715,7 +701,9 @@ namespace KVKBase {
         cmdSetScissor(commandBuffer, 0, 1, &scissor);
 
         VkDeviceSize offset = 0;
-        cmdBindVertexBuffers(commandBuffer, 0, 1, &kraut.VertexBuffer.Handle, &offset);
+        cmdBindVertexBuffers(commandBuffer, 0, 1, &kraut.DemoResources.VertexBuffer.Handle, &offset);
+
+        cmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, kraut.Vulkan.PipelineLayout, 0, 1, &kraut.Vulkan.Descriptor.Handle, 0, nullptr);
 
         cmdDraw(commandBuffer, KVK_VERTEX_COUNT, KVK_INSTANCE_COUNT, 0, 0);
 
@@ -761,14 +749,14 @@ namespace KVKBase {
 
         resourceIndex = (resourceIndex + 1) % Com::VulkanParameters::ResourceCount;
 
-        if(waitForFences(kraut.Vulkan.Device, 1, &currentRenderingResource.Fence, VK_FALSE, 1000000000) != VK_SUCCESS) {
+        if(waitForFences(kraut.Vulkan.Device.Handle, 1, &currentRenderingResource.Fence, VK_FALSE, 1000000000) != VK_SUCCESS) {
             std::cout << "Fence Time Out!" << std::endl;
             return false;
         }
 
-        resetFences(kraut.Vulkan.Device, 1, &currentRenderingResource.Fence);
+        resetFences(kraut.Vulkan.Device.Handle, 1, &currentRenderingResource.Fence);
 
-        VkResult result = acquireNextImageKHR(kraut.Vulkan.Device, swapchain, UINT64_MAX, currentRenderingResource.ImageAvailableSemaphore, VK_NULL_HANDLE, &imageIndex);
+        VkResult result = acquireNextImageKHR(kraut.Vulkan.Device.Handle, swapchain, UINT64_MAX, currentRenderingResource.ImageAvailableSemaphore, VK_NULL_HANDLE, &imageIndex);
         switch(result) {
             case VK_SUCCESS:
             case VK_SUBOPTIMAL_KHR:
@@ -903,7 +891,7 @@ namespace KVKBase {
                 &dependencies[0]                              // const VkSubpassDependency     *pDependencies
         };
 
-        if(createRenderPass(kraut.Vulkan.Device, &renderPassCreateInfo, nullptr, &kraut.Vulkan.RenderPass) == VK_SUCCESS){
+        if(createRenderPass(kraut.Vulkan.Device.Handle, &renderPassCreateInfo, nullptr, &kraut.Vulkan.RenderPass) == VK_SUCCESS){
             return SUCCESS;
         } else{
             return VULKAN_RENDERPASS_CREATION_FAILED;
@@ -915,7 +903,7 @@ namespace KVKBase {
     bool KrautVK::kvkCreateFrameBuffers(VkFramebuffer &framebuffer, VkImageView imageView) {
 
         if(framebuffer != VK_NULL_HANDLE) {
-            destroyFramebuffer(kraut.Vulkan.Device, framebuffer, nullptr);
+            destroyFramebuffer(kraut.Vulkan.Device.Handle, framebuffer, nullptr);
             framebuffer = VK_NULL_HANDLE;
         }
 
@@ -931,7 +919,7 @@ namespace KVKBase {
                 1                                               // uint32_t                       layers
         };
 
-        if(createFramebuffer(kraut.Vulkan.Device, &framebufferCreateInfo, nullptr, &framebuffer) != VK_SUCCESS ) {
+        if(createFramebuffer(kraut.Vulkan.Device.Handle, &framebufferCreateInfo, nullptr, &framebuffer) != VK_SUCCESS ) {
             std::cout << "Could not create a framebuffer!" << std::endl;
             return false;
         }
@@ -947,37 +935,35 @@ namespace KVKBase {
             return VULKAN_PIPELINES_CREATION_FAILED;
         }
 
-        std::vector<VkVertexInputBindingDescription> vertexBindingDescriptions = {
-                {
-                        0,                                  // uint32_t            binding
-                        sizeof(VertexData),                 // uint32_t            stride
-                        VK_VERTEX_INPUT_RATE_VERTEX         // VkVertexInputRate   inputRate
-                }
+        VkVertexInputBindingDescription vertexBindingDescription = {
+                    0,                                  // uint32_t            binding
+                    sizeof(VertexData),                 // uint32_t            stride
+                    VK_VERTEX_INPUT_RATE_VERTEX         // VkVertexInputRate   inputRate
         };
 
-        std::vector<VkVertexInputAttributeDescription> vertexAttributeDescriptions = {
+        VkVertexInputAttributeDescription vertexAttributeDescriptions[] = {
                 {
-                        0,                                         // uint32_t    location
-                        vertexBindingDescriptions[0].binding,      // uint32_t    binding
+                        0,                                          // uint32_t    location
+                        vertexBindingDescription.binding,           // uint32_t    binding
                         VK_FORMAT_R32G32B32A32_SFLOAT,             // VkFormat    format
-                        offsetof(struct VertexData, x)             // uint32_t    offset
+                        0                                          // uint32_t    offset
                 },
                 {
                         1,                                         // uint32_t    location
-                        vertexBindingDescriptions[0].binding,      // uint32_t    binding
+                        vertexBindingDescription.binding,           // uint32_t    binding
                         VK_FORMAT_R32G32B32A32_SFLOAT,             // VkFormat    format
-                        offsetof( struct VertexData, r )           // uint32_t    offset
+                        4 * sizeof(float)                          // uint32_t    offset
                 }
         };
 
         VkPipelineVertexInputStateCreateInfo vertexInputStateCreateInfo = {
-                VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,    // VkStructureType                                sType
-                nullptr,                                                      // const void                                    *pNext
-                0,                                                            // VkPipelineVertexInputStateCreateFlags          flags;
-                static_cast<uint32_t>(vertexBindingDescriptions.size()),      // uint32_t                                       vertexBindingDescriptionCount
-                &vertexBindingDescriptions[0],                                // const VkVertexInputBindingDescription         *pVertexBindingDescriptions
-                static_cast<uint32_t>(vertexAttributeDescriptions.size()),    // uint32_t                                       vertexAttributeDescriptionCount
-                &vertexAttributeDescriptions[0]                               // const VkVertexInputAttributeDescription       *pVertexAttributeDescriptions
+                VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,      // VkStructureType                                sType
+                nullptr,                                                        // const void                                    *pNext
+                0,                                                              // VkPipelineVertexInputStateCreateFlags          flags;
+                1,                                                              // uint32_t                                       vertexBindingDescriptionCount
+                &vertexBindingDescription,                                      // const VkVertexInputBindingDescription         *pVertexBindingDescriptions
+                2,                                                              // uint32_t                                       vertexAttributeDescriptionCount
+                vertexAttributeDescriptions                                     // const VkVertexInputAttributeDescription       *pVertexAttributeDescriptions
         };
 
         //Load Shaders
@@ -1074,8 +1060,7 @@ namespace KVKBase {
                 { 0.0f, 0.0f, 0.0f, 0.0f }                                    // float                                          blendConstants[4]
         };
 
-        GarbageCollector<VkPipelineLayout, PFN_vkDestroyPipelineLayout> pipelineLayout = kvkLoadPipelineLayout();
-        if(!pipelineLayout) {
+        if(!kvkCreatePipelineLayout()) {
             return VULKAN_PIPELINES_CREATION_FAILED;
         }
 
@@ -1107,8 +1092,8 @@ namespace KVKBase {
                 &multisampleStateCreateInfo,                                    // const VkPipelineMultisampleStateCreateInfo    *pMultisampleState
                 nullptr,                                                        // const VkPipelineDepthStencilStateCreateInfo   *pDepthStencilState
                 &colorBlendStateCreateInfo,                                     // const VkPipelineColorBlendStateCreateInfo     *pColorBlendState
-                &pipelineDynamicStateCreateInfo,                                                        // const VkPipelineDynamicStateCreateInfo        *pDynamicState
-                pipelineLayout.get(),                                           // VkPipelineLayout                               layout
+                &pipelineDynamicStateCreateInfo,                                // const VkPipelineDynamicStateCreateInfo        *pDynamicState
+                kraut.Vulkan.PipelineLayout,                                    // VkPipelineLayout                               layout
                 kraut.Vulkan.RenderPass,                                        // VkRenderPass                                   renderPass
                 0,                                                              // uint32_t                                       subpass
                 VK_NULL_HANDLE,                                                 // VkPipeline                                     basePipelineHandle
@@ -1116,7 +1101,7 @@ namespace KVKBase {
         };
 
 
-        if(createGraphicsPipelines(kraut.Vulkan.Device, VK_NULL_HANDLE, 1, &pipelineCreateInfo, nullptr, &kraut.Vulkan.GraphicsPipeline) == VK_SUCCESS){
+        if(createGraphicsPipelines(kraut.Vulkan.Device.Handle, VK_NULL_HANDLE, 1, &pipelineCreateInfo, nullptr, &kraut.Vulkan.GraphicsPipeline) == VK_SUCCESS){
             return SUCCESS;
 
         } else{
@@ -1126,162 +1111,33 @@ namespace KVKBase {
 
     }
 
-    GarbageCollector<VkPipelineLayout, PFN_vkDestroyPipelineLayout> KrautVK::kvkLoadPipelineLayout(){
+    bool KrautVK::kvkCreatePipelineLayout(){
 
         VkPipelineLayoutCreateInfo layoutCreateInfo = {
                 VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO,  // VkStructureType                sType
                 nullptr,                                        // const void                    *pNext
                 0,                                              // VkPipelineLayoutCreateFlags    flags
-                0,                                              // uint32_t                       setLayoutCount
-                nullptr,                                        // const VkDescriptorSetLayout   *pSetLayouts
+                1,                                              // uint32_t                       setLayoutCount
+                &kraut.Vulkan.Descriptor.Layout,                // const VkDescriptorSetLayout   *pSetLayouts
                 0,                                              // uint32_t                       pushConstantRangeCount
                 nullptr                                         // const VkPushConstantRange     *pPushConstantRanges
         };
 
-        VkPipelineLayout pipelineLayout;
-        if(createPipelineLayout(kraut.Vulkan.Device, &layoutCreateInfo, nullptr, &pipelineLayout ) != VK_SUCCESS) {
-            return GarbageCollector<VkPipelineLayout, PFN_vkDestroyPipelineLayout>();
-        }
-
-        return GarbageCollector<VkPipelineLayout, PFN_vkDestroyPipelineLayout>(pipelineLayout, destroyPipelineLayout, kraut.Vulkan.Device);
-
-    }
-
-    bool KrautVK::kvkCreateBuffer(VkBufferCreateFlags usage, VkMemoryPropertyFlagBits memoryProperty, Com::BufferParameters &buffer) {
-
-        VkBufferCreateInfo vkBufferCreateInfo = {
-                VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO,             // VkStructureType        sType
-                nullptr,                                          // const void            *pNext
-                0,                                                // VkBufferCreateFlags    flags
-                buffer.Size,                                      // VkDeviceSize           size
-                usage,                                            // VkBufferUsageFlags     usage
-                VK_SHARING_MODE_EXCLUSIVE,                        // VkSharingMode          sharingMode
-                0,                                                // uint32_t               queueFamilyIndexCount
-                nullptr                                           // const uint32_t        *pQueueFamilyIndices
-        };
-
-        if(createBuffer(kraut.Vulkan.Device, &vkBufferCreateInfo, nullptr, &buffer.Handle) != VK_SUCCESS ) {
-            return false;
-        }
-        if(!kvkAllocateBufferMemory(kraut.VertexBuffer.Handle, memoryProperty, &buffer.Memory)) {
+        if(createPipelineLayout(kraut.Vulkan.Device.Handle, &layoutCreateInfo, nullptr, &kraut.Vulkan.PipelineLayout) != VK_SUCCESS) {
             return false;
         }
 
-        return !(bindBufferMemory(kraut.Vulkan.Device, buffer.Handle, buffer.Memory, 0) != VK_SUCCESS);
-
-    }
-
-    int KrautVK::kvkCreateVertexBuffer() {
-        const std::vector<float> &vertexData = GlobalVertexData;
-
-        kraut.VertexBuffer.Size = static_cast<uint32_t>(vertexData.size() * sizeof(vertexData[0]));
-        if(!kvkCreateBuffer(VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, kraut.VertexBuffer)) {
-            return VULKAN_VERTEX_CREATION_FAILED;
-        }
-
-        return SUCCESS;
-
-    }
-
-    int KrautVK::kvkCreateStagingBuffer() {
-        kraut.StagingBuffer.Size = 4000;
-        if(!kvkCreateBuffer(VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, kraut.StagingBuffer)){
-            return VULKAN_VERTEX_CREATION_FAILED;
-        };
-
-        return SUCCESS;
-
-    }
-
-    int KrautVK::kvkCopyBufferToGPU() {
-        const std::vector<float> &vertexData = GlobalVertexData;
-
-        void *stagingBufferMemoryPointer;
-        if(mapMemory(kraut.Vulkan.Device, kraut.StagingBuffer.Memory, 0, kraut.VertexBuffer.Size, 0, &stagingBufferMemoryPointer) != VK_SUCCESS) {
-            return VULKAN_VERTEX_CREATION_FAILED;
-        }
-
-        memcpy(stagingBufferMemoryPointer, &vertexData[0], kraut.VertexBuffer.Size);
-
-        VkMappedMemoryRange flushRange = {
-                VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE,            // VkStructureType                        sType
-                nullptr,                                          // const void                            *pNext
-                kraut.StagingBuffer.Memory,                      // VkDeviceMemory                         memory
-                0,                                                // VkDeviceSize                           offset
-                kraut.VertexBuffer.Size                          // VkDeviceSize                           size
-        };
-
-        flushMappedMemoryRanges(kraut.Vulkan.Device, 1, &flushRange);
-
-        unmapMemory(kraut.Vulkan.Device, kraut.StagingBuffer.Memory);
-
-        VkCommandBufferBeginInfo commandBufferBeginInfo = {
-                VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,      // VkStructureType                        sType
-                nullptr,                                          // const void                            *pNext
-                VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT,      // VkCommandBufferUsageFlags              flags
-                nullptr                                           // const VkCommandBufferInheritanceInfo  *pInheritanceInfo
-        };
-
-        VkCommandBuffer commandBuffer = kraut.Vulkan.RenderingResources[0].CommandBuffer;
-
-        beginCommandBuffer(commandBuffer, &commandBufferBeginInfo);
-
-        VkBufferCopy bufferCopyInfo = {
-                0,                                                // VkDeviceSize                           srcOffset
-                0,                                                // VkDeviceSize                           dstOffset
-                kraut.VertexBuffer.Size                          // VkDeviceSize                           size
-        };
-
-        cmdCopyBuffer(commandBuffer, kraut.StagingBuffer.Handle, kraut.VertexBuffer.Handle, 1, &bufferCopyInfo);
-
-        VkBufferMemoryBarrier bufferMemoryBarrier = {
-                VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER,          // VkStructureType                        sType;
-                nullptr,                                          // const void                            *pNext
-                VK_ACCESS_MEMORY_WRITE_BIT,                       // VkAccessFlags                          srcAccessMask
-                VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT,              // VkAccessFlags                          dstAccessMask
-                VK_QUEUE_FAMILY_IGNORED,                          // uint32_t                               srcQueueFamilyIndex
-                VK_QUEUE_FAMILY_IGNORED,                          // uint32_t                               dstQueueFamilyIndex
-                kraut.VertexBuffer.Handle,                       // VkBuffer                               buffer
-                0,                                                // VkDeviceSize                           offset
-                VK_WHOLE_SIZE                                     // VkDeviceSize                           size
-        };
-
-        cmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_VERTEX_INPUT_BIT, 0, 0, nullptr, 1, &bufferMemoryBarrier, 0, nullptr);
-
-        endCommandBuffer(commandBuffer);
-
-        VkSubmitInfo submitInfo = {
-                VK_STRUCTURE_TYPE_SUBMIT_INFO,                    // VkStructureType                        sType
-                nullptr,                                          // const void                            *pNext
-                0,                                                // uint32_t                               waitSemaphoreCount
-                nullptr,                                          // const VkSemaphore                     *pWaitSemaphores
-                nullptr,                                          // const VkPipelineStageFlags            *pWaitDstStageMask;
-                1,                                                // uint32_t                               commandBufferCount
-                &commandBuffer,                                  // const VkCommandBuffer                 *pCommandBuffers
-                0,                                                // uint32_t                               signalSemaphoreCount
-                nullptr                                           // const VkSemaphore                     *pSignalSemaphores
-        };
-
-        if(queueSubmit(kraut.GraphicsQueue.Handle, 1, &submitInfo, VK_NULL_HANDLE ) != VK_SUCCESS) {
-            return VULKAN_VERTEX_CREATION_FAILED;
-        }
-
-        deviceWaitIdle(kraut.Vulkan.Device);
-
-        return SUCCESS;
+        return true;
 
     }
 
     bool KrautVK::kvkAllocateBufferMemory(VkBuffer buffer, VkMemoryPropertyFlagBits memoryProperty, VkDeviceMemory *memory) {
         VkMemoryRequirements bufferMemoryRequirements;
-        getBufferMemoryRequirements(kraut.Vulkan.Device, buffer, &bufferMemoryRequirements);
+        getBufferMemoryRequirements(kraut.Vulkan.Device.Handle, buffer, &bufferMemoryRequirements);
 
-        VkPhysicalDeviceMemoryProperties memoryProperties;
-        getPhysicalDeviceMemoryProperties(kraut.Vulkan.PhysicalDevice, &memoryProperties);
-
-        for(uint32_t i = 0; i < memoryProperties.memoryTypeCount; ++i) {
+        for(uint32_t i = 0; i < kraut.Vulkan.Device.MemoryProperties.memoryTypeCount; ++i) {
             if((bufferMemoryRequirements.memoryTypeBits & (1 << i)) &&
-                (memoryProperties.memoryTypes[i].propertyFlags & memoryProperty)) {
+                (kraut.Vulkan.Device.MemoryProperties.memoryTypes[i].propertyFlags & memoryProperty)) {
 
                 VkMemoryAllocateInfo memory_allocate_info = {
                         VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,     // VkStructureType                        sType
@@ -1290,7 +1146,7 @@ namespace KVKBase {
                         i                                           // uint32_t                               memoryTypeIndex
                 };
 
-                if(allocateMemory(kraut.Vulkan.Device, &memory_allocate_info, nullptr, memory) == VK_SUCCESS) {
+                if(allocateMemory(kraut.Vulkan.Device.Handle, &memory_allocate_info, nullptr, memory) == VK_SUCCESS) {
                     return true;
                 }
             }
@@ -1309,7 +1165,7 @@ namespace KVKBase {
                 count                                           // uint32_t                     bufferCount
         };
 
-        if (allocateCommandBuffers(kraut.Vulkan.Device, &cmdBufferAllocateInfo, commandBuffer) != VK_SUCCESS) {
+        if (allocateCommandBuffers(kraut.Vulkan.Device.Handle, &cmdBufferAllocateInfo, commandBuffer) != VK_SUCCESS) {
             return VULKAN_COMMAND_BUFFER_CREATION_FAILED;
         }
 
@@ -1324,7 +1180,7 @@ namespace KVKBase {
                 0                                             // VkSemaphoreCreateFlags   flags
         };
 
-            if ((createSemaphore(kraut.Vulkan.Device, &semaphoreCreateInfo, nullptr, semaphore) != VK_SUCCESS)) {
+            if ((createSemaphore(kraut.Vulkan.Device.Handle, &semaphoreCreateInfo, nullptr, semaphore) != VK_SUCCESS)) {
                 return VULKAN_SEMAPHORE_CREATION_FAILED;
             }
 
@@ -1338,9 +1194,386 @@ namespace KVKBase {
                 VK_FENCE_CREATE_SIGNALED_BIT                      // VkFenceCreateFlags             flags
         };
 
-        if(createFence(kraut.Vulkan.Device, &fenceCreateInfo, nullptr, fence) != VK_SUCCESS) {
+        if(createFence(kraut.Vulkan.Device.Handle, &fenceCreateInfo, nullptr, fence) != VK_SUCCESS) {
             return VULKAN_FENCE_CREATION_FAILED;
         }
+
+        return SUCCESS;
+
+    }
+
+    bool KrautVK::kvkCreateImage(const uint32_t &width, const uint32_t &height, VkImage *image) {
+        VkImageCreateInfo imageCreateInfo = {
+                VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO,  // VkStructureType        sType;
+                nullptr,                              // const void            *pNext
+                0,                                    // VkImageCreateFlags     flags
+                VK_IMAGE_TYPE_2D,                     // VkImageType            imageType
+                VK_FORMAT_R8G8B8A8_UNORM,             // VkFormat               format
+                {                                     // VkExtent3D             extent
+
+                        width,                        // uint32_t               width
+                        height,                       // uint32_t               height
+                        1                             // uint32_t               depth
+                },
+                1,                                    // uint32_t               mipLevels
+                1,                                    // uint32_t               arrayLayers
+                VK_SAMPLE_COUNT_1_BIT,                // VkSampleCountFlagBits  samples
+                VK_IMAGE_TILING_OPTIMAL,              // VkImageTiling          tiling
+                VK_IMAGE_USAGE_TRANSFER_DST_BIT |     // VkImageUsageFlags      usage
+                VK_IMAGE_USAGE_SAMPLED_BIT,
+                VK_SHARING_MODE_EXCLUSIVE,            // VkSharingMode          sharingMode
+                0,                                    // uint32_t               queueFamilyIndexCount
+                nullptr,                              // const uint32_t        *pQueueFamilyIndices
+                VK_IMAGE_LAYOUT_UNDEFINED             // VkImageLayout          initialLayout
+        };
+
+        return createImage(kraut.Vulkan.Device.Handle, &imageCreateInfo, nullptr, image) == VK_SUCCESS;
+
+    }
+
+    bool KrautVK::kvkAllocateImageMemory(VkImage image, VkMemoryPropertyFlagBits property, VkDeviceMemory *memory) {
+        // Get the memory requirements from the device
+        VkMemoryRequirements imageMemoryRequirements;
+        getImageMemoryRequirements(kraut.Vulkan.Device.Handle, image, &imageMemoryRequirements);
+
+        //Find the right memory type that is compatible with our needs and is supported by the hardware
+        for(uint32_t i = 0; i < kraut.Vulkan.Device.MemoryProperties.memoryTypeCount; ++i) {
+            if((imageMemoryRequirements.memoryTypeBits & (1 << i)) && (kraut.Vulkan.Device.MemoryProperties.memoryTypes[i].propertyFlags & property)) {
+
+                VkMemoryAllocateInfo memoryAllocateInfo = {
+                        VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO, // VkStructureType  sType
+                        nullptr,                                // const void      *pNext
+                        imageMemoryRequirements.size,           // VkDeviceSize     allocationSize
+                        i                                       // uint32_t         memoryTypeIndex
+                };
+
+                if(allocateMemory(kraut.Vulkan.Device.Handle, &memoryAllocateInfo, nullptr, memory) == VK_SUCCESS ) {
+                    return true;
+                }
+            }
+        }
+        return false;
+
+
+    }
+
+    int KrautVK::kvkCreateTexture(const std::string relPath, Com::ImageParameters &image) {
+        int width = 0;
+        int height = 0;
+        int dataSize = 0;
+
+        std::vector<char> textureData = Tools::getImageData(Tools::rootPath + relPath, 4, &width, &height, nullptr, &dataSize);
+
+        if(!kvkCreateImage(static_cast<const uint32_t &>(width), static_cast<const uint32_t &>(height), &image.Handle))
+            return VULKAN_TEXTURE_CREATION_FAILED;
+
+        if(!kvkAllocateImageMemory(image.Handle, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, &image.Memory))
+            return VULKAN_TEXTURE_CREATION_FAILED;
+
+        if(bindImageMemory(kraut.Vulkan.Device.Handle, image.Handle, image.Memory, 0) != VK_SUCCESS)
+            return VULKAN_TEXTURE_CREATION_FAILED;
+
+        if(!kvkCreateImageView(image, VK_FORMAT_R8G8B8A8_UNORM))
+            return VULKAN_TEXTURE_CREATION_FAILED;
+
+        if(!kvkCreateSampler(&image.Sampler))
+            return VULKAN_TEXTURE_CREATION_FAILED;
+
+        if(!kvkCopyTextureToGPU(image, textureData.data(), static_cast<uint32_t>(dataSize), static_cast<uint32_t>(width), static_cast<uint32_t>(height))){
+            return VULKAN_TEXTURE_CREATION_FAILED;
+        }
+
+        return SUCCESS;
+
+    }
+
+    bool KrautVK::kvkCreateImageView(Com::ImageParameters &image, const VkFormat &format) {
+        VkImageViewCreateInfo imageViewCreateInfo = {
+                VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO, // VkStructureType          sType
+                nullptr,                                  // const void              *pNext
+                0,                                        // VkImageViewCreateFlags   flags
+                image.Handle,                             // VkImage                  image
+                VK_IMAGE_VIEW_TYPE_2D,                    // VkImageViewType          viewType
+                format,                                   // VkFormat                 format
+                {                                         // VkComponentMapping       components
+                        VK_COMPONENT_SWIZZLE_IDENTITY,            // VkComponentSwizzle       r
+                        VK_COMPONENT_SWIZZLE_IDENTITY,            // VkComponentSwizzle       g
+                        VK_COMPONENT_SWIZZLE_IDENTITY,            // VkComponentSwizzle       b
+                        VK_COMPONENT_SWIZZLE_IDENTITY             // VkComponentSwizzle       a
+                },
+                {                                                 // VkImageSubresourceRange  subresourceRange
+                        VK_IMAGE_ASPECT_COLOR_BIT,                // VkImageAspectFlags       aspectMask
+                        0,                                        // uint32_t                 baseMipLevel
+                        1,                                        // uint32_t                 levelCount
+                        0,                                        // uint32_t                 baseArrayLayer
+                        1                                         // uint32_t                 layerCount
+                }
+        };
+
+        return createImageView(kraut.Vulkan.Device.Handle, &imageViewCreateInfo, nullptr, &image.View ) == VK_SUCCESS;
+
+    }
+
+    bool KrautVK::kvkCopyTextureToGPU(Com::ImageParameters &image, char* textureData, uint32_t dataSize, uint32_t width, uint32_t height) {
+
+        void *stagingBufferMemoryPointer;
+        if(mapMemory(kraut.Vulkan.Device.Handle, kraut.StagingBuffer.Memory, 0, dataSize, 0, &stagingBufferMemoryPointer) != VK_SUCCESS) {
+            return false;
+        }
+
+        memcpy(stagingBufferMemoryPointer, textureData, dataSize);
+
+        VkMappedMemoryRange flushRange = {
+                VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE,              // VkStructureType                        sType
+                nullptr,                                            // const void                            *pNext
+                kraut.StagingBuffer.Memory,                         // VkDeviceMemory                         memory
+                0,                                                  // VkDeviceSize                           offset
+                dataSize                                            // VkDeviceSize                           size
+        };
+        flushMappedMemoryRanges(kraut.Vulkan.Device.Handle, 1, &flushRange);
+
+        unmapMemory(kraut.Vulkan.Device.Handle, kraut.StagingBuffer.Memory);
+
+        // Prepare command buffer to copy data from staging buffer to a vertex buffer
+        VkCommandBufferBeginInfo commandBufferBeginInfo = {
+                VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,        // VkStructureType                        sType
+                nullptr,                                            // const void                            *pNext
+                VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT,        // VkCommandBufferUsageFlags              flags
+                nullptr                                             // const VkCommandBufferInheritanceInfo  *pInheritanceInfo
+        };
+
+        VkCommandBuffer commandBuffer = kraut.Vulkan.RenderingResources[0].CommandBuffer;
+
+        beginCommandBuffer( commandBuffer, &commandBufferBeginInfo);
+
+        VkImageSubresourceRange imageSubresourceRange = {
+                VK_IMAGE_ASPECT_COLOR_BIT,                          // VkImageAspectFlags                     aspectMask
+                0,                                                  // uint32_t                               baseMipLevel
+                1,                                                  // uint32_t                               levelCount
+                0,                                                  // uint32_t                               baseArrayLayer
+                1                                                   // uint32_t                               layerCount
+        };
+
+        VkImageMemoryBarrier imageMemoryBarrierFromUndefinedToTransferDst = {
+                VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER,             // VkStructureType                        sType
+                nullptr,                                            // const void                            *pNext
+                0,                                                  // VkAccessFlags                          srcAccessMask
+                VK_ACCESS_TRANSFER_WRITE_BIT,                       // VkAccessFlags                          dstAccessMask
+                VK_IMAGE_LAYOUT_UNDEFINED,                          // VkImageLayout                          oldLayout
+                VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,               // VkImageLayout                          newLayout
+                VK_QUEUE_FAMILY_IGNORED,                            // uint32_t                               srcQueueFamilyIndex
+                VK_QUEUE_FAMILY_IGNORED,                            // uint32_t                               dstQueueFamilyIndex
+                image.Handle,                   // VkImage                                image
+                imageSubresourceRange                               // VkImageSubresourceRange                subresourceRange
+        };
+        cmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr, 1, &imageMemoryBarrierFromUndefinedToTransferDst);
+
+        VkBufferImageCopy bufferImageCopyInfo = {
+                0,                                                  // VkDeviceSize                           bufferOffset
+                0,                                                  // uint32_t                               bufferRowLength
+                0,                                                  // uint32_t                               bufferImageHeight
+                {                                                   // VkImageSubresourceLayers               imageSubresource
+                        VK_IMAGE_ASPECT_COLOR_BIT,                          // VkImageAspectFlags                     aspectMask
+                        0,                                                  // uint32_t                               mipLevel
+                        0,                                                  // uint32_t                               baseArrayLayer
+                        1                                                   // uint32_t                               layerCount
+                },
+                {                                                   // VkOffset3D                             imageOffset
+                        0,                                                  // int32_t                                x
+                        0,                                                  // int32_t                                y
+                        0                                                   // int32_t                                z
+                },
+                {                                                   // VkExtent3D                             imageExtent
+                        width,                                              // uint32_t                               width
+                        height,                                             // uint32_t                               height
+                        1                                                   // uint32_t                               depth
+                }
+        };
+        cmdCopyBufferToImage(commandBuffer, kraut.StagingBuffer.Handle, image.Handle, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &bufferImageCopyInfo);
+
+        VkImageMemoryBarrier imageMemoryBarrierFromTransferToShaderRead = {
+                VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER,             // VkStructureType                        sType
+                nullptr,                                            // const void                            *pNext
+                VK_ACCESS_TRANSFER_WRITE_BIT,                       // VkAccessFlags                          srcAccessMask
+                VK_ACCESS_SHADER_READ_BIT,                          // VkAccessFlags                          dstAccessMask
+                VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,               // VkImageLayout                          oldLayout
+                VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL,           // VkImageLayout                          newLayout
+                VK_QUEUE_FAMILY_IGNORED,                            // uint32_t                               srcQueueFamilyIndex
+                VK_QUEUE_FAMILY_IGNORED,                            // uint32_t                               dstQueueFamilyIndex
+                image.Handle,                   // VkImage                                image
+                imageSubresourceRange                               // VkImageSubresourceRange                subresourceRange
+        };
+        cmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0, 0, nullptr, 0, nullptr, 1, &imageMemoryBarrierFromTransferToShaderRead);
+
+        endCommandBuffer(commandBuffer);
+
+        // Submit command buffer and copy data from staging buffer to a vertex buffer
+        VkSubmitInfo submitInfo = {
+                VK_STRUCTURE_TYPE_SUBMIT_INFO,                      // VkStructureType                        sType
+                nullptr,                                            // const void                            *pNext
+                0,                                                  // uint32_t                               waitSemaphoreCount
+                nullptr,                                            // const VkSemaphore                     *pWaitSemaphores
+                nullptr,                                            // const VkPipelineStageFlags            *pWaitDstStageMask;
+                1,                                                  // uint32_t                               commandBufferCount
+                &commandBuffer,                                     // const VkCommandBuffer                 *pCommandBuffers
+                0,                                                  // uint32_t                               signalSemaphoreCount
+                nullptr                                             // const VkSemaphore                     *pSignalSemaphores
+        };
+
+        if(queueSubmit(kraut.GraphicsQueue.Handle, 1, &submitInfo, VK_NULL_HANDLE) != VK_SUCCESS) {
+            return false;
+        }
+
+        deviceWaitIdle(kraut.Vulkan.Device.Handle);
+
+        return true;
+    }
+
+    bool KrautVK::kvkCreateSampler(VkSampler *sampler) {
+        VkSamplerCreateInfo samplerCreateInfo = {
+                VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO,  // VkStructureType        sType
+                nullptr,                                // const void*            pNext
+                0,                                      // VkSamplerCreateFlags   flags
+                VK_FILTER_LINEAR,                       // VkFilter               magFilter
+                VK_FILTER_LINEAR,                       // VkFilter               minFilter
+                VK_SAMPLER_MIPMAP_MODE_NEAREST,         // VkSamplerMipmapMode    mipmapMode
+                VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE,  // VkSamplerAddressMode   addressModeU
+                VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE,  // VkSamplerAddressMode   addressModeV
+                VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE,  // VkSamplerAddressMode   addressModeW
+                0.0f,                                   // float                  mipLodBias
+                VK_FALSE,                               // VkBool32               anisotropyEnable
+                1.0f,                                   // float                  maxAnisotropy
+                VK_FALSE,                               // VkBool32               compareEnable
+                VK_COMPARE_OP_ALWAYS,                   // VkCompareOp            compareOp
+                0.0f,                                   // float                  minLod
+                0.0f,                                   // float                  maxLod
+                VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK,// VkBorderColor          borderColor
+                VK_FALSE                                // VkBool32               unnormalizedCoordinates
+        };
+
+        return createSampler(kraut.Vulkan.Device.Handle, &samplerCreateInfo, nullptr, sampler) == VK_SUCCESS;
+    }
+
+    bool KrautVK::kvkCreateBuffer(Com::BufferParameters &buffer, VkBufferCreateFlags usage, VkMemoryPropertyFlagBits memoryProperty) {
+
+        VkBufferCreateInfo vkBufferCreateInfo = {
+                VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO,             // VkStructureType        sType
+                nullptr,                                          // const void            *pNext
+                0,                                                // VkBufferCreateFlags    flags
+                buffer.Size,                                      // VkDeviceSize           size
+                usage,                                            // VkBufferUsageFlags     usage
+                VK_SHARING_MODE_EXCLUSIVE,                        // VkSharingMode          sharingMode
+                0,                                                // uint32_t               queueFamilyIndexCount
+                nullptr                                           // const uint32_t        *pQueueFamilyIndices
+        };
+
+        if(createBuffer(kraut.Vulkan.Device.Handle, &vkBufferCreateInfo, nullptr, &buffer.Handle) != VK_SUCCESS ) {
+            return false;
+        }
+        if(!kvkAllocateBufferMemory(buffer.Handle, memoryProperty, &buffer.Memory)) {
+            return false;
+        }
+
+        return !(bindBufferMemory(kraut.Vulkan.Device.Handle, buffer.Handle, buffer.Memory, 0) != VK_SUCCESS);
+
+    }
+
+    int KrautVK::kvkCreateVertexBuffer() {
+        const std::vector<float> &vertexData = GlobalVertexData;
+
+        kraut.DemoResources.VertexBuffer.Size = static_cast<uint32_t>(vertexData.size() * sizeof(vertexData[0]));
+        if(!kvkCreateBuffer(kraut.DemoResources.VertexBuffer, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT)) {
+            return VULKAN_VERTEX_CREATION_FAILED;
+        }
+
+        return SUCCESS;
+
+    }
+
+    int KrautVK::kvkCreateStagingBuffer() {
+        kraut.StagingBuffer.Size = KVK_STAGING_BUFFER_SIZE;
+        if(!kvkCreateBuffer(kraut.StagingBuffer, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT)){
+            return VULKAN_VERTEX_CREATION_FAILED;
+        };
+
+        return SUCCESS;
+
+    }
+
+    int KrautVK::kvkCopyBufferToGPU() {
+        const std::vector<float> &vertexData = GlobalVertexData;
+
+        void *stagingBufferMemoryPointer;
+        if(mapMemory(kraut.Vulkan.Device.Handle, kraut.StagingBuffer.Memory, 0, kraut.DemoResources.VertexBuffer.Size, 0, &stagingBufferMemoryPointer) != VK_SUCCESS) {
+            return VULKAN_VERTEX_CREATION_FAILED;
+        }
+
+        memcpy(stagingBufferMemoryPointer, &vertexData[0], kraut.DemoResources.VertexBuffer.Size);
+
+        VkMappedMemoryRange flushRange = {
+                VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE,            // VkStructureType                        sType
+                nullptr,                                          // const void                            *pNext
+                kraut.StagingBuffer.Memory,                       // VkDeviceMemory                         memory
+                0,                                                // VkDeviceSize                           offset
+                kraut.DemoResources.VertexBuffer.Size             // VkDeviceSize                           size
+        };
+
+        flushMappedMemoryRanges(kraut.Vulkan.Device.Handle, 1, &flushRange);
+
+        unmapMemory(kraut.Vulkan.Device.Handle, kraut.StagingBuffer.Memory);
+
+        VkCommandBufferBeginInfo commandBufferBeginInfo = {
+                VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,      // VkStructureType                        sType
+                nullptr,                                          // const void                            *pNext
+                VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT,      // VkCommandBufferUsageFlags              flags
+                nullptr                                           // const VkCommandBufferInheritanceInfo  *pInheritanceInfo
+        };
+
+        VkCommandBuffer commandBuffer = kraut.Vulkan.RenderingResources[0].CommandBuffer;
+
+        beginCommandBuffer(commandBuffer, &commandBufferBeginInfo);
+
+        VkBufferCopy bufferCopyInfo = {
+                0,                                                // VkDeviceSize                           srcOffset
+                0,                                                // VkDeviceSize                           dstOffset
+                kraut.DemoResources.VertexBuffer.Size             // VkDeviceSize                           size
+        };
+
+        cmdCopyBuffer(commandBuffer, kraut.StagingBuffer.Handle, kraut.DemoResources.VertexBuffer.Handle, 1, &bufferCopyInfo);
+
+        VkBufferMemoryBarrier bufferMemoryBarrier = {
+                VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER,          // VkStructureType                        sType;
+                nullptr,                                          // const void                            *pNext
+                VK_ACCESS_MEMORY_WRITE_BIT,                       // VkAccessFlags                          srcAccessMask
+                VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT,              // VkAccessFlags                          dstAccessMask
+                VK_QUEUE_FAMILY_IGNORED,                          // uint32_t                               srcQueueFamilyIndex
+                VK_QUEUE_FAMILY_IGNORED,                          // uint32_t                               dstQueueFamilyIndex
+                kraut.DemoResources.VertexBuffer.Handle,                       // VkBuffer                               buffer
+                0,                                                // VkDeviceSize                           offset
+                VK_WHOLE_SIZE                                     // VkDeviceSize                           size
+        };
+
+        cmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_VERTEX_INPUT_BIT, 0, 0, nullptr, 1, &bufferMemoryBarrier, 0, nullptr);
+
+        endCommandBuffer(commandBuffer);
+
+        VkSubmitInfo submitInfo = {
+                VK_STRUCTURE_TYPE_SUBMIT_INFO,                    // VkStructureType                        sType
+                nullptr,                                          // const void                            *pNext
+                0,                                                // uint32_t                               waitSemaphoreCount
+                nullptr,                                          // const VkSemaphore                     *pWaitSemaphores
+                nullptr,                                          // const VkPipelineStageFlags            *pWaitDstStageMask;
+                1,                                                // uint32_t                               commandBufferCount
+                &commandBuffer,                                   // const VkCommandBuffer                 *pCommandBuffers
+                0,                                                // uint32_t                               signalSemaphoreCount
+                nullptr                                           // const VkSemaphore                     *pSignalSemaphores
+        };
+
+        if(queueSubmit(kraut.GraphicsQueue.Handle, 1, &submitInfo, VK_NULL_HANDLE ) != VK_SUCCESS) {
+            return VULKAN_VERTEX_CREATION_FAILED;
+        }
+
+        deviceWaitIdle(kraut.Vulkan.Device.Handle);
 
         return SUCCESS;
 
@@ -1374,23 +1607,14 @@ namespace KVKBase {
         if (status != SUCCESS)
             return status;
 
-        printf("Setting Up Engine...\n");
+        printf("Loading Rendering Resources...\n");
         if(!kvkCreateSwapChain())
             return INT32_MIN;
-
-        status = kvkCreateRenderPass();
-        if (status != SUCCESS)
-            return status;
-
-        status = kvkCreatePipelines();
-        if (status != SUCCESS)
-            return status;
 
         status = kvkCreateCommandPool();
         if (status != SUCCESS)
             return status;
 
-        printf("Loading Rendering Resources...\n");
         for(size_t i = 0; i < kraut.Vulkan.RenderingResources.size(); i++) {
 
             status = kvkAllocateCommandBuffer(kraut.Vulkan.CommandPool, 1, &kraut.Vulkan.RenderingResources[i].CommandBuffer);
@@ -1410,20 +1634,36 @@ namespace KVKBase {
                 return status;
         }
 
-        printf("Staging Demo Data...\n");
-
-        status = kvkCreateVertexBuffer();
+        status = kvkCreateStagingBuffer();
         if (status != SUCCESS)
             return status;
 
-        status = kvkCreateStagingBuffer();
+        printf("Staging Test Environment...\n");
+
+        status = kvkCreateTexture("/res/demo.png", kraut.DemoResources.Image);
+        if (status != SUCCESS)
+            return status;
+
+        printf("Setting Up Engine...\n");
+        status = kvkCreateDescriptorSet();
+        if (status != SUCCESS)
+            return status;
+
+        status = kvkCreateRenderPass();
+        if (status != SUCCESS)
+            return status;
+
+        status = kvkCreatePipelines();
+        if (status != SUCCESS)
+            return status;
+
+        status = kvkCreateVertexBuffer();
         if (status != SUCCESS)
             return status;
 
         status = kvkCopyBufferToGPU();
         if (status != SUCCESS)
             return status;
-
 
         printf("KrautVK Alpha Initialized!\n");
 
@@ -1433,8 +1673,8 @@ namespace KVKBase {
     void KrautVK::kvkTerminate() {
         printf("KrautVK terminating\n");
 
-        if (kraut.Vulkan.Device != VK_NULL_HANDLE) {
-            deviceWaitIdle(kraut.Vulkan.Device);
+        if (kraut.Vulkan.Device.Handle != VK_NULL_HANDLE) {
+            deviceWaitIdle(kraut.Vulkan.Device.Handle);
 
             //Destroy Rendering Resource Data
             for(int i = 0; i < kraut.Vulkan.RenderingResources.size(); i++)
@@ -1443,54 +1683,91 @@ namespace KVKBase {
 
             //Destroy Command Pool
             if(kraut.Vulkan.CommandPool != VK_NULL_HANDLE) {
-                destroyCommandPool(kraut.Vulkan.Device, kraut.Vulkan.CommandPool, nullptr);
+                destroyCommandPool(kraut.Vulkan.Device.Handle, kraut.Vulkan.CommandPool, nullptr);
                 kraut.Vulkan.CommandPool = VK_NULL_HANDLE;
             }
 
 
             //Destroy Vertex Buffer
-            if(kraut.VertexBuffer.Handle != VK_NULL_HANDLE) {
-                destroyBuffer(kraut.Vulkan.Device, kraut.VertexBuffer.Handle, nullptr);
-                kraut.VertexBuffer.Handle = VK_NULL_HANDLE;
+            if(kraut.DemoResources.VertexBuffer.Handle != VK_NULL_HANDLE) {
+                destroyBuffer(kraut.Vulkan.Device.Handle, kraut.DemoResources.VertexBuffer.Handle, nullptr);
+                kraut.DemoResources.VertexBuffer.Handle = VK_NULL_HANDLE;
             }
 
-            if(kraut.VertexBuffer.Memory != VK_NULL_HANDLE) {
-                freeMemory(kraut.Vulkan.Device, kraut.VertexBuffer.Memory, nullptr);
-                kraut.VertexBuffer.Memory = VK_NULL_HANDLE;
+            if(kraut.DemoResources.VertexBuffer.Memory != VK_NULL_HANDLE) {
+                freeMemory(kraut.Vulkan.Device.Handle, kraut.DemoResources.VertexBuffer.Memory, nullptr);
+                kraut.DemoResources.VertexBuffer.Memory = VK_NULL_HANDLE;
             }
 
             //Destroy Staging Buffer
             if(kraut.StagingBuffer.Handle != VK_NULL_HANDLE) {
-                destroyBuffer(kraut.Vulkan.Device, kraut.StagingBuffer.Handle, nullptr);
+                destroyBuffer(kraut.Vulkan.Device.Handle, kraut.StagingBuffer.Handle, nullptr);
                 kraut.StagingBuffer.Handle = VK_NULL_HANDLE;
             }
 
             if(kraut.StagingBuffer.Memory != VK_NULL_HANDLE) {
-                freeMemory(kraut.Vulkan.Device, kraut.StagingBuffer.Memory, nullptr);
+                freeMemory(kraut.Vulkan.Device.Handle, kraut.StagingBuffer.Memory, nullptr);
                 kraut.StagingBuffer.Memory = VK_NULL_HANDLE;
             }
 
 
             //Destroy Pipeline
             if(kraut.Vulkan.GraphicsPipeline != VK_NULL_HANDLE) {
-                destroyPipeline(kraut.Vulkan.Device, kraut.Vulkan.GraphicsPipeline, nullptr);
+                destroyPipeline(kraut.Vulkan.Device.Handle, kraut.Vulkan.GraphicsPipeline, nullptr);
                 kraut.Vulkan.GraphicsPipeline = VK_NULL_HANDLE;
+            }
+
+            if(kraut.Vulkan.PipelineLayout != VK_NULL_HANDLE ) {
+                destroyPipelineLayout(kraut.Vulkan.Device.Handle, kraut.Vulkan.PipelineLayout, nullptr);
+                kraut.Vulkan.PipelineLayout = VK_NULL_HANDLE;
+            }
+
+            //Destroy Descriptor Sets
+            if(kraut.Vulkan.Descriptor.Pool != VK_NULL_HANDLE ) {
+                destroyDescriptorPool(kraut.Vulkan.Device.Handle, kraut.Vulkan.Descriptor.Pool, nullptr);
+                kraut.Vulkan.Descriptor.Pool = VK_NULL_HANDLE;
+            }
+
+            if(kraut.Vulkan.Descriptor.Layout != VK_NULL_HANDLE ) {
+                destroyDescriptorSetLayout(kraut.Vulkan.Device.Handle, kraut.Vulkan.Descriptor.Layout, nullptr);
+                kraut.Vulkan.Descriptor.Layout = VK_NULL_HANDLE;
+            }
+
+            //Destroy Demo Image
+            if(kraut.DemoResources.Image.Sampler != VK_NULL_HANDLE ) {
+                destroySampler(kraut.Vulkan.Device.Handle, kraut.DemoResources.Image.Sampler, nullptr);
+                kraut.DemoResources.Image.Sampler = VK_NULL_HANDLE;
+            }
+
+            if(kraut.DemoResources.Image.View != VK_NULL_HANDLE ) {
+                destroyImageView(kraut.Vulkan.Device.Handle, kraut.DemoResources.Image.View, nullptr);
+                kraut.DemoResources.Image.View = VK_NULL_HANDLE;
+            }
+
+            if(kraut.DemoResources.Image.Handle != VK_NULL_HANDLE ) {
+                destroyImage(kraut.Vulkan.Device.Handle, kraut.DemoResources.Image.Handle, nullptr);
+                kraut.DemoResources.Image.Handle = VK_NULL_HANDLE;
+            }
+
+            if(kraut.DemoResources.Image.Memory != VK_NULL_HANDLE ) {
+                freeMemory(kraut.Vulkan.Device.Handle, kraut.DemoResources.Image.Memory, nullptr);
+                kraut.DemoResources.Image.Memory = VK_NULL_HANDLE;
             }
 
 
             //Destroy Renderpass
             if(kraut.Vulkan.RenderPass != VK_NULL_HANDLE) {
-                destroyRenderPass(kraut.Vulkan.Device, kraut.Vulkan.RenderPass, nullptr);
+                destroyRenderPass(kraut.Vulkan.Device.Handle, kraut.Vulkan.RenderPass, nullptr);
                 kraut.Vulkan.RenderPass = VK_NULL_HANDLE;
             }
 
             //Destroy Swapchain
             if (kraut.Vulkan.SwapChain.Handle != VK_NULL_HANDLE) {
-                destroySwapchainKHR(kraut.Vulkan.Device, kraut.Vulkan.SwapChain.Handle, nullptr);
+                destroySwapchainKHR(kraut.Vulkan.Device.Handle, kraut.Vulkan.SwapChain.Handle, nullptr);
             }
 
             //Destroy Device
-            destroyDevice(kraut.Vulkan.Device, nullptr);
+            destroyDevice(kraut.Vulkan.Device.Handle, nullptr);
         }
 
         //Destroy Application Surface
@@ -1508,30 +1785,97 @@ namespace KVKBase {
 
     }
 
-    EXPORT int KrautInit(int width, int height, char *title, int fullScreen, char *dllPath) {
-        //dllPath exists so as to let the calling .NET Core decide where the root of the dll is
-        //as finding it within execution of the framework in this dll is possible but "janky"
+    bool KrautVK::kvkLayoutDescriptorSet() {
+        VkDescriptorSetLayoutBinding layoutBinding = {
+                0,                                          // uint32_t             binding
+                VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER,  // VkDescriptorType     descriptorType
+                1,                                          // uint32_t             descriptorCount
+                VK_SHADER_STAGE_FRAGMENT_BIT,               // VkShaderStageFlags   stageFlags
+                nullptr                                     // const VkSampler     *pImmutableSamplers
+        };
 
-        std::string rootPath = dllPath;
-        Tools::findAndReplace(rootPath, std::string("\\"), std::string("/"));
+        VkDescriptorSetLayoutCreateInfo descriptorSetLayoutCreateInfo = {
+                VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO,  // VkStructureType                      sType
+                nullptr,                                              // const void                          *pNext
+                0,                                                    // VkDescriptorSetLayoutCreateFlags     flags
+                1,                                                    // uint32_t                             bindingCount
+                &layoutBinding                                        // const VkDescriptorSetLayoutBinding  *pBindings
+        };
 
-        Tools::rootPath = rootPath;
-        return KrautVK::kvkInit(width, height, title, fullScreen);
+        return !(createDescriptorSetLayout(kraut.Vulkan.Device.Handle, &descriptorSetLayoutCreateInfo, nullptr, &kraut.Vulkan.Descriptor.Layout ) != VK_SUCCESS);
+
     }
 
-    EXPORT int KrautWindowShouldClose() {
-        return KrautVK::kvkWindowShouldClose();
+    bool KrautVK::kvkCreateDescriptorPool() {
+        VkDescriptorPoolSize poolSize = {
+                VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER,      // VkDescriptorType               type
+                1                                               // uint32_t                       descriptorCount
+        };
+
+        VkDescriptorPoolCreateInfo descriptorPoolCreateInfo = {
+                VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO,  // VkStructureType                sType
+                nullptr,                                        // const void                    *pNext
+                0,                                              // VkDescriptorPoolCreateFlags    flags
+                1,                                              // uint32_t                       maxSets
+                1,                                              // uint32_t                       poolSizeCount
+                &poolSize                                       // const VkDescriptorPoolSize    *pPoolSizes
+        };
+
+        return createDescriptorPool(kraut.Vulkan.Device.Handle, &descriptorPoolCreateInfo, nullptr, &kraut.Vulkan.Descriptor.Pool) == VK_SUCCESS;
+
     }
 
-    EXPORT void KrautPollEvents() {
-        KrautVK::kvkPollEvents();
+    bool KrautVK::kvkAllocateDescriptorSet() {
+        VkDescriptorSetAllocateInfo descriptorSetAllocateInfo = {
+                VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO, // VkStructureType                sType
+                nullptr,                                        // const void                    *pNext
+                kraut.Vulkan.Descriptor.Pool,                   // VkDescriptorPool               descriptorPool
+                1,                                              // uint32_t                       descriptorSetCount
+                &kraut.Vulkan.Descriptor.Layout                 // const VkDescriptorSetLayout   *pSetLayouts
+        };
+
+        return !(allocateDescriptorSets(kraut.Vulkan.Device.Handle, &descriptorSetAllocateInfo, &kraut.Vulkan.Descriptor.Handle ) != VK_SUCCESS);
+
+
     }
 
-    EXPORT void KrautTerminate() {
-        KrautVK::kvkTerminate();
+    void KrautVK::kvkUpdateDescriptorSet() {
+        VkDescriptorImageInfo imageInfo = {
+                kraut.DemoResources.Image.Sampler,                       // VkSampler                      sampler
+                kraut.DemoResources.Image.View,                          // VkImageView                    imageView
+                VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL                 // VkImageLayout                  imageLayout
+        };
+
+        VkWriteDescriptorSet descriptorWrites = {
+                VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,     // VkStructureType                sType
+                nullptr,                                    // const void                    *pNext
+                kraut.Vulkan.Descriptor.Handle,             // VkDescriptorSet                dstSet
+                0,                                          // uint32_t                       dstBinding
+                0,                                          // uint32_t                       dstArrayElement
+                1,                                          // uint32_t                       descriptorCount
+                VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER,  // VkDescriptorType               descriptorType
+                &imageInfo,                                 // const VkDescriptorImageInfo   *pImageInfo
+                nullptr,                                    // const VkDescriptorBufferInfo  *pBufferInfo
+                nullptr                                     // const VkBufferView            *pTexelBufferView
+        };
+
+        updateDescriptorSets(kraut.Vulkan.Device.Handle, 1, &descriptorWrites, 0, nullptr);
+
+
     }
 
-    EXPORT void KrautDraw() {
-        KrautVK::kvkRenderUpdate();
+    int KrautVK::kvkCreateDescriptorSet() {
+
+        if(!kvkLayoutDescriptorSet())
+            return VULKAN_DESCRIPTOR_SET_CREATION_FAILED;
+
+        if(!kvkCreateDescriptorPool())
+            return VULKAN_DESCRIPTOR_SET_CREATION_FAILED;
+
+        if(!kvkAllocateDescriptorSet())
+            return VULKAN_DESCRIPTOR_SET_CREATION_FAILED;
+
+        kvkUpdateDescriptorSet();
+        return SUCCESS;
     }
 }

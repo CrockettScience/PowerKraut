@@ -160,32 +160,32 @@ namespace KVKBase {
         };
 
         VkShaderModule shaderModule;
-        if(createShaderModule(Com::kraut.Vulkan.Device, &shaderModuleCreateInfo, nullptr, &shaderModule) != VK_SUCCESS) {
+        if(createShaderModule(Com::kraut.Vulkan.Device.Handle, &shaderModuleCreateInfo, nullptr, &shaderModule) != VK_SUCCESS) {
             return GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule>();
         }
 
-        return GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule>(shaderModule, destroyShaderModule, Com::kraut.Vulkan.Device);
+        return GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule>(shaderModule, destroyShaderModule, Com::kraut.Vulkan.Device.Handle);
 
     }
 
     void Com::RenderingResourcesData::DestroyRecources() {
         //Destroy Framebuffer
         if (Framebuffer != VK_NULL_HANDLE)
-            destroyFramebuffer(Com::kraut.Vulkan.Device, Framebuffer, nullptr);
+            destroyFramebuffer(Com::kraut.Vulkan.Device.Handle, Framebuffer, nullptr);
 
         //Destroy Command Buffer
         if (CommandBuffer != VK_NULL_HANDLE)
-            freeCommandBuffers(Com::kraut.Vulkan.Device, Com::kraut.Vulkan.CommandPool, 1, &CommandBuffer);
+            freeCommandBuffers(Com::kraut.Vulkan.Device.Handle, Com::kraut.Vulkan.CommandPool, 1, &CommandBuffer);
 
         //Destroy Semaphores
         if (ImageAvailableSemaphore != VK_NULL_HANDLE)
-            destroySemaphore(Com::kraut.Vulkan.Device, ImageAvailableSemaphore, nullptr);
+            destroySemaphore(Com::kraut.Vulkan.Device.Handle, ImageAvailableSemaphore, nullptr);
 
         if (FinishedRenderingSemaphore != VK_NULL_HANDLE)
-            destroySemaphore(Com::kraut.Vulkan.Device, FinishedRenderingSemaphore, nullptr);
+            destroySemaphore(Com::kraut.Vulkan.Device.Handle, FinishedRenderingSemaphore, nullptr);
 
         if (Fence != VK_NULL_HANDLE)
-            destroyFence(Com::kraut.Vulkan.Device, Fence, nullptr);
+            destroyFence(Com::kraut.Vulkan.Device.Handle, Fence, nullptr);
     }
 }
 

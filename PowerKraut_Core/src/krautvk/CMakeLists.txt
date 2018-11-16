@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_SHARED_LIBRARY_PREFIX  "")
 set(STDLIB_DIR "C:/Program\ Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin")
 
-add_library(krautvk SHARED src/KrautVK.cpp src/KrautVK.h src/KrautVKCommon.h)
+add_library(krautvk SHARED src/KrautVKExport.cpp)
 
 target_link_libraries(krautvk ${PROJECT_SOURCE_DIR}/lib/glfw3.dll)
 
@@ -13,6 +13,8 @@ file(COPY ${PROJECT_SOURCE_DIR}/lib/glfw3.dll DESTINATION ${PROJECT_BINARY_DIR})
 file(COPY ${STDLIB_DIR}/libstdc++-6.dll DESTINATION ${PROJECT_BINARY_DIR})
 file(COPY ${STDLIB_DIR}/libgcc_s_seh-1.dll DESTINATION ${PROJECT_BINARY_DIR})
 file(COPY ${STDLIB_DIR}/libwinpthread-1.dll DESTINATION ${PROJECT_BINARY_DIR})
+file(COPY ${PROJECT_SOURCE_DIR}/lib/res DESTINATION ${PROJECT_BINARY_DIR})
+
 
 file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/data)
 

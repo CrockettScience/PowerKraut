@@ -32,7 +32,6 @@ limitations under the License.
 #include "STB/stb_image.h"
 
 //MACROS
-#define EXPORT extern "C" __declspec(dllexport)
 #define SUCCESS (0)
 #define GLFW_INIT_FAILED (-1)
 #define GLFW_WINDOW_CREATION_FAILED (-2)
@@ -42,11 +41,12 @@ limitations under the License.
 #define VULKAN_SURFACE_CREATION_FAILED (-6)
 #define VULKAN_SEMAPHORE_CREATION_FAILED (-7)
 #define VULKAN_RENDERPASS_CREATION_FAILED (-8)
-#define VULKAN_FRAMEBUFFERS_CREATION_FAILED (-9)
+#define VULKAN_TEXTURE_CREATION_FAILED (-9)
 #define VULKAN_PIPELINES_CREATION_FAILED (-10)
 #define VULKAN_VERTEX_CREATION_FAILED (-11)
 #define VULKAN_FENCE_CREATION_FAILED (-12)
 #define VULKAN_COMMAND_BUFFER_CREATION_FAILED (-13)
+#define VULKAN_DESCRIPTOR_SET_CREATION_FAILED (-14)
 
 //SETTINGS
 //__SHADERS & RASTER
@@ -59,14 +59,15 @@ limitations under the License.
 
 //__RENDERING RESOURCES
 #define KVK_RESOURCE_COUNT          (3)
+#define KVK_STAGING_BUFFER_SIZE     (10000000)
 
 namespace KVKBase {
 
 
     //KRAUTVK VERSION
     uint32_t major = 0;
-    uint32_t minor = 5;
-    uint32_t patch = 1;
+    uint32_t minor = 6;
+    uint32_t patch = 0;
     uint32_t version = VK_MAKE_VERSION(major, minor, patch);
 
     //VULKAN FUNCTION POINTERS
@@ -137,6 +138,20 @@ namespace KVKBase {
     PFN_vkCmdSetScissor cmdSetScissor;
     PFN_vkCmdBindVertexBuffers cmdBindVertexBuffers;
     PFN_vkCmdCopyBuffer cmdCopyBuffer;
+    PFN_vkBindImageMemory bindImageMemory;
+    PFN_vkCreateSampler createSampler;
+    PFN_vkCmdCopyBufferToImage cmdCopyBufferToImage;
+    PFN_vkCreateImage createImage;
+    PFN_vkGetImageMemoryRequirements getImageMemoryRequirements;
+    PFN_vkCreateDescriptorSetLayout createDescriptorSetLayout;
+    PFN_vkCreateDescriptorPool createDescriptorPool;
+    PFN_vkAllocateDescriptorSets allocateDescriptorSets;
+    PFN_vkUpdateDescriptorSets updateDescriptorSets;
+    PFN_vkCmdBindDescriptorSets cmdBindDescriptorSets;
+    PFN_vkDestroyDescriptorPool destroyDescriptorPool;
+    PFN_vkDestroyDescriptorSetLayout destroyDescriptorSetLayout;
+    PFN_vkDestroySampler destroySampler;
+    PFN_vkDestroyImage destroyImage;
 
     template<class T, class F>
     class GarbageCollector {
@@ -202,7 +217,7 @@ namespace KVKBase {
 
         static std::array<float, 16> getProjMatrixPerspective(float const aspectRatio, float const fieldOfView, float const nearClip, float const farClip);
 
-        static std::array<float, 16> getProjMatrixOrtho( float const leftPlane, float const rightPlane, float const topPlane, float const bottomPlane, float const nearPlane, float const farPlane );
+        static std::array<float, 16> getProjMatrixOrtho(float const leftPlane, float const rightPlane, float const topPlane, float const bottomPlane, float const nearPlane, float const farPlane);
 
         static GarbageCollector<VkShaderModule, PFN_vkDestroyShaderModule> loadShader(std::string const &filename);
     };
@@ -210,13 +225,30 @@ namespace KVKBase {
     //Struct to keep vertex attribute data to be passed into the shaders
     struct VertexData {
         float   x, y, z, w;             //Position
-        float   r, g, b, a;             //Color
+        float   u, v;                   //Coord
     };
 
-    //Important structures to keep Vulkan Data
+    //Important structures to keep Engine Data
     class Com {
 
     public:
+
+        struct DeviceParameters {
+            VkDevice Handle;
+            VkPhysicalDevice PhysicalDevice;
+            VkPhysicalDeviceMemoryProperties MemoryProperties;
+            VkPhysicalDeviceProperties Properties;
+            VkPhysicalDeviceFeatures Features;
+
+            DeviceParameters() :
+            Handle(VK_NULL_HANDLE),
+            PhysicalDevice(VK_NULL_HANDLE),
+            MemoryProperties(),
+            Properties(),
+            Features() {
+
+            }
+        };
 
         struct QueueParameters {
             VkQueue Handle;
@@ -306,27 +338,41 @@ namespace KVKBase {
 
         struct VulkanParameters {
             VkInstance Instance;
-            VkPhysicalDevice PhysicalDevice;
-            VkDevice Device;
+            DeviceParameters Device;
             VkSurfaceKHR ApplicationSurface;
             VkRenderPass RenderPass;
             VkPipeline GraphicsPipeline;
+            VkPipelineLayout PipelineLayout;
             SwapChainParameters SwapChain;
             std::vector<RenderingResourcesData> RenderingResources;
             VkCommandPool CommandPool;
+            DescriptorSetParameters Descriptor;
 
             static const size_t ResourceCount = KVK_RESOURCE_COUNT;
 
             VulkanParameters() :
                     Instance(VK_NULL_HANDLE),
-                    PhysicalDevice(VK_NULL_HANDLE),
-                    Device(VK_NULL_HANDLE),
+                    Device(),
                     ApplicationSurface(VK_NULL_HANDLE),
                     RenderPass(VK_NULL_HANDLE),
                     GraphicsPipeline(VK_NULL_HANDLE),
+                    PipelineLayout(),
                     SwapChain(),
                     RenderingResources(ResourceCount),
-                    CommandPool() {
+                    CommandPool(),
+                    Descriptor(){
+            }
+        };
+
+        struct TestDemoResources {
+
+            BufferParameters VertexBuffer;
+            ImageParameters Image;
+
+            TestDemoResources() :
+                VertexBuffer(),
+                Image(){
+
             }
         };
 
@@ -335,16 +381,16 @@ namespace KVKBase {
             VulkanParameters Vulkan;
             QueueParameters GraphicsQueue;
             QueueParameters PresentQueue;
-            BufferParameters VertexBuffer;
             BufferParameters StagingBuffer;
 
+            TestDemoResources DemoResources;
+
             KrautCommon() :
-                    GLFW(),
-                    Vulkan(),
-                    GraphicsQueue(),
-                    PresentQueue(),
-                    VertexBuffer(),
-                    StagingBuffer(){
+                GLFW(),
+                Vulkan(),
+                GraphicsQueue(),
+                PresentQueue(),
+                StagingBuffer(){
 
             }
 
