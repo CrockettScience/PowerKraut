@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="krautvk" targetName="shaderbuilder" />
       <config projectName="krautvk" targetName="krautvk" />
@@ -8,180 +11,62 @@
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" GENERATION_DIR="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.1/win10-x64/lib" />
-      <configuration PROFILE_NAME="Release" CONFIG_NAME="Release" GENERATION_DIR="$PROJECT_DIR$/../../lib" />
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" TOOLCHAIN_NAME="Visual Studio" GENERATION_DIR="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.1/win10-x64/lib" ENABLED="true" />
+      <configuration PROFILE_NAME="Release" CONFIG_NAME="Release" GENERATION_DIR="$PROJECT_DIR$/../../lib" ENABLED="true" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a89cb1c0-d097-423e-9fcb-4e5a4f7038ab" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KrautVK.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVK.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KrautVK.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVK.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KrautVKCommon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKCommon.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KrautVKCommon.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKCommon.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/bin/glfw3.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/KrautVKConfig.h.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/.idea.PowerKraut/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/.idea.PowerKraut/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PowerKraut.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/PowerKraut_Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../PowerKraut.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/core/PowerKraut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/core/PowerKraut.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/netwrapper/KrautVK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/netwrapper/KrautVK.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKInitFailedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKInitFailedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKSemaphoreCreationFailedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKSemaphoreCreationFailedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKUndefinedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKUndefinedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanCommandBufferCreationFailed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanCommandBufferCreationFailed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanDeviceCreationFailedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanDeviceCreationFailedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanFenceCreationFailed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanFenceCreationFailed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanFramebufferCreationFailed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanFramebufferCreationFailed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanInstanceCreationFailedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanInstanceCreationFailedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanNotSupportedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanNotSupportedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanPipelineCreationFailed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanPipelineCreationFailed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanRenderPassCreationFailed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanRenderPassCreationFailed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanSurfaceCreationFailedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanSurfaceCreationFailedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKVulkanVertexCreationFailed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKVulkanVertexCreationFailed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/kraut/util/exceptions/KrautVKWindowCreationFailedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../kraut/util/exceptions/KrautVKWindowCreationFailedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/.idea/krautvk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/krautvk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/lib/res/demo.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/lib/res/demo.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/lib/spirv/shader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/lib/spirv/shader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shader.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/lib/spirv/shaderbuilder.bat" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shaderbuilder.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/lib/spirv/shaderfrag.spv" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shaderfrag.spv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/lib/spirv/shadervert.spv" beforeDir="false" afterPath="$PROJECT_DIR$/lib/spirv/shadervert.spv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/src/KrautVK.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVK.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/src/KrautVK.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVK.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/src/KrautVKCommon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKCommon.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/src/KrautVKCommon.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKCommon.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/src/KrautVKExport.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKExport.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PowerKraut_Core/src/krautvk/src/KrautVKExport.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/KrautVKExport.h" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
-    <ignored path="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.0/lib/" />
-    <ignored path="$PROJECT_DIR$/../../lib/" />
-    <ignored path="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.1/win10-x64/lib/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
-  <component name="FUSProjectUsageTrigger">
-    <session id="387941143">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="6" />
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.38" value="2" />
-          <entry key="project.open.time.39" value="1" />
-          <entry key="project.open.time.40" value="1" />
-          <entry key="project.open.time.41" value="2" />
-          <entry key="project.open.time.42" value="1" />
-          <entry key="project.open.time.52" value="1" />
-          <entry key="project.open.time.95" value="1" />
-          <entry key="project.opened" value="10" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="cpp" value="7233" />
-          <entry key="h" value="3386" />
-          <entry key="mm" value="24" />
-          <entry key="txt" value="614" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CMakeLists.txt" value="614" />
-          <entry key="ObjectiveC" value="10643" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="Makefile" value="3" />
-          <entry key="PowerKraut_Core (disassembly)" value="4" />
-          <entry key="cpp" value="9" />
-          <entry key="dotnet (disassembly)" value="20" />
-          <entry key="h" value="13" />
-          <entry key="tcc" value="4" />
-          <entry key="txt" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CMakeLists.txt" value="2" />
-          <entry key="Disassembly" value="24" />
-          <entry key="ObjectiveC" value="26" />
-          <entry key="PLAIN_TEXT" value="3" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3107676">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/KrautVK.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1605">
-                  <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-                  <folding>
-                    <element signature="e#6138#7484#1" />
-                    <element signature="e#6712#7600#1" />
-                    <element signature="e#7564#7688#1" />
-                    <element signature="e#7742#7985#1" />
-                    <element signature="e#7992#8412#1" />
-                    <element signature="e#8419#8738#1" />
-                    <element signature="e#8745#9091#1" />
-                    <element signature="e#9098#9501#1" />
-                    <element signature="e#10247#10334#1" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/KrautVKCommon.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#670#1042#0" />
-                    <element signature="e#1048#1587#0" />
-                    <element signature="e#1593#2975#0" />
-                    <element signature="e#2981#3686#0" />
-                    <element signature="e#3692#4473#0" />
-                    <element signature="e#4479#4671#0" />
-                    <element signature="e#4677#5439#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/KrautVK.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="555">
-                  <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
-                  <folding>
-                    <element signature="e#1488#1853#0" />
-                    <element signature="e#1859#2044#0" />
-                    <element signature="e#2050#5566#0" />
-                    <element signature="e#5572#10557#0" />
-                    <element signature="e#25130#33769#0" />
-                    <element signature="e#33775#34435#0" />
-                    <element signature="e#34441#35292#0" />
-                    <element signature="e#35298#36597#0" />
-                    <element signature="e#36603#38907#0" />
-                    <element signature="e#38913#39895#0" />
-                    <element signature="e#39901#40586#0" />
-                    <element signature="e#40620#41537#0" />
-                    <element signature="e#42463#51010#0" />
-                    <element signature="e#51016#51101#0" />
-                    <element signature="e#51107#51208#0" />
-                    <element signature="e#51214#55415#0" />
-                    <element signature="e#55421#55484#0" />
-                    <element signature="e#57922#63750#0" />
-                    <element signature="e#63756#65320#0" />
-                    <element signature="e#65326#82339#0" />
-                    <element signature="e#82345#83686#0" />
-                    <element signature="e#88106#89517#0" />
-                    <element signature="e#87292#88171#0" />
-                    <element signature="e#87250#88074#0" />
-                    <element signature="e#87149#87768#0" />
-                    <element signature="e#93217#96088#0" />
-                    <element signature="e#91637#92139#1" />
-                    <element signature="e#92151#92236#1" />
-                    <element signature="e#92248#92313#1" />
-                    <element signature="e#92400#92461#1" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>int32_t</find>
@@ -252,6 +137,7 @@
     <option name="width" value="974" />
     <option name="height" value="527" />
   </component>
+  <component name="ProjectId" id="1mbG7IyjPHcq6mGnGkovchPSVfK" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -286,50 +172,57 @@
       </pane>
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bin/Debug/netcoreapp2.1/win10-x64/lib" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="P:/glfw" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cohib\RiderProjects\PowerKraut\PowerKraut\src\krautvk\lib" />
       <recent name="C:\PowerKraut\PowerKraut\PowerKraut_Core\src\krautvk\src" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.krautvk">
-    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Release" EXPLICIT_BUILD_TARGET_NAME="all">
+  <component name="RunManager" selected="CMake Application.Build All">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="krautvk" CONFIG_NAME="Release">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="krautvk" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="krautvk" CONFIG_NAME="Release">
+    <configuration name="KVK" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="krautvk" CONFIG_NAME="Release">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="shaderbuilder" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="shaderbuilder" CONFIG_NAME="Release">
+    <configuration name="ShaderBuilder" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="krautvk" TARGET_NAME="shaderbuilder" CONFIG_NAME="Release">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Build All" />
-      <item itemvalue="Application.krautvk" />
-      <item itemvalue="Application.shaderbuilder" />
+      <item itemvalue="CMake Application.KVK" />
+      <item itemvalue="CMake Application.ShaderBuilder" />
+      <item itemvalue="CMake Application.Build All" />
     </list>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -364,6 +257,10 @@
       <workItem from="1541640316621" duration="9345000" />
       <workItem from="1541691653508" duration="6087000" />
       <workItem from="1541973435349" duration="17013000" />
+      <workItem from="1609754711533" duration="3897000" />
+      <workItem from="1609785764202" duration="10901000" />
+      <workItem from="1609880919899" duration="9650000" />
+      <workItem from="1609890924183" duration="1384000" />
     </task>
     <servers />
   </component>
@@ -406,7 +303,25 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -417,6 +332,10 @@
         <watch expression="Com::kraut" language="ObjectiveC" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -475,73 +394,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-7.3.0-posix-seh-rt_v5-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_vector.h" />
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-7.3.0-posix-seh-rt_v5-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_vector.h" />
     <entry file="file://$PROJECT_DIR$/src/KVKCommon.cpp" />
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/Makefile" />
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/alloc_traits.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/alloc_traits.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="435" selection-start-line="435" selection-end-line="435" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ext/new_allocator.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ext/new_allocator.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="111" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_iterator_base_funcs.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_iterator_base_funcs.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="142" selection-start-line="142" selection-end-line="142" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_iterator_base_types.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_iterator_base_types.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="205" selection-start-line="205" selection-end-line="205" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ext/type_traits.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/ext/type_traits.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="152" selection-start-line="152" selection-end-line="152" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/char_traits.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/char_traits.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
           <caret line="320" selection-start-line="320" selection-end-line="320" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/ptr_traits.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/ptr_traits.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="141" selection-start-line="141" selection-end-line="141" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/move.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/move.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="138" selection-start-line="138" selection-end-line="138" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/basic_string.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/basic_string.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="510" selection-start-line="510" selection-end-line="510" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/basic_string.tcc">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/basic_string.tcc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1426">
           <caret line="212" column="52" selection-start-line="211" selection-start-column="35" selection-end-line="212" selection-end-column="52" />
@@ -557,7 +476,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../../Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/stl_vector.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="933" selection-start-line="933" selection-end-line="933" />

@@ -34,14 +34,14 @@ namespace PowerKraut_Core.kraut.core{
         /// <summary>
         /// Initializes Vulkan, opens a window and loads the first scene
         /// </summary>
-        public void Start(int width, int height, string gameTitle, bool fullscreen){
+        public void Start(int width, int height, string windowTitle, bool fullscreen){
             #if DEBUG
                 Console.WriteLine("PowerKraut Debug\nPID: " + Process.GetCurrentProcess().Id);
                 Console.ReadLine();
             #endif
             
             
-            InitKrautVK(width, height, gameTitle, fullscreen);
+            InitKrautVK(width, height, windowTitle, fullscreen);
 
             try{
                 Loop();
@@ -66,7 +66,7 @@ namespace PowerKraut_Core.kraut.core{
 
         private static void Main(string[] args){
             
-            PkInstance.Start(1920, 1080, "Powerkraut", false);
+            PkInstance.Start(600, 600, "Kraut", false);
         }
     }
 }

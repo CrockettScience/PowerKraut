@@ -17,6 +17,7 @@ limitations under the License.
 #ifndef KRAUTVK_H_
 #define KRAUTVK_H_
 
+#include "KrautVKConfig.h"
 #include "KrautVKCommon.cpp"
 
 //FUNCTION HEADERS

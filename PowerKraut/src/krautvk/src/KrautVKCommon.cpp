@@ -64,7 +64,7 @@ namespace KVKBase {
         }
 
         int tmpWidth = 0, tmpHeight = 0, tmpComponents = 0;
-        unsigned char *imageData = stbiLoadFromMemory(reinterpret_cast<unsigned char *>(&fileData[0]),
+        unsigned char *imageData = stbi_load_from_memory(reinterpret_cast<unsigned char *>(&fileData[0]),
                                                       static_cast<int>(fileData.size()), &tmpWidth, &tmpHeight,
                                                       &tmpComponents, requestedComponents);
         if ((imageData == nullptr) ||
@@ -168,7 +168,7 @@ namespace KVKBase {
 
     }
 
-    void Com::RenderingResourcesData::DestroyRecources() {
+    void Com::RenderingResourcesData::DestroyResources() {
         //Destroy Framebuffer
         if (Framebuffer != VK_NULL_HANDLE)
             destroyFramebuffer(Com::kraut.Vulkan.Device.Handle, Framebuffer, nullptr);

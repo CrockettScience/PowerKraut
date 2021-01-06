@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerKraut_Core", "PowerKraut_Core\PowerKraut_Core.csproj", "{D04A2E70-77DF-40F2-BEBA-EB7EE742FEAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerKraut", "PowerKraut\PowerKraut.csproj", "{D04A2E70-77DF-40F2-BEBA-EB7EE742FEAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

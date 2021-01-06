@@ -29,7 +29,7 @@ limitations under the License.
 #include <GLFW/glfw3.h>
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "STB/stb_image.h"
+#include "stb_image.h"
 
 //MACROS
 #define SUCCESS (0)
@@ -63,12 +63,8 @@ limitations under the License.
 
 namespace KVKBase {
 
-
     //KRAUTVK VERSION
-    uint32_t major = 0;
-    uint32_t minor = 6;
-    uint32_t patch = 0;
-    uint32_t version = VK_MAKE_VERSION(major, minor, patch);
+    uint32_t version = VK_MAKE_VERSION(krautvk_VERSION_MAJOR, krautvk_VERSION_MINOR, 0);
 
     //VULKAN FUNCTION POINTERS
     PFN_vkCreateInstance createInstance;
@@ -320,7 +316,7 @@ namespace KVKBase {
             VkFence Fence;
 
 
-            void DestroyRecources();
+            void DestroyResources();
 
             RenderingResourcesData() :
                     Framebuffer(VK_NULL_HANDLE),

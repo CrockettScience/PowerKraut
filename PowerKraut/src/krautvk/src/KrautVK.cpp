@@ -21,16 +21,16 @@ limitations under the License.
 
 //Temporary hard-coded vertex data for alpha developement and testing
 const std::vector<float> GlobalVertexData = {
-        -0.9f, -0.9f, 0.0f, 1.0f,
+        -1.0f, -1.0f, 0.0f, 1.0f,
         0.0f, 0.0f,
         //
-        -0.9f, 0.9f, 0.0f, 1.0f,
+        -1.0f, 1.0f, 0.0f, 1.0f,
         0.0f, 1.0f,
         //
-        0.9f, -0.9f, 0.0f, 1.0f,
+        1.0f, -1.0f, 0.0f, 1.0f,
         1.0f, 0.0f,
         //
-        0.9f, 0.9f, 0.0f, 1.0f,
+        1.0f, 1.0f, 0.0f, 1.0f,
         1.0f, 1.0f,
 };
 
@@ -1580,17 +1580,7 @@ namespace KVKBase {
     }
 
     int KrautVK::kvkInit(const int &width, const int &height, const char *title, const int &fullScreen) {
-        std::cout << "\nKrautVK Alpha v" << major << "." << minor << "." << patch
-                  << "\nCopyright 2018 Jonathan Crockett\n\n"
-                  << "Licensed under the Apache License, Version 2.0 (the \"License\");\n"
-                  << "you may not use this file except in compliance with the License.\n"
-                  << "You may obtain a copy of the License at\n\n"
-                  << "http://www.apache.org/licenses/LICENSE-2.0\n\n"
-                  << "Unless required by applicable law or agreed to in writing, software\n"
-                  << "distributed under the License is distributed on an \"AS IS\" BASIS,\n"
-                  << "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n"
-                  << "See the License for the specific language governing permissions and\n"
-                  << "limitations under the License.\n\n";
+        std::cout << "\nKrautVK Alpha v" << krautvk_VERSION_MAJOR << "." << krautvk_VERSION_MINOR << "\n";
 
         printf("Initializing GLFW...\n");
         int status = kvkInitGLFW(width, height, title, fullScreen);
@@ -1677,8 +1667,8 @@ namespace KVKBase {
             deviceWaitIdle(kraut.Vulkan.Device.Handle);
 
             //Destroy Rendering Resource Data
-            for(int i = 0; i < kraut.Vulkan.RenderingResources.size(); i++)
-                kraut.Vulkan.RenderingResources[i].DestroyRecources();
+            for(unsigned int i = 0; i < kraut.Vulkan.RenderingResources.size(); i++)
+                kraut.Vulkan.RenderingResources[i].DestroyResources();
 
 
             //Destroy Command Pool

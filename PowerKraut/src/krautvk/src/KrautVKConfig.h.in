@@ -1,0 +1,2 @@
+#define krautvk_VERSION_MAJOR @krautvk_VERSION_MAJOR@
+#define krautvk_VERSION_MINOR @krautvk_VERSION_MINOR@
